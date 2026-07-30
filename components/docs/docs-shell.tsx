@@ -59,11 +59,20 @@ function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
           <NavLink href="/design-library" onNavigate={onNavigate}>
             Overview
           </NavLink>
+          <NavLink href="/design-library/introduction" onNavigate={onNavigate}>
+            Introduction
+          </NavLink>
           <NavLink href="/design-library/installation" onNavigate={onNavigate}>
             Installation
           </NavLink>
+          <NavLink href="/design-library/cli" onNavigate={onNavigate}>
+            CLI
+          </NavLink>
           <NavLink href="/design-library/theming" onNavigate={onNavigate}>
             Theming
+          </NavLink>
+          <NavLink href="/design-library/dark-mode" onNavigate={onNavigate}>
+            Dark mode
           </NavLink>
         </div>
       </div>
