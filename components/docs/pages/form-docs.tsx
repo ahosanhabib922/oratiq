@@ -46,6 +46,12 @@ import { Slider } from "@/components/ui/slider";
 import { Switch } from "@/components/ui/switch";
 import { Textarea } from "@/components/ui/textarea";
 import { Toggle } from "@/components/ui/toggle";
+import { MultiSelect } from "@/components/ui/multi-select";
+import { Rating } from "@/components/ui/rating";
+import { TagInput } from "@/components/ui/tag-input";
+import { SocialButton, SocialButtons } from "@/components/ui/social-buttons";
+import { ColorPicker } from "@/components/ui/color-picker";
+import { FileUploader } from "@/components/ui/file-uploader";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 
 /* ── Button ─────────────────────────────────────────────────────────────── */
@@ -817,6 +823,12 @@ function LabelDocs() {
 }
 
 export const FORM_DOCS: Record<string, () => React.JSX.Element> = {
+  "multi-select": MultiSelectDocs,
+  rating: RatingDocs,
+  "tag-input": TagInputDocs,
+  "social-buttons": SocialButtonsDocs,
+  "color-picker": ColorPickerDocs,
+  "file-uploader": FileUploaderDocs,
   button: ButtonDocs,
   "button-group": ButtonGroupDocs,
   field: FieldDocs,
@@ -833,3 +845,194 @@ export const FORM_DOCS: Record<string, () => React.JSX.Element> = {
   "native-select": NativeSelectDocs,
   label: LabelDocs,
 };
+
+/* ── Multi select ───────────────────────────────────────────────────────── */
+
+function MultiSelectDocs() {
+  return (
+    <>
+      <Section title="Behaviour">
+        <A11yNotes
+          items={[
+            "The list stays open while picking — multi-select means several choices, closing per pick would be hostile.",
+            "Selections render as dismissible chips in the trigger; overflow collapses to a +N chip.",
+            "Search filters the list via Command; keyboard navigation follows the writing direction.",
+          ]}
+        />
+      </Section>
+      <Section title="Props">
+        <PropsTable
+          props={[
+            { name: "options", type: "{ value, label, disabled? }[]", required: true, description: "The selectable options." },
+            { name: "value / defaultValue", type: "string[]", description: "Selected values (controlled / uncontrolled)." },
+            { name: "onValueChange", type: "(values: string[]) => void", description: "Fires with the full selection." },
+            { name: "maxShown", type: "number", default: "3", description: "Chips shown before collapsing to +N." },
+          ]}
+        />
+      </Section>
+      <Note title="When to use">
+        Two to five exclusive choices → Radio Group. One choice from many →
+        Combobox. Several choices from many → this.
+      </Note>
+    </>
+  );
+}
+
+/* ── Rating ─────────────────────────────────────────────────────────────── */
+
+function RatingDocs() {
+  return (
+    <>
+      <Section title="Input and display">
+        <Preview>
+          <Rating defaultValue={3} label="Rate this" />
+          <Rating value={4} readOnly label="Average" />
+          <Rating value={2} readOnly size="sm" label="Small" />
+        </Preview>
+      </Section>
+      <Section title="Accessibility">
+        <A11yNotes
+          items={[
+            "Input mode is a radiogroup — one tab stop, arrows move between stars.",
+            "Arrow keys follow the writing direction: the arrow pointing toward 'more stars' increases in both LTR and RTL.",
+            "Display mode is role=img with a spoken '4 of 5' label — decorative stars stay silent.",
+          ]}
+        />
+      </Section>
+      <Section title="Props">
+        <PropsTable
+          props={[
+            { name: "max", type: "number", default: "5", description: "Number of stars." },
+            { name: "readOnly", type: "boolean", default: "false", description: "Display-only, no interaction." },
+            { name: "size", type: '"sm" | "default" | "lg"', default: '"default"', description: "Star size." },
+          ]}
+        />
+      </Section>
+    </>
+  );
+}
+
+/* ── Tag input ──────────────────────────────────────────────────────────── */
+
+function TagInputDocs() {
+  return (
+    <>
+      <Section title="Behaviour">
+        <A11yNotes
+          items={[
+            "Enter or comma commits the draft as a tag; blur commits too, so nothing typed is silently lost.",
+            "Backspace on an empty input removes the last tag.",
+            "Duplicates are ignored; max caps the count.",
+            "Each tag carries dir=\"auto\" — Arabic tags lay out correctly inside an English form and vice versa.",
+          ]}
+        />
+      </Section>
+      <Section title="Props">
+        <PropsTable
+          props={[
+            { name: "value / defaultValue", type: "string[]", description: "The tags (controlled / uncontrolled)." },
+            { name: "onValueChange", type: "(tags: string[]) => void", description: "Fires with the full list." },
+            { name: "max", type: "number", description: "Maximum number of tags." },
+          ]}
+        />
+      </Section>
+    </>
+  );
+}
+
+/* ── Social buttons ─────────────────────────────────────────────────────── */
+
+function SocialButtonsDocs() {
+  return (
+    <>
+      <Section title="Single and icon-only">
+        <Preview align="stretch">
+          <div className="mx-auto w-full max-w-xs space-y-2">
+            <SocialButton provider="google" />
+            <SocialButton provider="apple" action="Sign in with" />
+          </div>
+          <div className="flex justify-center">
+            <SocialButtons iconOnly providers={["google", "apple", "github", "facebook"]} />
+          </div>
+        </Preview>
+      </Section>
+      <Section title="Accessibility">
+        <A11yNotes
+          items={[
+            "Brand marks are inline SVG — no icon-library dependency, and never mirrored under RTL: a logo is not a directional glyph.",
+            "Icon-only buttons carry the full accessible label ('Continue with Google'), not the brand name alone.",
+          ]}
+        />
+      </Section>
+      <Section title="Props">
+        <PropsTable
+          props={[
+            { name: "provider", type: '"google" | "apple" | "github" | "facebook"', required: true, description: "Which provider." },
+            { name: "action", type: "string", default: '"Continue with"', description: "Leading copy." },
+            { name: "iconOnly", type: "boolean", default: "false", description: "Logo-only, label moves to aria-label." },
+          ]}
+        />
+      </Section>
+    </>
+  );
+}
+
+/* ── Color picker ───────────────────────────────────────────────────────── */
+
+function ColorPickerDocs() {
+  return (
+    <>
+      <Section title="Behaviour">
+        <A11yNotes
+          items={[
+            "Swatch grid for the common case; a hex field for precision; the native picker (with eyedropper where the OS has one) for everything else.",
+            "Hex values are pinned dir=\"ltr\" — a colour code is a code, not prose.",
+            "3-digit hex shorthand is expanded (#f0a → #ff00aa); invalid input reverts on blur.",
+          ]}
+        />
+      </Section>
+      <Section title="Props">
+        <PropsTable
+          props={[
+            { name: "value / defaultValue", type: "string", default: '"#cbfe00"', description: "Hex colour (controlled / uncontrolled)." },
+            { name: "swatches", type: "string[]", description: "Preset palette. Pass your brand ramp." },
+            { name: "onValueChange", type: "(hex: string) => void", description: "Fires with a normalised 6-digit hex." },
+          ]}
+        />
+      </Section>
+    </>
+  );
+}
+
+/* ── File uploader ──────────────────────────────────────────────────────── */
+
+function FileUploaderDocs() {
+  return (
+    <>
+      <Section title="Behaviour">
+        <A11yNotes
+          items={[
+            "The drop zone is a real file-input label — keyboard and screen-reader users get the native picker; drag-and-drop is an enhancement, not the only path.",
+            "accept and maxSize are validated on drop too, not just in the picker; rejected files are listed with the reason rather than silently dropped.",
+            "Accepted files render as Attachment rows with remove buttons; onFilesChange only ever reports valid files.",
+          ]}
+        />
+      </Section>
+      <Section title="Props">
+        <PropsTable
+          props={[
+            { name: "accept", type: "string", description: 'e.g. "image/*,.pdf".' },
+            { name: "multiple", type: "boolean", default: "true", description: "Allow more than one file." },
+            { name: "maxSize", type: "number", description: "Per-file cap in bytes." },
+            { name: "onFilesChange", type: "(files: File[]) => void", description: "Valid files after every change." },
+          ]}
+        />
+      </Section>
+      <Note title="Uploading is yours">
+        This component collects and validates files — it deliberately does not
+        upload. Wire the files to your own endpoint, and drive Attachment&apos;s
+        progress state from your upload progress.
+      </Note>
+    </>
+  );
+}

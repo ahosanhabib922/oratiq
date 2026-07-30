@@ -21,6 +21,7 @@ import CarouselDemo from "./carousel-demo";
 import ChartDemo from "./chart-demo";
 import CheckboxDemo from "./checkbox-demo";
 import CollapsibleDemo from "./collapsible-demo";
+import ColorPickerDemo from "./color-picker-demo";
 import ComboboxDemo from "./combobox-demo";
 import CommandDemo from "./command-demo";
 import ContextMenuDemo from "./context-menu-demo";
@@ -31,6 +32,7 @@ import DrawerDemo from "./drawer-demo";
 import DropdownMenuDemo from "./dropdown-menu-demo";
 import EmptyDemo from "./empty-demo";
 import FieldDemo from "./field-demo";
+import FileUploaderDemo from "./file-uploader-demo";
 import HoverCardDemo from "./hover-card-demo";
 import InputDemo from "./input-demo";
 import InputGroupDemo from "./input-group-demo";
@@ -42,12 +44,14 @@ import MarkerDemo from "./marker-demo";
 import MenubarDemo from "./menubar-demo";
 import MessageDemo from "./message-demo";
 import MessageScrollerDemo from "./message-scroller-demo";
+import MultiSelectDemo from "./multi-select-demo";
 import NativeSelectDemo from "./native-select-demo";
 import NavigationMenuDemo from "./navigation-menu-demo";
 import PaginationDemo from "./pagination-demo";
 import PopoverDemo from "./popover-demo";
 import ProgressDemo from "./progress-demo";
 import RadioGroupDemo from "./radio-group-demo";
+import RatingDemo from "./rating-demo";
 import ResizableDemo from "./resizable-demo";
 import ScrollAreaDemo from "./scroll-area-demo";
 import SelectDemo from "./select-demo";
@@ -56,10 +60,12 @@ import SheetDemo from "./sheet-demo";
 import SidebarDemo from "./sidebar-demo";
 import SkeletonDemo from "./skeleton-demo";
 import SliderDemo from "./slider-demo";
+import SocialButtonsDemo from "./social-buttons-demo";
 import SpinnerDemo from "./spinner-demo";
 import SwitchDemo from "./switch-demo";
 import TableDemo from "./table-demo";
 import TabsDemo from "./tabs-demo";
+import TagInputDemo from "./tag-input-demo";
 import TextareaDemo from "./textarea-demo";
 import ToastDemo from "./toast-demo";
 import ToggleDemo from "./toggle-demo";
@@ -87,6 +93,7 @@ export const DEMOS: Record<string, React.ComponentType> = {
   "chart-demo": ChartDemo,
   "checkbox-demo": CheckboxDemo,
   "collapsible-demo": CollapsibleDemo,
+  "color-picker-demo": ColorPickerDemo,
   "combobox-demo": ComboboxDemo,
   "command-demo": CommandDemo,
   "context-menu-demo": ContextMenuDemo,
@@ -97,6 +104,7 @@ export const DEMOS: Record<string, React.ComponentType> = {
   "dropdown-menu-demo": DropdownMenuDemo,
   "empty-demo": EmptyDemo,
   "field-demo": FieldDemo,
+  "file-uploader-demo": FileUploaderDemo,
   "hover-card-demo": HoverCardDemo,
   "input-demo": InputDemo,
   "input-group-demo": InputGroupDemo,
@@ -108,12 +116,14 @@ export const DEMOS: Record<string, React.ComponentType> = {
   "menubar-demo": MenubarDemo,
   "message-demo": MessageDemo,
   "message-scroller-demo": MessageScrollerDemo,
+  "multi-select-demo": MultiSelectDemo,
   "native-select-demo": NativeSelectDemo,
   "navigation-menu-demo": NavigationMenuDemo,
   "pagination-demo": PaginationDemo,
   "popover-demo": PopoverDemo,
   "progress-demo": ProgressDemo,
   "radio-group-demo": RadioGroupDemo,
+  "rating-demo": RatingDemo,
   "resizable-demo": ResizableDemo,
   "scroll-area-demo": ScrollAreaDemo,
   "select-demo": SelectDemo,
@@ -122,10 +132,12 @@ export const DEMOS: Record<string, React.ComponentType> = {
   "sidebar-demo": SidebarDemo,
   "skeleton-demo": SkeletonDemo,
   "slider-demo": SliderDemo,
+  "social-buttons-demo": SocialButtonsDemo,
   "spinner-demo": SpinnerDemo,
   "switch-demo": SwitchDemo,
   "table-demo": TableDemo,
   "tabs-demo": TabsDemo,
+  "tag-input-demo": TagInputDemo,
   "textarea-demo": TextareaDemo,
   "toast-demo": ToastDemo,
   "toggle-demo": ToggleDemo,

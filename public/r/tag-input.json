@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tag-input",
+  "type": "registry:ui",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "lucide-react",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/tag-input.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/tag-input.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { X } from \"lucide-react\";\nimport { cn } from \"@/lib/utils\";\n\nexport interface TagInputProps {\n  value?: string[];\n  defaultValue?: string[];\n  onValueChange?: (tags: string[]) => void;\n  placeholder?: string;\n  /** Maximum number of tags; further entries are ignored. */\n  max?: number;\n  disabled?: boolean;\n  label?: string;\n  className?: string;\n}\n\n/**\n * Free-text tags. Enter or comma commits a tag; Backspace on an empty input\n * removes the last one. Duplicates are ignored.\n */\nexport function TagInput({\n  value,\n  defaultValue = [],\n  onValueChange,\n  placeholder = \"Add a tag…\",\n  max,\n  disabled,\n  label = \"Tags\",\n  className,\n}: TagInputProps) {\n  const [internal, setInternal] = React.useState(defaultValue);\n  const [draft, setDraft] = React.useState(\"\");\n  const inputRef = React.useRef<HTMLInputElement>(null);\n  const isControlled = value !== undefined;\n  const tags = isControlled ? value : internal;\n\n  function commit(next: string[]) {\n    if (!isControlled) setInternal(next);\n    onValueChange?.(next);\n  }\n\n  function addTag(raw: string) {\n    const tag = raw.trim();\n    if (!tag) return;\n    if (tags.includes(tag)) return setDraft(\"\");\n    if (max !== undefined && tags.length >= max) return;\n    commit([...tags, tag]);\n    setDraft(\"\");\n  }\n\n  function removeTag(tag: string) {\n    commit(tags.filter((t) => t !== tag));\n    inputRef.current?.focus();\n  }\n\n  function handleKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {\n    if (e.key === \"Enter\" || e.key === \",\") {\n      e.preventDefault();\n      addTag(draft);\n    } else if (e.key === \"Backspace\" && draft === \"\" && tags.length > 0) {\n      removeTag(tags[tags.length - 1]);\n    }\n  }\n\n  return (\n    <div\n      role=\"group\"\n      aria-label={label}\n      onClick={() => inputRef.current?.focus()}\n      className={cn(\n        \"flex min-h-10 w-full flex-wrap items-center gap-1.5 rounded-lg border border-input bg-transparent px-2 py-1.5\",\n        \"cursor-text transition-[color,box-shadow,border-color] duration-150 ease-out-quart\",\n        \"focus-within:border-ring focus-within:ring-2 focus-within:ring-ring/30\",\n        disabled && \"pointer-events-none opacity-50\",\n        className,\n      )}\n    >\n      {tags.map((tag) => (\n        <span\n          key={tag}\n          // Tags are user content in an unknown language.\n          dir=\"auto\"\n          className=\"inline-flex items-center gap-1 rounded-md bg-secondary py-0.5 ps-2 pe-1 text-xs font-medium text-secondary-foreground\"\n        >\n          {tag}\n          <button\n            type=\"button\"\n            aria-label={`Remove ${tag}`}\n            disabled={disabled}\n            onClick={(e) => {\n              e.stopPropagation();\n              removeTag(tag);\n            }}\n            className={cn(\n              \"inline-flex size-4 items-center justify-center rounded-sm\",\n              \"transition-colors hover:bg-foreground/10\",\n              \"outline-none focus-visible:ring-2 focus-visible:ring-ring\",\n            )}\n          >\n            <X className=\"size-3\" />\n          </button>\n        </span>\n      ))}\n      <input\n        ref={inputRef}\n        value={draft}\n        disabled={disabled}\n        placeholder={tags.length === 0 ? placeholder : undefined}\n        onChange={(e) => setDraft(e.target.value)}\n        onKeyDown={handleKeyDown}\n        onBlur={() => addTag(draft)}\n        className=\"min-w-20 flex-1 bg-transparent text-sm outline-none placeholder:text-muted-foreground\"\n      />\n    </div>\n  );\n}\n"
+    }
+  ]
+}

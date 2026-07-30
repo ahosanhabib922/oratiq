@@ -233,6 +233,21 @@
       ]
     },
     {
+      "name": "color-picker",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "lucide-react",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "button",
+        "popover",
+        "utils"
+      ]
+    },
+    {
       "name": "combobox",
       "type": "registry:ui",
       "dependencies": [
@@ -379,6 +394,20 @@
       ],
       "registryDependencies": [
         "label",
+        "utils"
+      ]
+    },
+    {
+      "name": "file-uploader",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "lucide-react",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "attachment",
         "utils"
       ]
     },
@@ -534,6 +563,22 @@
       ]
     },
     {
+      "name": "multi-select",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "lucide-react",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "button",
+        "command",
+        "popover",
+        "utils"
+      ]
+    },
+    {
       "name": "native-select",
       "type": "registry:ui",
       "dependencies": [
@@ -621,6 +666,19 @@
         "class-variance-authority",
         "clsx",
         "radix-ui",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "utils"
+      ]
+    },
+    {
+      "name": "rating",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "lucide-react",
         "tailwind-merge"
       ],
       "registryDependencies": [
@@ -737,6 +795,19 @@
       ]
     },
     {
+      "name": "social-buttons",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "button",
+        "utils"
+      ]
+    },
+    {
       "name": "spinner",
       "type": "registry:ui",
       "dependencies": [
@@ -780,6 +851,19 @@
         "class-variance-authority",
         "clsx",
         "radix-ui",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "utils"
+      ]
+    },
+    {
+      "name": "tag-input",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "lucide-react",
         "tailwind-merge"
       ],
       "registryDependencies": [
