@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pricing-section-02",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "lucide-react",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "components/blocks/pricing-section-02.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/pricing-section-02.tsx",
+      "content": "import { Check, Minus } from \"lucide-react\";\nimport { Button } from \"@/components/ui/button\";\n\nconst FEATURES = [\n  [\"All 98 components & blocks\", true, true],\n  [\"Commercial use\", true, true],\n  [\"Figma kit\", false, true],\n  [\"Priority support\", false, true],\n  [\"Private registry\", false, true],\n] as const;\n\n/** Two plans, feature-by-feature comparison. */\nexport function PricingSection02() {\n  return (\n    <section className=\"mx-auto max-w-3xl px-4 py-16 sm:px-6\">\n      <div className=\"overflow-hidden rounded-2xl border border-border\">\n        <div className=\"grid grid-cols-[1.4fr_1fr_1fr]\">\n          <div className=\"border-b border-border bg-card/50 p-5\" />\n          {[[\"Free\", \"$0\"], [\"Pro\", \"$29\"]].map(([name, price]) => (\n            <div key={name} className=\"border-b border-border bg-card/50 p-5 text-center\">\n              <p className=\"text-sm font-medium\">{name}</p>\n              <p className=\"mt-1 text-2xl font-semibold tnum\">{price}<span className=\"text-xs text-muted-foreground\">/mo</span></p>\n            </div>\n          ))}\n          {FEATURES.map(([label, free, pro]) => (\n            <div key={label} className=\"contents\">\n              <div className=\"border-b border-border p-4 text-sm\">{label}</div>\n              {[free, pro].map((has, i) => (\n                <div key={i} className=\"flex items-center justify-center border-b border-border p-4\">\n                  {has ? (\n                    <Check className=\"size-4 text-success\" strokeWidth={3} />\n                  ) : (\n                    <Minus className=\"size-4 text-muted-foreground/40\" />\n                  )}\n                </div>\n              ))}\n            </div>\n          ))}\n          <div className=\"p-4\" />\n          <div className=\"p-4\"><Button fullWidth variant=\"outline\" size=\"sm\">Start free</Button></div>\n          <div className=\"p-4\"><Button fullWidth size=\"sm\">Get Pro</Button></div>\n        </div>\n      </div>\n    </section>\n  );\n}\n"
+    }
+  ]
+}

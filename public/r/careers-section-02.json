@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "careers-section-02",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "lucide-react",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "badge"
+  ],
+  "files": [
+    {
+      "path": "components/blocks/careers-section-02.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/careers-section-02.tsx",
+      "content": "import { ArrowRight } from \"lucide-react\";\nimport { Badge } from \"@/components/ui/badge\";\n\nconst GROUPS = [\n  { team: \"Engineering\", roles: [[\"Senior Frontend Engineer\", \"Remote\"], [\"Platform Engineer\", \"Remote\"]] },\n  { team: \"Design\", roles: [[\"Product Designer\", \"Dhaka / Remote\"]] },\n  { team: \"Community\", roles: [[\"Developer Advocate\", \"Remote\"]] },\n] as const;\n\n/** Roles grouped under team headings. */\nexport function CareersSection02() {\n  return (\n    <section className=\"mx-auto max-w-3xl px-4 py-16 sm:px-6\">\n      <div className=\"flex flex-col gap-10\">\n        {GROUPS.map((group) => (\n          <div key={group.team}>\n            <div className=\"flex items-center gap-3\">\n              <h3 className=\"text-sm font-semibold uppercase tracking-wide text-muted-foreground\">{group.team}</h3>\n              <Badge variant=\"muted\" size=\"sm\" className=\"tnum\">{group.roles.length}</Badge>\n            </div>\n            <ul className=\"mt-3 divide-y divide-border rounded-xl border border-border\">\n              {group.roles.map(([title, location]) => (\n                <li key={title}>\n                  <a href=\"#\" className=\"group flex items-center gap-4 p-4 outline-none transition-colors hover:bg-accent/50 focus-visible:ring-2 focus-visible:ring-ring\">\n                    <span className=\"min-w-0 flex-1\">\n                      <span className=\"block truncate text-sm font-medium group-hover:underline group-hover:underline-offset-4\">{title}</span>\n                      <span className=\"text-xs text-muted-foreground\">{location}</span>\n                    </span>\n                    <ArrowRight className=\"size-4 shrink-0 text-muted-foreground rtl-flip\" />\n                  </a>\n                </li>\n              ))}\n            </ul>\n          </div>\n        ))}\n      </div>\n    </section>\n  );\n}\n"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "features-section-03",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "lucide-react",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "featured-icon",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/blocks/features-section-03.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/features-section-03.tsx",
+      "content": "import { Globe2, MoonStar, Package, Palette } from \"lucide-react\";\nimport { cn } from \"@/lib/utils\";\nimport { FeaturedIcon } from \"@/components/ui/featured-icon\";\n\nconst CELLS = [\n  { icon: <Globe2 />, title: \"RTL-first\", body: \"A billion readers, one codebase. Logical properties do the mirroring.\", span: \"lg:col-span-2\" },\n  { icon: <Palette />, title: \"Token-driven\", body: \"Rebrand with one override.\" },\n  { icon: <MoonStar />, title: \"Dark by design\", body: \"Surface-lift elevation, not heavier shadows.\" },\n  { icon: <Package />, title: \"Copy-in ownership\", body: \"The CLI writes files into your repo — edit anything, keep everything.\", span: \"lg:col-span-2\" },\n];\n\n/** Bento grid with one wide cell per row. */\nexport function FeaturesSection03() {\n  return (\n    <section className=\"mx-auto max-w-6xl px-4 py-16 sm:px-6\">\n      <div className=\"grid gap-4 sm:grid-cols-2 lg:grid-cols-3\">\n        {CELLS.map((cell) => (\n          <div\n            key={cell.title}\n            className={cn(\n              \"flex flex-col gap-3 rounded-2xl border border-border bg-card p-6\",\n              cell.span,\n            )}\n          >\n            <FeaturedIcon variant=\"light\">{cell.icon}</FeaturedIcon>\n            <h3 className=\"text-lg font-medium\">{cell.title}</h3>\n            <p className=\"text-sm text-muted-foreground\">{cell.body}</p>\n          </div>\n        ))}\n      </div>\n    </section>\n  );\n}\n"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "contact-section-02",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "button",
+    "card",
+    "field",
+    "input",
+    "native-select",
+    "textarea"
+  ],
+  "files": [
+    {
+      "path": "components/blocks/contact-section-02.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/contact-section-02.tsx",
+      "content": "import { Button } from \"@/components/ui/button\";\nimport { Card } from \"@/components/ui/card\";\nimport { Field, FieldLabel } from \"@/components/ui/field\";\nimport { Input } from \"@/components/ui/input\";\nimport { NativeSelect } from \"@/components/ui/native-select\";\nimport { Textarea } from \"@/components/ui/textarea\";\n\n/** Single centred form card with a topic selector. */\nexport function ContactSection02() {\n  return (\n    <section className=\"mx-auto max-w-xl px-4 py-16 sm:px-6\">\n      <div className=\"text-center\">\n        <h2 className=\"text-3xl font-semibold tracking-tight\">Get in touch</h2>\n        <p className=\"mt-2 text-muted-foreground\">We reply within one business day.</p>\n      </div>\n      <Card padding=\"default\" className=\"mt-8 gap-4\">\n        <form className=\"flex flex-col gap-4\" action=\"#\">\n          <Field>\n            <FieldLabel required>Email</FieldLabel>\n            <Input type=\"email\" required autoComplete=\"email\" />\n          </Field>\n          <Field>\n            <FieldLabel>Topic</FieldLabel>\n            <NativeSelect defaultValue=\"\">\n              <option value=\"\" disabled>Choose…</option>\n              <option>Licensing</option>\n              <option>Support</option>\n              <option>Partnership</option>\n            </NativeSelect>\n          </Field>\n          <Field>\n            <FieldLabel required>Message</FieldLabel>\n            <Textarea required rows={4} />\n          </Field>\n          <Button type=\"submit\" size=\"lg\">Send message</Button>\n        </form>\n      </Card>\n    </section>\n  );\n}\n"
+    }
+  ]
+}

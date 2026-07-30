@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "metrics-section-03",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/blocks/metrics-section-03.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/metrics-section-03.tsx",
+      "content": "/** Split band: claim on the start side, numbers on the end side. */\nexport function MetricsSection03() {\n  const stats = [\n    [\"48 hrs\", \"median time to first shipped page\"],\n    [\"-92%\", \"RTL bug reports after adopting\"],\n    [\"4.9/5\", \"developer satisfaction\"],\n  ];\n  return (\n    <section className=\"border-y border-border\">\n      <div className=\"mx-auto grid max-w-6xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[1fr_1.2fr] lg:items-center\">\n        <div>\n          <h2 className=\"text-3xl font-semibold tracking-tight text-balance\">\n            Teams stop fighting direction and start shipping\n          </h2>\n          <p className=\"mt-3 text-muted-foreground\">\n            Numbers from teams that moved their marketing and product UI onto\n            Oratiq.\n          </p>\n        </div>\n        <dl className=\"grid gap-8 sm:grid-cols-3\">\n          {stats.map(([value, label]) => (\n            <div key={label}>\n              <dd className=\"text-4xl font-semibold tracking-tight tnum text-primary\">{value}</dd>\n              <dt className=\"mt-2 text-sm text-muted-foreground\">{label}</dt>\n            </div>\n          ))}\n        </dl>\n      </div>\n    </section>\n  );\n}\n"
+    }
+  ]
+}

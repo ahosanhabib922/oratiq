@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "header-section-02",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "badge",
+    "button"
+  ],
+  "files": [
+    {
+      "path": "components/blocks/header-section-02.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/header-section-02.tsx",
+      "content": "import { Button } from \"@/components/ui/button\";\nimport { Badge } from \"@/components/ui/badge\";\n\n/** Start-aligned section intro with actions on the end edge. */\nexport function HeaderSection02() {\n  return (\n    <div className=\"mx-auto flex max-w-6xl flex-wrap items-end justify-between gap-4 px-4 py-14 sm:px-6\">\n      <div className=\"max-w-xl\">\n        <Badge variant=\"muted\" size=\"sm\">Changelog</Badge>\n        <h2 className=\"mt-3 text-3xl font-semibold tracking-tight\">What&apos;s new</h2>\n        <p className=\"mt-2 text-muted-foreground\">\n          Every release, with migration notes where they matter.\n        </p>\n      </div>\n      <div className=\"flex gap-2\">\n        <Button variant=\"outline\" size=\"sm\">Subscribe via RSS</Button>\n        <Button size=\"sm\">Follow along</Button>\n      </div>\n    </div>\n  );\n}\n"
+    }
+  ]
+}

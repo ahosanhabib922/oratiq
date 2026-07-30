@@ -1,0 +1,27 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hero-section-02",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "lucide-react",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "badge",
+    "button",
+    "card",
+    "input",
+    "progress",
+    "switch"
+  ],
+  "files": [
+    {
+      "path": "components/blocks/hero-section-02.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/hero-section-02.tsx",
+      "content": "import { ArrowRight, Check } from \"lucide-react\";\nimport { Badge } from \"@/components/ui/badge\";\nimport { Button } from \"@/components/ui/button\";\nimport { Card } from \"@/components/ui/card\";\nimport { Input } from \"@/components/ui/input\";\nimport { Progress } from \"@/components/ui/progress\";\nimport { Switch } from \"@/components/ui/switch\";\n\n/** Split hero: copy on the start side, product visual on the end side. */\nexport function HeroSection02() {\n  return (\n    <section className=\"mx-auto grid max-w-6xl items-center gap-12 px-4 py-20 sm:px-6 lg:grid-cols-2\">\n      <div>\n        <Badge variant=\"muted\" size=\"sm\">New · Blocks are free</Badge>\n        <h1 className=\"mt-5 text-4xl font-semibold leading-tight tracking-tight text-balance sm:text-5xl\">\n          The design system that ships in every locale\n        </h1>\n        <p className=\"mt-4 max-w-md text-lg text-muted-foreground\">\n          98 components and sections on Radix + Tailwind — RTL, dark mode, and\n          accessibility included, not promised.\n        </p>\n        <ul className=\"mt-6 flex flex-col gap-2 text-sm\">\n          {[\"One command install\", \"Your repo, your code\", \"MIT licensed\"].map((item) => (\n            <li key={item} className=\"flex items-center gap-2\">\n              <Check className=\"size-4 text-success\" strokeWidth={3} />\n              {item}\n            </li>\n          ))}\n        </ul>\n        <div className=\"mt-8 flex flex-wrap gap-3\">\n          <Button size=\"lg\">\n            Start building\n            <ArrowRight className=\"rtl-flip\" />\n          </Button>\n          <Button size=\"lg\" variant=\"ghost\">View components</Button>\n        </div>\n      </div>\n\n      <Card padding=\"default\" className=\"gap-4 shadow-xl\">\n        <div className=\"flex items-center justify-between\">\n          <span className=\"text-sm font-medium\">Weekly goal</span>\n          <Switch defaultChecked aria-label=\"Weekly goal\" size=\"sm\" />\n        </div>\n        <Progress value={72} aria-label=\"Goal progress\" />\n        <div className=\"flex gap-2\">\n          <Input size=\"sm\" placeholder=\"you@example.com\" aria-label=\"Email\" />\n          <Button size=\"sm\" className=\"shrink-0\">Invite</Button>\n        </div>\n        <p className=\"text-xs text-muted-foreground\">\n          ↑ Real Oratiq components — this panel is the product.\n        </p>\n      </Card>\n    </section>\n  );\n}\n"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "banner-02",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "lucide-react",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/blocks/banner-02.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/banner-02.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { Sparkles, X } from \"lucide-react\";\nimport { cn } from \"@/lib/utils\";\n\n/** Promo banner on a brand gradient, with a strong inline CTA. */\nexport function Banner02({ className }: { className?: string }) {\n  const [open, setOpen] = React.useState(true);\n  if (!open) return null;\n\n  return (\n    <div\n      className={cn(\"relative px-10 py-3 text-center\", className)}\n      style={{\n        background:\n          \"linear-gradient(90deg, color-mix(in oklab, var(--color-primary) 30%, var(--color-background)), var(--color-background) 55%, color-mix(in oklab, var(--color-primary) 30%, var(--color-background)))\",\n      }}\n    >\n      <p className=\"inline-flex flex-wrap items-center justify-center gap-2 text-sm\">\n        <Sparkles className=\"size-4 text-primary\" aria-hidden=\"true\" />\n        <span className=\"font-medium\">Launch week:</span>\n        <span className=\"text-muted-foreground\">every block is free, forever.</span>\n        <a href=\"#\" className=\"font-semibold text-primary underline underline-offset-4 hover:no-underline\">\n          Read the announcement\n        </a>\n      </p>\n      <button\n        type=\"button\"\n        aria-label=\"Dismiss\"\n        onClick={() => setOpen(false)}\n        className=\"absolute end-2 top-1/2 inline-flex size-7 -translate-y-1/2 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring\"\n      >\n        <X className=\"size-4\" />\n      </button>\n    </div>\n  );\n}\n"
+    }
+  ]
+}

@@ -10,7 +10,11 @@ import AspectRatioDemo from "./aspect-ratio-demo";
 import AttachmentDemo from "./attachment-demo";
 import AvatarDemo from "./avatar-demo";
 import BadgeDemo from "./badge-demo";
+import Banner02Demo from "./banner-02-demo";
+import Banner03Demo from "./banner-03-demo";
 import BannerDemo from "./banner-demo";
+import BlogSection02Demo from "./blog-section-02-demo";
+import BlogSection03Demo from "./blog-section-03-demo";
 import BlogSectionDemo from "./blog-section-demo";
 import BreadcrumbDemo from "./breadcrumb-demo";
 import BubbleDemo from "./bubble-demo";
@@ -20,6 +24,8 @@ import ButtonLoading from "./button-loading";
 import ButtonVariants from "./button-variants";
 import CalendarDemo from "./calendar-demo";
 import CardDemo from "./card-demo";
+import CareersSection02Demo from "./careers-section-02-demo";
+import CareersSection03Demo from "./careers-section-03-demo";
 import CareersSectionDemo from "./careers-section-demo";
 import CarouselDemo from "./carousel-demo";
 import ChartDemo from "./chart-demo";
@@ -29,8 +35,12 @@ import CollapsibleDemo from "./collapsible-demo";
 import ColorPickerDemo from "./color-picker-demo";
 import ComboboxDemo from "./combobox-demo";
 import CommandDemo from "./command-demo";
+import ContactSection02Demo from "./contact-section-02-demo";
+import ContactSection03Demo from "./contact-section-03-demo";
 import ContactSectionDemo from "./contact-section-demo";
 import ContextMenuDemo from "./context-menu-demo";
+import CtaSection02Demo from "./cta-section-02-demo";
+import CtaSection03Demo from "./cta-section-03-demo";
 import CtaSectionDemo from "./cta-section-demo";
 import DataTableDemo from "./data-table-demo";
 import DatePickerDemo from "./date-picker-demo";
@@ -38,15 +48,27 @@ import DialogDemo from "./dialog-demo";
 import DrawerDemo from "./drawer-demo";
 import DropdownMenuDemo from "./dropdown-menu-demo";
 import EmptyDemo from "./empty-demo";
+import FaqSection02Demo from "./faq-section-02-demo";
+import FaqSection03Demo from "./faq-section-03-demo";
 import FaqSectionDemo from "./faq-section-demo";
 import FeaturedIconDemo from "./featured-icon-demo";
+import FeaturesSection02Demo from "./features-section-02-demo";
+import FeaturesSection03Demo from "./features-section-03-demo";
 import FeaturesSectionDemo from "./features-section-demo";
 import FieldDemo from "./field-demo";
 import FileUploaderDemo from "./file-uploader-demo";
 import FilterBarDemo from "./filter-bar-demo";
+import Footer02Demo from "./footer-02-demo";
+import Footer03Demo from "./footer-03-demo";
 import FooterDemo from "./footer-demo";
+import HeaderNavigation02Demo from "./header-navigation-02-demo";
+import HeaderNavigation03Demo from "./header-navigation-03-demo";
 import HeaderNavigationDemo from "./header-navigation-demo";
+import HeaderSection02Demo from "./header-section-02-demo";
+import HeaderSection03Demo from "./header-section-03-demo";
 import HeaderSectionDemo from "./header-section-demo";
+import HeroSection02Demo from "./hero-section-02-demo";
+import HeroSection03Demo from "./hero-section-03-demo";
 import HeroSectionDemo from "./hero-section-demo";
 import HoverCardDemo from "./hover-card-demo";
 import InputDemo from "./input-demo";
@@ -60,15 +82,21 @@ import MenubarDemo from "./menubar-demo";
 import MessageDemo from "./message-demo";
 import MessageScrollerDemo from "./message-scroller-demo";
 import MetricDemo from "./metric-demo";
+import MetricsSection02Demo from "./metrics-section-02-demo";
+import MetricsSection03Demo from "./metrics-section-03-demo";
 import MetricsSectionDemo from "./metrics-section-demo";
 import MultiSelectDemo from "./multi-select-demo";
 import NativeSelectDemo from "./native-select-demo";
 import NavigationMenuDemo from "./navigation-menu-demo";
+import NewsletterCta02Demo from "./newsletter-cta-02-demo";
+import NewsletterCta03Demo from "./newsletter-cta-03-demo";
 import NewsletterCtaDemo from "./newsletter-cta-demo";
 import NotificationsDemo from "./notifications-demo";
 import PageHeaderDemo from "./page-header-demo";
 import PaginationDemo from "./pagination-demo";
 import PopoverDemo from "./popover-demo";
+import PricingSection02Demo from "./pricing-section-02-demo";
+import PricingSection03Demo from "./pricing-section-03-demo";
 import PricingSectionDemo from "./pricing-section-demo";
 import ProgressDemo from "./progress-demo";
 import ProgressStepsDemo from "./progress-steps-demo";
@@ -86,13 +114,19 @@ import SidebarDemo from "./sidebar-demo";
 import SkeletonDemo from "./skeleton-demo";
 import SliderDemo from "./slider-demo";
 import SocialButtonsDemo from "./social-buttons-demo";
+import SocialProof02Demo from "./social-proof-02-demo";
+import SocialProof03Demo from "./social-proof-03-demo";
 import SocialProofDemo from "./social-proof-demo";
 import SpinnerDemo from "./spinner-demo";
 import SwitchDemo from "./switch-demo";
 import TableDemo from "./table-demo";
 import TabsDemo from "./tabs-demo";
 import TagInputDemo from "./tag-input-demo";
+import TeamSection02Demo from "./team-section-02-demo";
+import TeamSection03Demo from "./team-section-03-demo";
 import TeamSectionDemo from "./team-section-demo";
+import TestimonialSection02Demo from "./testimonial-section-02-demo";
+import TestimonialSection03Demo from "./testimonial-section-03-demo";
 import TestimonialSectionDemo from "./testimonial-section-demo";
 import TextareaDemo from "./textarea-demo";
 import ToastDemo from "./toast-demo";
@@ -112,7 +146,11 @@ export const DEMOS: Record<string, React.ComponentType> = {
   "attachment-demo": AttachmentDemo,
   "avatar-demo": AvatarDemo,
   "badge-demo": BadgeDemo,
+  "banner-02-demo": Banner02Demo,
+  "banner-03-demo": Banner03Demo,
   "banner-demo": BannerDemo,
+  "blog-section-02-demo": BlogSection02Demo,
+  "blog-section-03-demo": BlogSection03Demo,
   "blog-section-demo": BlogSectionDemo,
   "breadcrumb-demo": BreadcrumbDemo,
   "bubble-demo": BubbleDemo,
@@ -122,6 +160,8 @@ export const DEMOS: Record<string, React.ComponentType> = {
   "button-variants": ButtonVariants,
   "calendar-demo": CalendarDemo,
   "card-demo": CardDemo,
+  "careers-section-02-demo": CareersSection02Demo,
+  "careers-section-03-demo": CareersSection03Demo,
   "careers-section-demo": CareersSectionDemo,
   "carousel-demo": CarouselDemo,
   "chart-demo": ChartDemo,
@@ -131,8 +171,12 @@ export const DEMOS: Record<string, React.ComponentType> = {
   "color-picker-demo": ColorPickerDemo,
   "combobox-demo": ComboboxDemo,
   "command-demo": CommandDemo,
+  "contact-section-02-demo": ContactSection02Demo,
+  "contact-section-03-demo": ContactSection03Demo,
   "contact-section-demo": ContactSectionDemo,
   "context-menu-demo": ContextMenuDemo,
+  "cta-section-02-demo": CtaSection02Demo,
+  "cta-section-03-demo": CtaSection03Demo,
   "cta-section-demo": CtaSectionDemo,
   "data-table-demo": DataTableDemo,
   "date-picker-demo": DatePickerDemo,
@@ -140,15 +184,27 @@ export const DEMOS: Record<string, React.ComponentType> = {
   "drawer-demo": DrawerDemo,
   "dropdown-menu-demo": DropdownMenuDemo,
   "empty-demo": EmptyDemo,
+  "faq-section-02-demo": FaqSection02Demo,
+  "faq-section-03-demo": FaqSection03Demo,
   "faq-section-demo": FaqSectionDemo,
   "featured-icon-demo": FeaturedIconDemo,
+  "features-section-02-demo": FeaturesSection02Demo,
+  "features-section-03-demo": FeaturesSection03Demo,
   "features-section-demo": FeaturesSectionDemo,
   "field-demo": FieldDemo,
   "file-uploader-demo": FileUploaderDemo,
   "filter-bar-demo": FilterBarDemo,
+  "footer-02-demo": Footer02Demo,
+  "footer-03-demo": Footer03Demo,
   "footer-demo": FooterDemo,
+  "header-navigation-02-demo": HeaderNavigation02Demo,
+  "header-navigation-03-demo": HeaderNavigation03Demo,
   "header-navigation-demo": HeaderNavigationDemo,
+  "header-section-02-demo": HeaderSection02Demo,
+  "header-section-03-demo": HeaderSection03Demo,
   "header-section-demo": HeaderSectionDemo,
+  "hero-section-02-demo": HeroSection02Demo,
+  "hero-section-03-demo": HeroSection03Demo,
   "hero-section-demo": HeroSectionDemo,
   "hover-card-demo": HoverCardDemo,
   "input-demo": InputDemo,
@@ -162,15 +218,21 @@ export const DEMOS: Record<string, React.ComponentType> = {
   "message-demo": MessageDemo,
   "message-scroller-demo": MessageScrollerDemo,
   "metric-demo": MetricDemo,
+  "metrics-section-02-demo": MetricsSection02Demo,
+  "metrics-section-03-demo": MetricsSection03Demo,
   "metrics-section-demo": MetricsSectionDemo,
   "multi-select-demo": MultiSelectDemo,
   "native-select-demo": NativeSelectDemo,
   "navigation-menu-demo": NavigationMenuDemo,
+  "newsletter-cta-02-demo": NewsletterCta02Demo,
+  "newsletter-cta-03-demo": NewsletterCta03Demo,
   "newsletter-cta-demo": NewsletterCtaDemo,
   "notifications-demo": NotificationsDemo,
   "page-header-demo": PageHeaderDemo,
   "pagination-demo": PaginationDemo,
   "popover-demo": PopoverDemo,
+  "pricing-section-02-demo": PricingSection02Demo,
+  "pricing-section-03-demo": PricingSection03Demo,
   "pricing-section-demo": PricingSectionDemo,
   "progress-demo": ProgressDemo,
   "progress-steps-demo": ProgressStepsDemo,
@@ -188,13 +250,19 @@ export const DEMOS: Record<string, React.ComponentType> = {
   "skeleton-demo": SkeletonDemo,
   "slider-demo": SliderDemo,
   "social-buttons-demo": SocialButtonsDemo,
+  "social-proof-02-demo": SocialProof02Demo,
+  "social-proof-03-demo": SocialProof03Demo,
   "social-proof-demo": SocialProofDemo,
   "spinner-demo": SpinnerDemo,
   "switch-demo": SwitchDemo,
   "table-demo": TableDemo,
   "tabs-demo": TabsDemo,
   "tag-input-demo": TagInputDemo,
+  "team-section-02-demo": TeamSection02Demo,
+  "team-section-03-demo": TeamSection03Demo,
   "team-section-demo": TeamSectionDemo,
+  "testimonial-section-02-demo": TestimonialSection02Demo,
+  "testimonial-section-03-demo": TestimonialSection03Demo,
   "testimonial-section-demo": TestimonialSectionDemo,
   "textarea-demo": TextareaDemo,
   "toast-demo": ToastDemo,

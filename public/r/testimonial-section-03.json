@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "testimonial-section-03",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "avatar",
+    "card"
+  ],
+  "files": [
+    {
+      "path": "components/blocks/testimonial-section-03.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/testimonial-section-03.tsx",
+      "content": "import { Avatar, AvatarFallback } from \"@/components/ui/avatar\";\nimport { Card } from \"@/components/ui/card\";\n\nconst WALL = [\n  { q: \"The CLI pulled seven files for combobox and every one compiled. That's when I trusted it.\", n: \"Amina Chowdhury\", r: \"Design systems, Globex\", i: \"AC\" },\n  { q: \"Dark mode without a single dark: class in our own code.\", n: \"Jonas Weber\", r: \"Staff engineer, Initech\", i: \"JW\" },\n  { q: \"Our Hebrew launch was a dir attribute. I still think about that.\", n: \"Noa Peretz\", r: \"Frontend, Umbra\", i: \"NP\" },\n  { q: \"Blocks got our landing page live before lunch.\", n: \"Sam Whitaker\", r: \"Founder, Aperture\", i: \"SW\" },\n];\n\n/** Two-column quote wall for volume of voices. */\nexport function TestimonialSection03() {\n  return (\n    <section className=\"mx-auto max-w-5xl px-4 py-16 sm:px-6\">\n      <div className=\"columns-1 gap-5 sm:columns-2 [&>*]:mb-5 [&>*]:break-inside-avoid\">\n        {WALL.map((t) => (\n          <Card key={t.n} padding=\"default\" className=\"gap-4\">\n            <blockquote dir=\"auto\" className=\"text-sm leading-relaxed\">“{t.q}”</blockquote>\n            <figcaption className=\"flex items-center gap-3\">\n              <Avatar size=\"sm\"><AvatarFallback>{t.i}</AvatarFallback></Avatar>\n              <span className=\"min-w-0 text-sm\">\n                <span className=\"block truncate font-medium\">{t.n}</span>\n                <span className=\"block truncate text-xs text-muted-foreground\">{t.r}</span>\n              </span>\n            </figcaption>\n          </Card>\n        ))}\n      </div>\n    </section>\n  );\n}\n"
+    }
+  ]
+}

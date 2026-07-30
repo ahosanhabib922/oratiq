@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "cta-section-03",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "lucide-react",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "components/blocks/cta-section-03.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/cta-section-03.tsx",
+      "content": "import { ArrowRight, Check } from \"lucide-react\";\nimport { Button } from \"@/components/ui/button\";\n\n/** Split CTA: promise + checklist on one side, actions on the other. */\nexport function CtaSection03() {\n  return (\n    <section className=\"border-y border-border bg-card/40\">\n      <div className=\"mx-auto grid max-w-6xl items-center gap-8 px-4 py-14 sm:px-6 lg:grid-cols-[1.4fr_auto]\">\n        <div>\n          <h2 className=\"text-2xl font-semibold tracking-tight sm:text-3xl\">\n            Ship the multilingual site you keep postponing\n          </h2>\n          <ul className=\"mt-4 flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted-foreground\">\n            {[\"60-second setup\", \"RTL included\", \"MIT licensed\"].map((item) => (\n              <li key={item} className=\"inline-flex items-center gap-2\">\n                <Check className=\"size-4 text-success\" strokeWidth={3} />\n                {item}\n              </li>\n            ))}\n          </ul>\n        </div>\n        <div className=\"flex flex-wrap gap-3\">\n          <Button size=\"lg\">\n            Get started\n            <ArrowRight className=\"rtl-flip\" />\n          </Button>\n          <Button size=\"lg\" variant=\"outline\">Talk to us</Button>\n        </div>\n      </div>\n    </section>\n  );\n}\n"
+    }
+  ]
+}

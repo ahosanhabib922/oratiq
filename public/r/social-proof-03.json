@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "social-proof-03",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "avatar",
+    "separator"
+  ],
+  "files": [
+    {
+      "path": "components/blocks/social-proof-03.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/social-proof-03.tsx",
+      "content": "import { Avatar, AvatarFallback } from \"@/components/ui/avatar\";\nimport { Separator } from \"@/components/ui/separator\";\n\n/** One strong quote with the logo strip underneath. */\nexport function SocialProof03() {\n  return (\n    <section className=\"mx-auto max-w-4xl px-4 py-16 text-center sm:px-6\">\n      <blockquote className=\"text-2xl font-medium leading-snug tracking-tight text-balance\">\n        “We localised into Arabic and Hebrew in a sprint.{\" \"}\n        <span className=\"text-primary\">The layout work was already done.</span>”\n      </blockquote>\n      <figcaption className=\"mt-6 flex items-center justify-center gap-3\">\n        <Avatar size=\"sm\"><AvatarFallback>LH</AvatarFallback></Avatar>\n        <span className=\"text-sm\">\n          <span className=\"font-medium\">Layla Haddad</span>\n          <span className=\"text-muted-foreground\"> · Frontend lead, Vertex</span>\n        </span>\n      </figcaption>\n      <Separator className=\"mx-auto mt-10 max-w-md\" />\n      <div className=\"mt-8 flex flex-wrap items-center justify-center gap-x-10 gap-y-4\">\n        {[\"Acme Corp\", \"Northwind\", \"Globex\", \"Initech\"].map((brand) => (\n          <span key={brand} className=\"text-base font-semibold text-muted-foreground/50\">{brand}</span>\n        ))}\n      </div>\n    </section>\n  );\n}\n"
+    }
+  ]
+}

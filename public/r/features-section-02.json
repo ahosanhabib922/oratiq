@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "features-section-02",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "lucide-react",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/blocks/features-section-02.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/features-section-02.tsx",
+      "content": "import { Check } from \"lucide-react\";\nimport { cn } from \"@/lib/utils\";\n\nconst ROWS = [\n  {\n    title: \"Logical properties, everywhere\",\n    body: \"Layouts, borders, and radii are written once and mirror on their own — no rtl: forests, no second stylesheet.\",\n    points: [\"ms-/pe- end to end\", \"Direction-aware keyboarding\", \"Bidi-safe numbers and codes\"],\n  },\n  {\n    title: \"One token layer, any brand\",\n    body: \"Primitive ramps feed semantic roles feed utilities. Your rebrand is a CSS override that every block obeys instantly.\",\n    points: [\"Light and dark from the same tokens\", \"Radius scale from one variable\", \"Native controls follow color-scheme\"],\n  },\n];\n\n/** Alternating text/visual rows; the visual is a live token board. */\nexport function FeaturesSection02() {\n  return (\n    <section className=\"mx-auto flex max-w-6xl flex-col gap-20 px-4 py-16 sm:px-6\">\n      {ROWS.map((row, i) => (\n        <div\n          key={row.title}\n          className={cn(\n            \"grid items-center gap-10 lg:grid-cols-2\",\n            i % 2 === 1 && \"lg:[&>*:first-child]:order-2\",\n          )}\n        >\n          <div>\n            <h3 className=\"text-2xl font-semibold tracking-tight\">{row.title}</h3>\n            <p className=\"mt-3 text-muted-foreground\">{row.body}</p>\n            <ul className=\"mt-5 flex flex-col gap-2 text-sm\">\n              {row.points.map((point) => (\n                <li key={point} className=\"flex items-center gap-2\">\n                  <Check className=\"size-4 text-success\" strokeWidth={3} />\n                  {point}\n                </li>\n              ))}\n            </ul>\n          </div>\n          <div className=\"grid grid-cols-3 gap-3\">\n            {[\"bg-primary\", \"bg-secondary\", \"bg-muted\", \"bg-card border border-border\", \"bg-accent\", \"bg-primary/30\"].map((cls, j) => (\n              <div key={j} className={cn(\"aspect-square rounded-xl\", cls)} />\n            ))}\n          </div>\n        </div>\n      ))}\n    </section>\n  );\n}\n"
+    }
+  ]
+}

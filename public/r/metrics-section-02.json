@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "metrics-section-02",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "lucide-react",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "metric"
+  ],
+  "files": [
+    {
+      "path": "components/blocks/metrics-section-02.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/metrics-section-02.tsx",
+      "content": "import { Metric } from \"@/components/ui/metric\";\nimport { Download, Star, Users } from \"lucide-react\";\n\n/** Stat cards with deltas — dashboard-flavoured marketing numbers. */\nexport function MetricsSection02() {\n  return (\n    <section className=\"mx-auto max-w-6xl px-4 py-16 sm:px-6\">\n      <div className=\"grid gap-4 md:grid-cols-3\">\n        <Metric label=\"Weekly installs\" value=\"12,480\" delta={18.2} description=\"vs. last week\" icon={<Download />} />\n        <Metric label=\"GitHub stars\" value=\"4,912\" delta={6.4} description=\"vs. last week\" icon={<Star />} />\n        <Metric label=\"Teams in production\" value=\"320\" delta={9.1} description=\"vs. last month\" icon={<Users />} />\n      </div>\n    </section>\n  );\n}\n"
+    }
+  ]
+}

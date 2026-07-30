@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "testimonial-section-02",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "avatar",
+    "rating"
+  ],
+  "files": [
+    {
+      "path": "components/blocks/testimonial-section-02.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/testimonial-section-02.tsx",
+      "content": "import { Avatar, AvatarFallback } from \"@/components/ui/avatar\";\nimport { Rating } from \"@/components/ui/rating\";\n\n/** One large centred testimonial — the anchor quote. */\nexport function TestimonialSection02() {\n  return (\n    <section className=\"bg-card/40\">\n      <div className=\"mx-auto flex max-w-3xl flex-col items-center px-4 py-20 text-center sm:px-6\">\n        <Rating value={5} readOnly label=\"Rated 5 of 5\" />\n        <blockquote dir=\"auto\" className=\"mt-6 text-2xl font-medium leading-snug tracking-tight text-balance sm:text-3xl\">\n          “Every other library made RTL our problem. Oratiq made it a\n          non-event — we shipped the Arabic site the same week.”\n        </blockquote>\n        <figcaption className=\"mt-8 flex flex-col items-center gap-3\">\n          <Avatar size=\"lg\"><AvatarFallback>TR</AvatarFallback></Avatar>\n          <div>\n            <p className=\"font-medium\">Tomás Rivera</p>\n            <p className=\"text-sm text-muted-foreground\">CTO, Northwind</p>\n          </div>\n        </figcaption>\n      </div>\n    </section>\n  );\n}\n"
+    }
+  ]
+}

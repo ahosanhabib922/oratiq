@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hero-section-03",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "lucide-react",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "button",
+    "separator"
+  ],
+  "files": [
+    {
+      "path": "components/blocks/hero-section-03.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/hero-section-03.tsx",
+      "content": "import { ArrowRight } from \"lucide-react\";\nimport { Button } from \"@/components/ui/button\";\nimport { Separator } from \"@/components/ui/separator\";\n\n/** Minimal editorial hero with an inline stats row. */\nexport function HeroSection03() {\n  const stats = [[\"98\", \"components & blocks\"], [\"2\", \"directions\"], [\"0\", \"lock-in\"]];\n  return (\n    <section className=\"mx-auto max-w-4xl px-4 py-24 sm:px-6\">\n      <h1 className=\"text-5xl font-semibold leading-[1.05] tracking-tight text-balance sm:text-6xl\">\n        Build once.\n        <br />\n        <span className=\"text-muted-foreground\">Read everywhere.</span>\n      </h1>\n      <div className=\"mt-8 flex flex-wrap items-center gap-4\">\n        <Button size=\"lg\">\n          Get started\n          <ArrowRight className=\"rtl-flip\" />\n        </Button>\n        <span dir=\"ltr\" className=\"font-mono text-sm text-muted-foreground\">\n          npx @oratiq-js/ui init\n        </span>\n      </div>\n      <Separator className=\"mt-14\" />\n      <dl className=\"mt-8 flex flex-wrap gap-x-14 gap-y-6\">\n        {stats.map(([value, label]) => (\n          <div key={label}>\n            <dt className=\"text-sm text-muted-foreground\">{label}</dt>\n            <dd className=\"mt-1 text-3xl font-semibold tnum\">{value}</dd>\n          </div>\n        ))}\n      </dl>\n    </section>\n  );\n}\n"
+    }
+  ]
+}

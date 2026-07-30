@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "header-navigation-03",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "button",
+    "navigation-menu"
+  ],
+  "files": [
+    {
+      "path": "components/blocks/header-navigation-03.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/header-navigation-03.tsx",
+      "content": "\"use client\";\n\nimport { Button } from \"@/components/ui/button\";\nimport {\n  NavigationMenu,\n  NavigationMenuContent,\n  NavigationMenuItem,\n  NavigationMenuList,\n  NavigationMenuListItem,\n  NavigationMenuTrigger,\n} from \"@/components/ui/navigation-menu\";\n\n/** Navbar with a mega-menu style Product dropdown. */\nexport function HeaderNavigation03() {\n  return (\n    <header className=\"border-b border-border bg-background\">\n      <nav className=\"mx-auto flex h-16 max-w-6xl items-center gap-6 px-4 sm:px-6\">\n        <a href=\"#\" className=\"flex items-center gap-2.5\">\n          <span className=\"flex size-8 items-center justify-center rounded-lg bg-primary text-sm font-bold text-primary-foreground\">O</span>\n          <span className=\"text-lg font-semibold\">Oratiq</span>\n        </a>\n        <div className=\"hidden md:block\">\n          <NavigationMenu>\n            <NavigationMenuList>\n              <NavigationMenuItem>\n                <NavigationMenuTrigger>Product</NavigationMenuTrigger>\n                <NavigationMenuContent>\n                  <ul className=\"grid w-[420px] gap-1 p-2 md:grid-cols-2\">\n                    <NavigationMenuListItem href=\"#\" title=\"Components\">\n                      81 primitives with docs and demos.\n                    </NavigationMenuListItem>\n                    <NavigationMenuListItem href=\"#\" title=\"Blocks\">\n                      Marketing sections, ready to ship.\n                    </NavigationMenuListItem>\n                    <NavigationMenuListItem href=\"#\" title=\"Theming\">\n                      One token layer, your brand.\n                    </NavigationMenuListItem>\n                    <NavigationMenuListItem href=\"#\" title=\"RTL\">\n                      Both directions from one codebase.\n                    </NavigationMenuListItem>\n                  </ul>\n                </NavigationMenuContent>\n              </NavigationMenuItem>\n              <NavigationMenuItem>\n                <a href=\"#\" className=\"inline-flex h-9 items-center rounded-md px-3 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground\">\n                  Docs\n                </a>\n              </NavigationMenuItem>\n            </NavigationMenuList>\n          </NavigationMenu>\n        </div>\n        <div className=\"ms-auto flex items-center gap-2\">\n          <Button size=\"sm\">Get started</Button>\n        </div>\n      </nav>\n    </header>\n  );\n}\n"
+    }
+  ]
+}

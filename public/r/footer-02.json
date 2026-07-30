@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "footer-02",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/blocks/footer-02.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/footer-02.tsx",
+      "content": "/** One-row footer for focused product pages. */\nexport function Footer02() {\n  const links = [\"Docs\", \"GitHub\", \"npm\", \"License\"];\n  return (\n    <footer className=\"border-t border-border\">\n      <div className=\"mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-4 py-8 sm:px-6\">\n        <a href=\"#\" className=\"flex items-center gap-2\">\n          <span className=\"flex size-6 items-center justify-center rounded-md bg-primary text-xs font-bold text-primary-foreground\">O</span>\n          <span className=\"text-sm font-semibold\">Oratiq</span>\n        </a>\n        <nav className=\"flex flex-wrap gap-5\">\n          {links.map((link) => (\n            <a key={link} href=\"#\" className=\"text-sm text-muted-foreground transition-colors hover:text-foreground\">\n              {link}\n            </a>\n          ))}\n        </nav>\n        <p className=\"text-xs text-muted-foreground\">© 2026 Oratiq</p>\n      </div>\n    </footer>\n  );\n}\n"
+    }
+  ]
+}

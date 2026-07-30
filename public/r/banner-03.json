@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "banner-03",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "lucide-react",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/blocks/banner-03.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/banner-03.tsx",
+      "content": "import { ArrowRight, Wrench } from \"lucide-react\";\n\n/** Quiet informational bar — maintenance notices, version pointers. */\nexport function Banner03() {\n  return (\n    <div className=\"border-b border-border bg-muted/40 px-4 py-2\">\n      <p className=\"mx-auto flex max-w-6xl flex-wrap items-center gap-2 text-sm text-muted-foreground\">\n        <Wrench className=\"size-3.5\" aria-hidden=\"true\" />\n        v0.2 migration guide is available for the new token names.\n        <a\n          href=\"#\"\n          className=\"ms-auto inline-flex items-center gap-1 font-medium text-foreground hover:underline hover:underline-offset-4\"\n        >\n          Migration guide\n          <ArrowRight className=\"size-3.5 rtl-flip\" />\n        </a>\n      </p>\n    </div>\n  );\n}\n"
+    }
+  ]
+}

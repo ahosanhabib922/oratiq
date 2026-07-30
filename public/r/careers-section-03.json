@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "careers-section-03",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "badge",
+    "button",
+    "card"
+  ],
+  "files": [
+    {
+      "path": "components/blocks/careers-section-03.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/careers-section-03.tsx",
+      "content": "import { Button } from \"@/components/ui/button\";\nimport { Card } from \"@/components/ui/card\";\nimport { Badge } from \"@/components/ui/badge\";\n\n/** Culture pitch beside role cards — for hiring pages with a story. */\nexport function CareersSection03() {\n  const roles = [\n    [\"Senior Frontend Engineer\", \"Engineering\", \"Remote\"],\n    [\"Product Designer\", \"Design\", \"Dhaka / Remote\"],\n  ];\n  return (\n    <section className=\"mx-auto grid max-w-6xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[1fr_1.2fr]\">\n      <div>\n        <h2 className=\"text-3xl font-semibold tracking-tight text-balance\">\n          Build the web that reads both ways\n        </h2>\n        <p className=\"mt-3 text-muted-foreground\">\n          Small team, global users, unusually hard-to-fake craft. We work in\n          public and ship weekly.\n        </p>\n        <Button variant=\"outline\" size=\"sm\" className=\"mt-5\">About the team</Button>\n      </div>\n      <div className=\"grid gap-4 sm:grid-cols-2\">\n        {roles.map(([title, team, location]) => (\n          <Card key={title} padding=\"default\" interactive className=\"gap-3\">\n            <Badge variant=\"muted\" size=\"sm\" className=\"w-fit\">{team}</Badge>\n            <h3 className=\"text-base font-medium leading-snug\">{title}</h3>\n            <p className=\"mt-auto text-xs text-muted-foreground\">{location}</p>\n          </Card>\n        ))}\n      </div>\n    </section>\n  );\n}\n"
+    }
+  ]
+}

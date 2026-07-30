@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "blog-section-03",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/blocks/blog-section-03.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/blog-section-03.tsx",
+      "content": "/** Chronological archive list — dates in a tabular column. */\nexport function BlogSection03() {\n  const posts = [\n    [\"31 Jul 2026\", \"98/98: the registry is complete\"],\n    [\"30 Jul 2026\", \"Launch: Oratiq is live on npm\"],\n    [\"28 Jul 2026\", \"Why your date input turns black in dark mode\"],\n    [\"21 Jul 2026\", \"Logical properties, explained with tea\"],\n  ];\n  return (\n    <section className=\"mx-auto max-w-3xl px-4 py-16 sm:px-6\">\n      <ul className=\"divide-y divide-border\">\n        {posts.map(([date, title]) => (\n          <li key={title}>\n            <a href=\"#\" className=\"group flex flex-wrap items-baseline gap-x-6 gap-y-1 py-4 outline-none focus-visible:ring-2 focus-visible:ring-ring\">\n              <time className=\"w-28 shrink-0 font-mono text-xs tnum text-muted-foreground\">{date}</time>\n              <span className=\"text-base font-medium group-hover:underline group-hover:underline-offset-4\">{title}</span>\n            </a>\n          </li>\n        ))}\n      </ul>\n    </section>\n  );\n}\n"
+    }
+  ]
+}

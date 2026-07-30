@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "header-section-03",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "lucide-react",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "badge",
+    "separator"
+  ],
+  "files": [
+    {
+      "path": "components/blocks/header-section-03.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/header-section-03.tsx",
+      "content": "import { CalendarDays, Clock3, User2 } from \"lucide-react\";\nimport { Badge } from \"@/components/ui/badge\";\nimport { Separator } from \"@/components/ui/separator\";\n\n/** Article-style header: kicker, title, and a meta row. */\nexport function HeaderSection03() {\n  return (\n    <div className=\"mx-auto max-w-3xl px-4 py-14 sm:px-6\">\n      <Badge size=\"sm\">Engineering</Badge>\n      <h1 className=\"mt-4 text-4xl font-semibold leading-tight tracking-tight text-balance\">\n        Mirroring an entire product with zero conditionals\n      </h1>\n      <div className=\"mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-muted-foreground\">\n        <span className=\"inline-flex items-center gap-1.5\"><User2 className=\"size-4\" />Ahosan Habib</span>\n        <span className=\"inline-flex items-center gap-1.5\"><CalendarDays className=\"size-4\" />31 Jul 2026</span>\n        <span className=\"inline-flex items-center gap-1.5\"><Clock3 className=\"size-4\" />7 min read</span>\n      </div>\n      <Separator className=\"mt-8\" />\n    </div>\n  );\n}\n"
+    }
+  ]
+}

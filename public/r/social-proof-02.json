@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "social-proof-02",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/blocks/social-proof-02.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/social-proof-02.tsx",
+      "content": "/** Denser two-row logo wall inside a soft panel. */\nexport function SocialProof02() {\n  const rows = [\n    [\"Acme Corp\", \"Northwind\", \"Globex\", \"Initech\", \"Umbra\"],\n    [\"Vertex\", \"Hooli\", \"Stark Labs\", \"Wayne Tech\", \"Aperture\"],\n  ];\n  return (\n    <section className=\"mx-auto max-w-6xl px-4 py-14 sm:px-6\">\n      <div className=\"rounded-2xl border border-border bg-card/50 px-6 py-10\">\n        <p className=\"text-center text-sm font-medium\">\n          Powering marketing sites in 40+ countries\n        </p>\n        <div className=\"mt-8 flex flex-col gap-6\">\n          {rows.map((row, i) => (\n            <div key={i} className=\"flex flex-wrap items-center justify-center gap-x-10 gap-y-4\">\n              {row.map((brand) => (\n                <span key={brand} className=\"text-base font-semibold tracking-tight text-muted-foreground/60\">\n                  {brand}\n                </span>\n              ))}\n            </div>\n          ))}\n        </div>\n      </div>\n    </section>\n  );\n}\n"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "team-section-02",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "avatar",
+    "badge",
+    "card"
+  ],
+  "files": [
+    {
+      "path": "components/blocks/team-section-02.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/team-section-02.tsx",
+      "content": "import { Avatar, AvatarFallback } from \"@/components/ui/avatar\";\nimport { Badge } from \"@/components/ui/badge\";\nimport { Card } from \"@/components/ui/card\";\n\nconst PEOPLE = [\n  { name: \"Ahosan Habib\", role: \"Founder\", bio: \"Building the RTL-first web from Dhaka.\", initials: \"AH\", tag: \"Product\" },\n  { name: \"Layla Haddad\", role: \"Design lead\", bio: \"Systems thinker; four launches in Arabic.\", initials: \"LH\", tag: \"Design\" },\n  { name: \"Tomás Rivera\", role: \"Engineering\", bio: \"Radix contributor; keyboard-nav zealot.\", initials: \"TR\", tag: \"Core\" },\n];\n\n/** Bio cards for a smaller, story-driven team page. */\nexport function TeamSection02() {\n  return (\n    <section className=\"mx-auto max-w-5xl px-4 py-16 sm:px-6\">\n      <div className=\"grid gap-5 md:grid-cols-3\">\n        {PEOPLE.map((p) => (\n          <Card key={p.name} padding=\"default\" className=\"gap-4\">\n            <div className=\"flex items-center gap-3\">\n              <Avatar size=\"lg\"><AvatarFallback>{p.initials}</AvatarFallback></Avatar>\n              <div className=\"min-w-0\">\n                <p className=\"truncate font-medium\">{p.name}</p>\n                <p className=\"truncate text-sm text-muted-foreground\">{p.role}</p>\n              </div>\n            </div>\n            <p className=\"text-sm text-muted-foreground\">{p.bio}</p>\n            <Badge variant=\"muted\" size=\"sm\" className=\"w-fit\">{p.tag}</Badge>\n          </Card>\n        ))}\n      </div>\n    </section>\n  );\n}\n"
+    }
+  ]
+}
