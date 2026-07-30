@@ -203,6 +203,26 @@ async function main() {
       .sort((a, b) => a.name.localeCompare(b.name)),
   };
 
+  // Demo sources for the docs' Code toggle — same file that renders the
+  // preview, exported as plain text.
+  const DEMOS_DIR = path.join(ROOT, "components", "demos");
+  const DEMOS_OUT = path.join(ROOT, "public", "demos");
+  if (existsSync(DEMOS_DIR)) {
+    await rm(DEMOS_OUT, { recursive: true, force: true });
+    await mkdir(DEMOS_OUT, { recursive: true });
+    const demoFiles = (await readdir(DEMOS_DIR)).filter(
+      (f) => f.endsWith(".tsx"),
+    );
+    for (const file of demoFiles) {
+      const source = await readFile(path.join(DEMOS_DIR, file), "utf8");
+      await writeFile(
+        path.join(DEMOS_OUT, `${path.basename(file, ".tsx")}.txt`),
+        source,
+      );
+    }
+    console.log(`Wrote ${demoFiles.length} demo sources to public/demos/`);
+  }
+
   const indexJson = JSON.stringify(index, null, 2) + "\n";
   await writeFile(path.join(ROOT, "registry.json"), indexJson);
   // Emitted alongside the items so the CLI can resolve the index relative to

@@ -23,6 +23,7 @@ import {
   Section,
   Specimens,
 } from "@/components/docs/docs-primitives";
+import { DemoBlock } from "@/components/docs/demo-block";
 import { Button } from "@/components/ui/button";
 import {
   ButtonGroup,
@@ -56,7 +57,9 @@ function ButtonDocs() {
         title="Variants"
         description="Six variants. Exactly one primary action per view — if two things look primary, neither is."
       >
+        <DemoBlock name="button-variants" />
         <Specimens
+          className="mt-4"
           columns={3}
           items={[
             { label: "default", caption: "The single main action", node: <Button>Save changes</Button> },
@@ -99,6 +102,7 @@ function ButtonDocs() {
             { label: "loading + text", node: <Button loading loadingText="Saving…">Save</Button> },
           ]}
         />
+        <DemoBlock name="button-loading" className="mt-4" />
         <Note title="Loading is not disabled">
           A loading button stays focusable and announces <code>aria-busy</code>,
           so a screen-reader user isn&apos;t silently dropped out of the tab
