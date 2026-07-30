@@ -3,6 +3,7 @@
 // the matching /demos/<name>.txt for the code view.
 
 import AccordionDemo from "./accordion-demo";
+import ActivityFeedDemo from "./activity-feed-demo";
 import AlertDemo from "./alert-demo";
 import AlertDialogDemo from "./alert-dialog-demo";
 import AspectRatioDemo from "./aspect-ratio-demo";
@@ -20,6 +21,7 @@ import CardDemo from "./card-demo";
 import CarouselDemo from "./carousel-demo";
 import ChartDemo from "./chart-demo";
 import CheckboxDemo from "./checkbox-demo";
+import CodeSnippetDemo from "./code-snippet-demo";
 import CollapsibleDemo from "./collapsible-demo";
 import ColorPickerDemo from "./color-picker-demo";
 import ComboboxDemo from "./combobox-demo";
@@ -31,8 +33,10 @@ import DialogDemo from "./dialog-demo";
 import DrawerDemo from "./drawer-demo";
 import DropdownMenuDemo from "./dropdown-menu-demo";
 import EmptyDemo from "./empty-demo";
+import FeaturedIconDemo from "./featured-icon-demo";
 import FieldDemo from "./field-demo";
 import FileUploaderDemo from "./file-uploader-demo";
+import FilterBarDemo from "./filter-bar-demo";
 import HoverCardDemo from "./hover-card-demo";
 import InputDemo from "./input-demo";
 import InputGroupDemo from "./input-group-demo";
@@ -44,16 +48,23 @@ import MarkerDemo from "./marker-demo";
 import MenubarDemo from "./menubar-demo";
 import MessageDemo from "./message-demo";
 import MessageScrollerDemo from "./message-scroller-demo";
+import MetricDemo from "./metric-demo";
 import MultiSelectDemo from "./multi-select-demo";
 import NativeSelectDemo from "./native-select-demo";
 import NavigationMenuDemo from "./navigation-menu-demo";
+import NotificationsDemo from "./notifications-demo";
+import PageHeaderDemo from "./page-header-demo";
 import PaginationDemo from "./pagination-demo";
 import PopoverDemo from "./popover-demo";
 import ProgressDemo from "./progress-demo";
+import ProgressStepsDemo from "./progress-steps-demo";
+import QrCodeDemo from "./qr-code-demo";
 import RadioGroupDemo from "./radio-group-demo";
 import RatingDemo from "./rating-demo";
 import ResizableDemo from "./resizable-demo";
+import RichTextEditorDemo from "./rich-text-editor-demo";
 import ScrollAreaDemo from "./scroll-area-demo";
+import SectionHeaderDemo from "./section-header-demo";
 import SelectDemo from "./select-demo";
 import SeparatorDemo from "./separator-demo";
 import SheetDemo from "./sheet-demo";
@@ -71,10 +82,13 @@ import ToastDemo from "./toast-demo";
 import ToggleDemo from "./toggle-demo";
 import ToggleGroupDemo from "./toggle-group-demo";
 import TooltipDemo from "./tooltip-demo";
+import TreeViewDemo from "./tree-view-demo";
 import TypographyComponentDemo from "./typography-component-demo";
+import VideoPlayerDemo from "./video-player-demo";
 
 export const DEMOS: Record<string, React.ComponentType> = {
   "accordion-demo": AccordionDemo,
+  "activity-feed-demo": ActivityFeedDemo,
   "alert-demo": AlertDemo,
   "alert-dialog-demo": AlertDialogDemo,
   "aspect-ratio-demo": AspectRatioDemo,
@@ -92,6 +106,7 @@ export const DEMOS: Record<string, React.ComponentType> = {
   "carousel-demo": CarouselDemo,
   "chart-demo": ChartDemo,
   "checkbox-demo": CheckboxDemo,
+  "code-snippet-demo": CodeSnippetDemo,
   "collapsible-demo": CollapsibleDemo,
   "color-picker-demo": ColorPickerDemo,
   "combobox-demo": ComboboxDemo,
@@ -103,8 +118,10 @@ export const DEMOS: Record<string, React.ComponentType> = {
   "drawer-demo": DrawerDemo,
   "dropdown-menu-demo": DropdownMenuDemo,
   "empty-demo": EmptyDemo,
+  "featured-icon-demo": FeaturedIconDemo,
   "field-demo": FieldDemo,
   "file-uploader-demo": FileUploaderDemo,
+  "filter-bar-demo": FilterBarDemo,
   "hover-card-demo": HoverCardDemo,
   "input-demo": InputDemo,
   "input-group-demo": InputGroupDemo,
@@ -116,16 +133,23 @@ export const DEMOS: Record<string, React.ComponentType> = {
   "menubar-demo": MenubarDemo,
   "message-demo": MessageDemo,
   "message-scroller-demo": MessageScrollerDemo,
+  "metric-demo": MetricDemo,
   "multi-select-demo": MultiSelectDemo,
   "native-select-demo": NativeSelectDemo,
   "navigation-menu-demo": NavigationMenuDemo,
+  "notifications-demo": NotificationsDemo,
+  "page-header-demo": PageHeaderDemo,
   "pagination-demo": PaginationDemo,
   "popover-demo": PopoverDemo,
   "progress-demo": ProgressDemo,
+  "progress-steps-demo": ProgressStepsDemo,
+  "qr-code-demo": QrCodeDemo,
   "radio-group-demo": RadioGroupDemo,
   "rating-demo": RatingDemo,
   "resizable-demo": ResizableDemo,
+  "rich-text-editor-demo": RichTextEditorDemo,
   "scroll-area-demo": ScrollAreaDemo,
+  "section-header-demo": SectionHeaderDemo,
   "select-demo": SelectDemo,
   "separator-demo": SeparatorDemo,
   "sheet-demo": SheetDemo,
@@ -143,5 +167,7 @@ export const DEMOS: Record<string, React.ComponentType> = {
   "toggle-demo": ToggleDemo,
   "toggle-group-demo": ToggleGroupDemo,
   "tooltip-demo": TooltipDemo,
+  "tree-view-demo": TreeViewDemo,
   "typography-component-demo": TypographyComponentDemo,
+  "video-player-demo": VideoPlayerDemo,
 };

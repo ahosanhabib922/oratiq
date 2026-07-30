@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "section-header",
+  "type": "registry:ui",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/section-header.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/section-header.tsx",
+      "content": "import * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport interface SectionHeaderProps\n  extends Omit<React.HTMLAttributes<HTMLDivElement>, \"title\"> {\n  title: React.ReactNode;\n  description?: React.ReactNode;\n  /** End-edge slot for buttons or filters. */\n  actions?: React.ReactNode;\n  size?: \"sm\" | \"default\";\n  /** Draw a divider underneath. */\n  divider?: boolean;\n}\n\n/** Heading row for a section within a page. */\nexport function SectionHeader({\n  title,\n  description,\n  actions,\n  size = \"default\",\n  divider = false,\n  className,\n  ...props\n}: SectionHeaderProps) {\n  return (\n    <div\n      className={cn(\n        \"flex flex-wrap items-start justify-between gap-3\",\n        divider && \"border-b border-border pb-4\",\n        className,\n      )}\n      {...props}\n    >\n      <div className=\"min-w-0\">\n        <h2\n          className={cn(\n            \"font-medium tracking-tight\",\n            size === \"sm\" ? \"text-base\" : \"text-lg\",\n          )}\n        >\n          {title}\n        </h2>\n        {description && (\n          <p className=\"mt-0.5 text-sm text-muted-foreground\">{description}</p>\n        )}\n      </div>\n      {actions && (\n        <div className=\"flex shrink-0 items-center gap-2\">{actions}</div>\n      )}\n    </div>\n  );\n}\n"
+    }
+  ]
+}

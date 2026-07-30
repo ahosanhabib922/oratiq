@@ -606,6 +606,11 @@ function AspectRatioDocs() {
 }
 
 export const DISPLAY_DOCS: Record<string, () => React.JSX.Element> = {
+  "featured-icon": FeaturedIconDocs,
+  metric: MetricDocs,
+  "code-snippet": CodeSnippetDocs,
+  "qr-code": QRCodeDocs,
+  "video-player": VideoPlayerDocs,
   "typography-component": TypographyDocs,
   badge: BadgeDocs,
   avatar: AvatarDocs,
@@ -620,3 +625,136 @@ export const DISPLAY_DOCS: Record<string, () => React.JSX.Element> = {
   item: ItemDocs,
   "aspect-ratio": AspectRatioDocs,
 };
+
+/* ── Featured icon ──────────────────────────────────────────────────────── */
+
+function FeaturedIconDocs() {
+  return (
+    <>
+      <Section title="Props">
+        <PropsTable
+          props={[
+            { name: "variant", type: '"light" | "solid" | "outline"', default: '"light"', description: "Tile treatment." },
+            { name: "tone", type: '"primary" | "success" | "warning" | "destructive" | "info" | "muted"', default: '"primary"', description: "Colour role." },
+            { name: "size", type: '"sm" | "default" | "lg" | "xl"', default: '"default"', description: "Tile and icon size." },
+          ]}
+        />
+      </Section>
+      <Note>
+        Always decorative (aria-hidden) — the meaning belongs to the text next
+        to it, never to the tile.
+      </Note>
+    </>
+  );
+}
+
+/* ── Metric ─────────────────────────────────────────────────────────────── */
+
+function MetricDocs() {
+  return (
+    <>
+      <Section title="Behaviour">
+        <A11yNotes
+          items={[
+            "Values use tabular figures — a live-updating metric doesn't jitter.",
+            "The delta arrow is a trend glyph, so it mirrors under RTL.",
+            "positiveIsBad flips the colour logic for metrics where a fall is good (churn, costs, errors).",
+          ]}
+        />
+      </Section>
+      <Section title="Props">
+        <PropsTable
+          props={[
+            { name: "label", type: "string", required: true, description: "What is being measured." },
+            { name: "value", type: "ReactNode", required: true, description: "The headline number." },
+            { name: "delta", type: "number", description: "Signed percent change." },
+            { name: "positiveIsBad", type: "boolean", default: "false", description: "Invert good/bad colouring." },
+          ]}
+        />
+      </Section>
+    </>
+  );
+}
+
+/* ── Code snippet ───────────────────────────────────────────────────────── */
+
+function CodeSnippetDocs() {
+  return (
+    <>
+      <Section title="Behaviour">
+        <A11yNotes
+          items={[
+            "Pinned dir=\"ltr\" — code is a technical sequence and never reorders with the page's direction.",
+            "The copy button announces its state and falls back silently where the clipboard is unavailable.",
+            "inline renders a one-line command bar; block adds a labelled header and scrolls beyond maxHeight.",
+          ]}
+        />
+      </Section>
+      <Section title="Props">
+        <PropsTable
+          props={[
+            { name: "code", type: "string", required: true, description: "The text to display and copy." },
+            { name: "label", type: "string", description: "Header label (block mode)." },
+            { name: "inline", type: "boolean", default: "false", description: "One-line command style." },
+            { name: "maxHeight", type: "number", description: "Scroll past this height." },
+          ]}
+        />
+      </Section>
+    </>
+  );
+}
+
+/* ── QR code ────────────────────────────────────────────────────────────── */
+
+function QRCodeDocs() {
+  return (
+    <>
+      <Section title="Behaviour">
+        <A11yNotes
+          items={[
+            "Renders as SVG and inherits the foreground token — the code follows your theme in both modes.",
+            "role=img with the value (or your label) spoken — a QR is content, not decoration.",
+            "Machine-read geometry: never mirrored under RTL.",
+            "Raise the error-correction level to H if you overlay a logo.",
+          ]}
+        />
+      </Section>
+      <Section title="Props">
+        <PropsTable
+          props={[
+            { name: "value", type: "string", required: true, description: "The encoded text or URL." },
+            { name: "size", type: "number", default: "160", description: "Rendered size in px." },
+            { name: "level", type: '"L" | "M" | "Q" | "H"', default: '"M"', description: "Error correction." },
+          ]}
+        />
+      </Section>
+    </>
+  );
+}
+
+/* ── Video player ───────────────────────────────────────────────────────── */
+
+function VideoPlayerDocs() {
+  return (
+    <>
+      <Section title="Behaviour">
+        <A11yNotes
+          items={[
+            "A themed layer over the native <video> — playsInline, poster, and every video attribute pass through.",
+            "The transport bar is pinned dir=\"ltr\": media time is a universal LTR notation, like the timestamps themselves.",
+            "The scrubber is a real slider (role=slider): arrows seek ±5s, Home/End jump, and the position is spoken as '1:24 of 3:20'.",
+            "Controls fade out during playback and return on hover or focus — keyboard users never lose them.",
+          ]}
+        />
+      </Section>
+      <Section title="Props">
+        <PropsTable
+          props={[
+            { name: "src", type: "string", required: true, description: "Video source URL." },
+            { name: "poster", type: "string", description: "Preview image before playback." },
+          ]}
+        />
+      </Section>
+    </>
+  );
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "code-snippet",
+  "type": "registry:ui",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "lucide-react",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/code-snippet.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/code-snippet.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { Check, Copy } from \"lucide-react\";\nimport { cn } from \"@/lib/utils\";\n\nexport interface CodeSnippetProps {\n  code: string;\n  /** Header label — a filename or language. */\n  label?: string;\n  /** One-line command style: no header, inline copy button. */\n  inline?: boolean;\n  maxHeight?: number;\n  className?: string;\n}\n\n/**\n * Code with a copy button. Pinned `dir=\"ltr\"` — source is a technical\n * sequence and never reorders with the page's writing direction.\n */\nexport function CodeSnippet({\n  code,\n  label,\n  inline = false,\n  maxHeight,\n  className,\n}: CodeSnippetProps) {\n  const [copied, setCopied] = React.useState(false);\n\n  async function copy() {\n    try {\n      await navigator.clipboard.writeText(code);\n      setCopied(true);\n      setTimeout(() => setCopied(false), 1600);\n    } catch {\n      /* clipboard unavailable — text stays selectable */\n    }\n  }\n\n  const copyButton = (\n    <button\n      type=\"button\"\n      onClick={copy}\n      aria-label={copied ? \"Copied\" : \"Copy code\"}\n      className={cn(\n        \"inline-flex size-7 shrink-0 items-center justify-center rounded-md\",\n        \"text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground\",\n        \"outline-none focus-visible:ring-2 focus-visible:ring-ring\",\n      )}\n    >\n      {copied ? (\n        <Check className=\"size-3.5 text-success\" />\n      ) : (\n        <Copy className=\"size-3.5\" />\n      )}\n    </button>\n  );\n\n  if (inline) {\n    return (\n      <div\n        dir=\"ltr\"\n        className={cn(\n          \"flex items-center gap-2 rounded-lg border border-border bg-muted/40 py-1.5 ps-3 pe-1.5\",\n          className,\n        )}\n      >\n        <code className=\"min-w-0 flex-1 overflow-x-auto font-mono text-sm whitespace-nowrap\">\n          {code}\n        </code>\n        {copyButton}\n      </div>\n    );\n  }\n\n  return (\n    <div\n      dir=\"ltr\"\n      className={cn(\n        \"overflow-hidden rounded-lg border border-border bg-muted/40\",\n        className,\n      )}\n    >\n      <div className=\"flex items-center justify-between gap-2 border-b border-border px-3 py-1.5\">\n        <span className=\"font-mono text-xs text-muted-foreground\">\n          {label ?? \"Code\"}\n        </span>\n        {copyButton}\n      </div>\n      <pre\n        className=\"overflow-auto p-4 font-mono text-xs leading-relaxed\"\n        style={maxHeight ? { maxHeight } : undefined}\n      >\n        {code}\n      </pre>\n    </div>\n  );\n}\n"
+    }
+  ]
+}

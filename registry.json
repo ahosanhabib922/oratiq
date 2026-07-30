@@ -18,6 +18,18 @@
       ]
     },
     {
+      "name": "activity-feed",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "utils"
+      ]
+    },
+    {
       "name": "alert",
       "type": "registry:ui",
       "dependencies": [
@@ -220,6 +232,19 @@
       ]
     },
     {
+      "name": "code-snippet",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "lucide-react",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "utils"
+      ]
+    },
+    {
       "name": "collapsible",
       "type": "registry:ui",
       "dependencies": [
@@ -385,6 +410,18 @@
       ]
     },
     {
+      "name": "featured-icon",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "utils"
+      ]
+    },
+    {
       "name": "field",
       "type": "registry:ui",
       "dependencies": [
@@ -408,6 +445,19 @@
       ],
       "registryDependencies": [
         "attachment",
+        "utils"
+      ]
+    },
+    {
+      "name": "filter-bar",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "lucide-react",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
         "utils"
       ]
     },
@@ -563,6 +613,19 @@
       ]
     },
     {
+      "name": "metric",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "lucide-react",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "utils"
+      ]
+    },
+    {
       "name": "multi-select",
       "type": "registry:ui",
       "dependencies": [
@@ -599,6 +662,30 @@
         "clsx",
         "lucide-react",
         "radix-ui",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "utils"
+      ]
+    },
+    {
+      "name": "notifications",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "utils"
+      ]
+    },
+    {
+      "name": "page-header",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
         "tailwind-merge"
       ],
       "registryDependencies": [
@@ -646,6 +733,19 @@
       ]
     },
     {
+      "name": "progress-steps",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "lucide-react",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "utils"
+      ]
+    },
+    {
       "name": "providers",
       "type": "registry:ui",
       "dependencies": [
@@ -657,6 +757,19 @@
       ],
       "registryDependencies": [
         "toast"
+      ]
+    },
+    {
+      "name": "qr-code",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "qrcode",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "utils"
       ]
     },
     {
@@ -700,12 +813,40 @@
       ]
     },
     {
+      "name": "rich-text-editor",
+      "type": "registry:ui",
+      "dependencies": [
+        "@tiptap/extension-placeholder",
+        "@tiptap/react",
+        "@tiptap/starter-kit",
+        "class-variance-authority",
+        "clsx",
+        "lucide-react",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "utils"
+      ]
+    },
+    {
       "name": "scroll-area",
       "type": "registry:ui",
       "dependencies": [
         "class-variance-authority",
         "clsx",
         "radix-ui",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "utils"
+      ]
+    },
+    {
+      "name": "section-header",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
         "tailwind-merge"
       ],
       "registryDependencies": [
@@ -947,6 +1088,19 @@
       ]
     },
     {
+      "name": "tree-view",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "lucide-react",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "utils"
+      ]
+    },
+    {
       "name": "typography",
       "type": "registry:ui",
       "dependencies": [
@@ -968,6 +1122,19 @@
         "tailwind-merge"
       ],
       "registryDependencies": []
+    },
+    {
+      "name": "video-player",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "lucide-react",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "utils"
+      ]
     }
   ]
 }

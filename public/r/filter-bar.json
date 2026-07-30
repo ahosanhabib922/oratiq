@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "filter-bar",
+  "type": "registry:ui",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "lucide-react",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/filter-bar.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/filter-bar.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { X } from \"lucide-react\";\nimport { cn } from \"@/lib/utils\";\n\n/**\n * Layout shell for a filtering row: search + filter controls at the start,\n * view controls pushed to the end. Wraps on small screens.\n */\nexport function FilterBar({\n  className,\n  ...props\n}: React.HTMLAttributes<HTMLDivElement>) {\n  return (\n    <div\n      role=\"toolbar\"\n      aria-label=\"Filters\"\n      className={cn(\"flex flex-wrap items-center gap-2\", className)}\n      {...props}\n    />\n  );\n}\n\n/** Pushes everything after it to the end edge. */\nexport function FilterBarSpacer() {\n  return <div className=\"ms-auto\" />;\n}\n\nexport interface FilterChipProps {\n  /** e.g. \"Status\". */\n  label: string;\n  /** e.g. \"Active\". */\n  value: React.ReactNode;\n  onRemove?: () => void;\n  className?: string;\n}\n\n/** An applied filter, shown as label: value with a remove button. */\nexport function FilterChip({ label, value, onRemove, className }: FilterChipProps) {\n  return (\n    <span\n      className={cn(\n        \"inline-flex h-8 items-center gap-1.5 rounded-lg border border-border bg-card ps-2.5 text-sm\",\n        onRemove ? \"pe-1\" : \"pe-2.5\",\n        className,\n      )}\n    >\n      <span className=\"text-muted-foreground\">{label}:</span>\n      <span dir=\"auto\" className=\"font-medium\">\n        {value}\n      </span>\n      {onRemove && (\n        <button\n          type=\"button\"\n          aria-label={`Remove ${label} filter`}\n          onClick={onRemove}\n          className={cn(\n            \"inline-flex size-5 items-center justify-center rounded-md\",\n            \"text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground\",\n            \"outline-none focus-visible:ring-2 focus-visible:ring-ring\",\n          )}\n        >\n          <X className=\"size-3\" />\n        </button>\n      )}\n    </span>\n  );\n}\n"
+    }
+  ]
+}

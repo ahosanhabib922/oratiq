@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "qr-code",
+  "type": "registry:ui",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "qrcode",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/qr-code.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/qr-code.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport QR from \"qrcode\";\nimport { cn } from \"@/lib/utils\";\n\nexport interface QRCodeProps {\n  value: string;\n  /** Rendered size in px. */\n  size?: number;\n  /** Defaults to the current foreground/background tokens. */\n  foreground?: string;\n  background?: string;\n  /** Error-correction level; raise it if you overlay a logo. */\n  level?: \"L\" | \"M\" | \"Q\" | \"H\";\n  label?: string;\n  className?: string;\n}\n\n/**\n * Themed QR code, rendered as SVG. A QR is machine-read geometry — it is\n * never mirrored under RTL.\n */\nexport function QRCode({\n  value,\n  size = 160,\n  foreground,\n  background = \"transparent\",\n  level = \"M\",\n  label,\n  className,\n}: QRCodeProps) {\n  const [svg, setSvg] = React.useState<string | null>(null);\n  const ref = React.useRef<HTMLDivElement>(null);\n\n  React.useEffect(() => {\n    // Resolve the token at render time so the code follows the theme.\n    const dark =\n      foreground ??\n      (ref.current\n        ? getComputedStyle(ref.current).color\n        : \"#000000\");\n    QR.toString(value, {\n      type: \"svg\",\n      errorCorrectionLevel: level,\n      margin: 0,\n      color: { dark, light: background === \"transparent\" ? \"#0000\" : background },\n    })\n      .then(setSvg)\n      .catch(() => setSvg(null));\n  }, [value, foreground, background, level]);\n\n  return (\n    <div\n      ref={ref}\n      role=\"img\"\n      aria-label={label ?? `QR code: ${value}`}\n      style={{ width: size, height: size }}\n      className={cn(\"text-foreground [&_svg]:size-full\", className)}\n      // The generated SVG is inert geometry from a trusted encoder.\n      dangerouslySetInnerHTML={svg ? { __html: svg } : undefined}\n    />\n  );\n}\n"
+    }
+  ]
+}

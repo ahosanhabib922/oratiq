@@ -824,6 +824,7 @@ function LabelDocs() {
 
 export const FORM_DOCS: Record<string, () => React.JSX.Element> = {
   "multi-select": MultiSelectDocs,
+  "rich-text-editor": RichTextEditorDocs,
   rating: RatingDocs,
   "tag-input": TagInputDocs,
   "social-buttons": SocialButtonsDocs,
@@ -1033,6 +1034,35 @@ function FileUploaderDocs() {
         upload. Wire the files to your own endpoint, and drive Attachment&apos;s
         progress state from your upload progress.
       </Note>
+    </>
+  );
+}
+
+/* ── Rich text editor ───────────────────────────────────────────────────── */
+
+function RichTextEditorDocs() {
+  return (
+    <>
+      <Section title="Behaviour">
+        <A11yNotes
+          items={[
+            "Built on TipTap (ProseMirror) — the same engine choice as Calendar on react-day-picker: wrap the best, own the surface.",
+            "HTML in, HTML out via value/onValueChange — sanitise server-side before persisting, as with any rich text.",
+            "Toolbar buttons keep focus in the editor (mousedown is prevented), announce pressed state, and undo/redo glyphs mirror under RTL.",
+            "contenteditable inherits the page direction; mixed-direction paragraphs behave natively.",
+          ]}
+        />
+      </Section>
+      <Section title="Props">
+        <PropsTable
+          props={[
+            { name: "value / defaultValue", type: "string (HTML)", description: "Controlled / uncontrolled content." },
+            { name: "onValueChange", type: "(html: string) => void", description: "Fires on every edit." },
+            { name: "placeholder", type: "string", description: "Shown while empty." },
+            { name: "disabled", type: "boolean", default: "false", description: "Read-only, dimmed." },
+          ]}
+        />
+      </Section>
     </>
   );
 }

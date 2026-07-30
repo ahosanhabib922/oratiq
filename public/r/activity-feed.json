@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "activity-feed",
+  "type": "registry:ui",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/activity-feed.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/activity-feed.tsx",
+      "content": "import * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\n/**\n * Timeline of events. The connecting line runs down the marker column using\n * a logical inset, so the feed mirrors correctly under RTL.\n */\nexport function ActivityFeed({\n  className,\n  ...props\n}: React.HTMLAttributes<HTMLOListElement>) {\n  return <ol className={cn(\"flex flex-col\", className)} {...props} />;\n}\n\nexport interface ActivityItemProps extends React.HTMLAttributes<HTMLLIElement> {\n  /** Marker column content — an icon tile or an Avatar. */\n  media?: React.ReactNode;\n  /** Hide the connector after the final item. */\n  last?: boolean;\n}\n\nexport function ActivityItem({\n  media,\n  last = false,\n  className,\n  children,\n  ...props\n}: ActivityItemProps) {\n  return (\n    <li className={cn(\"relative flex gap-3 pb-6\", last && \"pb-0\", className)} {...props}>\n      <div className=\"relative flex flex-col items-center\">\n        <span className=\"z-10 flex size-8 shrink-0 items-center justify-center rounded-full bg-muted text-muted-foreground [&_svg]:size-4\">\n          {media}\n        </span>\n        {!last && (\n          <span\n            aria-hidden=\"true\"\n            className=\"absolute top-8 bottom-[-8px] w-px bg-border\"\n          />\n        )}\n      </div>\n      <div className=\"flex min-w-0 flex-1 flex-col gap-0.5 pt-1.5\">{children}</div>\n    </li>\n  );\n}\n\nexport function ActivityTitle({\n  className,\n  ...props\n}: React.HTMLAttributes<HTMLParagraphElement>) {\n  return (\n    <p dir=\"auto\" className={cn(\"text-sm text-foreground\", className)} {...props} />\n  );\n}\n\nexport function ActivityDescription({\n  className,\n  ...props\n}: React.HTMLAttributes<HTMLParagraphElement>) {\n  return (\n    <p dir=\"auto\" className={cn(\"text-sm text-muted-foreground\", className)} {...props} />\n  );\n}\n\nexport function ActivityTime({\n  className,\n  ...props\n}: React.HTMLAttributes<HTMLTimeElement>) {\n  return (\n    <time className={cn(\"text-xs tnum text-muted-foreground\", className)} {...props} />\n  );\n}\n"
+    }
+  ]
+}

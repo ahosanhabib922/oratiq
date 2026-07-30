@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "featured-icon",
+  "type": "registry:ui",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/featured-icon.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/featured-icon.tsx",
+      "content": "import * as React from \"react\";\nimport { cva, type VariantProps } from \"class-variance-authority\";\nimport { cn } from \"@/lib/utils\";\n\nconst featuredIconVariants = cva(\n  \"inline-flex shrink-0 items-center justify-center [&_svg]:shrink-0\",\n  {\n    variants: {\n      variant: {\n        /** Tinted tile — the default \"feature card\" look. */\n        light: \"rounded-lg\",\n        /** Solid brand tile. */\n        solid: \"rounded-lg\",\n        /** Concentric rings — the Untitled-style outline treatment. */\n        outline: \"rounded-full ring-4\",\n      },\n      tone: {\n        primary: \"\",\n        success: \"\",\n        warning: \"\",\n        destructive: \"\",\n        info: \"\",\n        muted: \"\",\n      },\n      size: {\n        sm: \"size-8 [&_svg]:size-4\",\n        default: \"size-10 [&_svg]:size-5\",\n        lg: \"size-12 [&_svg]:size-6\",\n        xl: \"size-14 [&_svg]:size-7\",\n      },\n    },\n    compoundVariants: [\n      { variant: \"light\", tone: \"primary\", class: \"bg-primary/15 text-primary\" },\n      { variant: \"light\", tone: \"success\", class: \"bg-success/15 text-success\" },\n      { variant: \"light\", tone: \"warning\", class: \"bg-warning/15 text-warning\" },\n      { variant: \"light\", tone: \"destructive\", class: \"bg-destructive/15 text-destructive\" },\n      { variant: \"light\", tone: \"info\", class: \"bg-info/15 text-info\" },\n      { variant: \"light\", tone: \"muted\", class: \"bg-muted text-muted-foreground\" },\n      { variant: \"solid\", tone: \"primary\", class: \"bg-primary text-primary-foreground\" },\n      { variant: \"solid\", tone: \"success\", class: \"bg-success text-success-foreground\" },\n      { variant: \"solid\", tone: \"warning\", class: \"bg-warning text-warning-foreground\" },\n      { variant: \"solid\", tone: \"destructive\", class: \"bg-destructive text-destructive-foreground\" },\n      { variant: \"solid\", tone: \"info\", class: \"bg-info text-info-foreground\" },\n      { variant: \"solid\", tone: \"muted\", class: \"bg-secondary text-secondary-foreground\" },\n      { variant: \"outline\", tone: \"primary\", class: \"bg-primary/10 text-primary ring-primary/10\" },\n      { variant: \"outline\", tone: \"success\", class: \"bg-success/10 text-success ring-success/10\" },\n      { variant: \"outline\", tone: \"warning\", class: \"bg-warning/10 text-warning ring-warning/10\" },\n      { variant: \"outline\", tone: \"destructive\", class: \"bg-destructive/10 text-destructive ring-destructive/10\" },\n      { variant: \"outline\", tone: \"info\", class: \"bg-info/10 text-info ring-info/10\" },\n      { variant: \"outline\", tone: \"muted\", class: \"bg-muted text-muted-foreground ring-border/50\" },\n    ],\n    defaultVariants: { variant: \"light\", tone: \"primary\", size: \"default\" },\n  },\n);\n\nexport interface FeaturedIconProps\n  extends React.HTMLAttributes<HTMLSpanElement>,\n    VariantProps<typeof featuredIconVariants> {}\n\n/** An icon on a styled tile — feature lists, empty states, step markers. */\nexport function FeaturedIcon({\n  className,\n  variant,\n  tone,\n  size,\n  ...props\n}: FeaturedIconProps) {\n  return (\n    <span\n      aria-hidden=\"true\"\n      className={cn(featuredIconVariants({ variant, tone, size }), className)}\n      {...props}\n    />\n  );\n}\n\nexport { featuredIconVariants };\n"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "notifications",
+  "type": "registry:ui",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/notifications.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/notifications.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\n/** Inbox-style notification list. */\nexport function NotificationList({\n  className,\n  ...props\n}: React.HTMLAttributes<HTMLUListElement>) {\n  return (\n    <ul\n      className={cn(\"flex flex-col divide-y divide-border\", className)}\n      {...props}\n    />\n  );\n}\n\nexport interface NotificationItemProps\n  extends Omit<React.HTMLAttributes<HTMLLIElement>, \"title\"> {\n  unread?: boolean;\n  media?: React.ReactNode;\n  title: React.ReactNode;\n  description?: React.ReactNode;\n  time?: React.ReactNode;\n  /** End-edge slot — accept/dismiss buttons and the like. */\n  actions?: React.ReactNode;\n  onSelect?: () => void;\n}\n\nexport function NotificationItem({\n  unread = false,\n  media,\n  title,\n  description,\n  time,\n  actions,\n  onSelect,\n  className,\n  ...props\n}: NotificationItemProps) {\n  return (\n    <li\n      onClick={onSelect}\n      className={cn(\n        \"relative flex gap-3 px-4 py-3\",\n        onSelect && \"cursor-pointer transition-colors hover:bg-accent/50\",\n        className,\n      )}\n      {...props}\n    >\n      {/* Unread markers sit on the reading edge. */}\n      {unread && (\n        <span\n          aria-hidden=\"true\"\n          className=\"absolute start-1.5 top-1/2 size-1.5 -translate-y-1/2 rounded-full bg-primary\"\n        />\n      )}\n      {media && <span className=\"shrink-0 pt-0.5\">{media}</span>}\n      <div className=\"flex min-w-0 flex-1 flex-col gap-0.5\">\n        <div className=\"flex items-baseline justify-between gap-3\">\n          <p\n            dir=\"auto\"\n            className={cn(\n              \"truncate text-sm\",\n              unread ? \"font-semibold text-foreground\" : \"font-medium text-foreground\",\n            )}\n          >\n            {title}\n            {unread && <span className=\"sr-only\"> (unread)</span>}\n          </p>\n          {time && (\n            <span className=\"shrink-0 text-xs tnum text-muted-foreground\">\n              {time}\n            </span>\n          )}\n        </div>\n        {description && (\n          <p dir=\"auto\" className=\"line-clamp-2 text-sm text-muted-foreground\">\n            {description}\n          </p>\n        )}\n        {actions && <div className=\"mt-2 flex items-center gap-2\">{actions}</div>}\n      </div>\n    </li>\n  );\n}\n"
+    }
+  ]
+}

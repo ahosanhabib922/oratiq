@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "metric",
+  "type": "registry:ui",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "lucide-react",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/metric.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/metric.tsx",
+      "content": "import * as React from \"react\";\nimport { TrendingDown, TrendingUp } from \"lucide-react\";\nimport { cn } from \"@/lib/utils\";\n\nexport interface MetricProps extends React.HTMLAttributes<HTMLDivElement> {\n  label: string;\n  value: React.ReactNode;\n  /** Signed percentage, e.g. 12.5 or -3.2. Colour and arrow follow the sign. */\n  delta?: number;\n  /** When a fall is good (costs, errors), flip the colour logic. */\n  positiveIsBad?: boolean;\n  description?: React.ReactNode;\n  icon?: React.ReactNode;\n}\n\n/** Stat card. Numbers are tabular; the trend arrow mirrors under RTL. */\nexport function Metric({\n  label,\n  value,\n  delta,\n  positiveIsBad = false,\n  description,\n  icon,\n  className,\n  ...props\n}: MetricProps) {\n  const up = delta !== undefined && delta >= 0;\n  const good = delta !== undefined && (positiveIsBad ? delta < 0 : delta >= 0);\n\n  return (\n    <div\n      className={cn(\n        \"flex flex-col gap-1 rounded-xl border border-border bg-card p-5\",\n        className,\n      )}\n      {...props}\n    >\n      <div className=\"flex items-center justify-between gap-3\">\n        <p className=\"text-sm text-muted-foreground\">{label}</p>\n        {icon && (\n          <span className=\"text-muted-foreground [&_svg]:size-4\">{icon}</span>\n        )}\n      </div>\n      <div className=\"flex flex-wrap items-baseline gap-2\">\n        <span className=\"text-3xl font-semibold tracking-tight tnum\">{value}</span>\n        {delta !== undefined && (\n          <span\n            className={cn(\n              \"inline-flex items-center gap-0.5 text-sm font-medium tnum\",\n              good ? \"text-success\" : \"text-destructive\",\n            )}\n          >\n            {up ? (\n              <TrendingUp className=\"size-3.5 rtl-flip\" aria-hidden=\"true\" />\n            ) : (\n              <TrendingDown className=\"size-3.5 rtl-flip\" aria-hidden=\"true\" />\n            )}\n            {up ? \"+\" : \"\"}\n            {delta}%\n          </span>\n        )}\n      </div>\n      {description && (\n        <p className=\"text-xs text-muted-foreground\">{description}</p>\n      )}\n    </div>\n  );\n}\n"
+    }
+  ]
+}
