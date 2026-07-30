@@ -80,16 +80,19 @@ export default async function ComponentPage({
       <ComponentDocBody slug={slug} />
 
       {source && (
-        <Section
-          title="Source"
-          description="The full component, exactly what the CLI copies. Prefer the CLI so registry dependencies come along — but copy-paste works too."
-        >
-          <CodeBlock
-            label={`components/ui/${source.file}.tsx`}
-            code={source.source}
-            maxHeight={420}
-          />
-        </Section>
+        <p className="border-t border-border pt-6 text-sm text-muted-foreground">
+          <a
+            href={`https://github.com/ahosanhabib922/oratiq/blob/main/components/ui/${source.file}.tsx`}
+            target="_blank"
+            rel="noreferrer"
+            className="font-medium text-foreground underline underline-offset-4 hover:text-primary"
+          >
+            View source on GitHub →
+          </a>{" "}
+          <span dir="ltr" className="font-mono text-xs">
+            components/ui/{source.file}.tsx
+          </span>
+        </p>
       )}
     </DocsPage>
   );
