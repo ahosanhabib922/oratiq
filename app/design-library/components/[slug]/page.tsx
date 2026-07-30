@@ -6,9 +6,10 @@ import path from "node:path";
 import { ALL_ITEMS, getItem } from "@/lib/registry";
 import { getComponentSource } from "@/lib/component-source";
 import { DocsPage, Section } from "@/components/docs/docs-primitives";
-import { CodeBlock, CommandBlock } from "@/components/docs/code-block";
+import { CodeBlock } from "@/components/docs/code-block";
 import { ComponentDocBody } from "@/components/docs/component-doc-body";
 import { DemoBlock } from "@/components/docs/demo-block";
+import { InstallTabs } from "@/components/docs/install-tabs";
 
 export function generateStaticParams() {
   return ALL_ITEMS.map((item) => ({ slug: item.slug }));
@@ -63,19 +64,8 @@ export default async function ComponentPage({
 
       {source && (
         <>
-          <Section
-            title="Installation"
-            description="Copies the component — plus anything it depends on — into your project. The code is yours after this."
-          >
-            <CommandBlock command={`npx @oratiq-js/ui add ${source.file}`} />
-            {source.dependencies.length > 0 && (
-              <p className="mt-3 text-xs text-muted-foreground">
-                The CLI will ask you to install:{" "}
-                <code dir="ltr" className="font-mono">
-                  {source.dependencies.join(", ")}
-                </code>
-              </p>
-            )}
+          <Section title="Installation">
+            <InstallTabs name={source.file} />
           </Section>
 
           {source.exports.length > 0 && (
