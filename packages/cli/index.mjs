@@ -181,7 +181,52 @@ async function commandInit(flags) {
     );
   }
 
-  console.log(c.dim(`\nNext: ${c.bold("oratiq add button")}\n`));
+  // The starter kit: cn() and the Providers wrapper the docs tell everyone to
+  // mount. Without these, "wrap your app in <Providers>" points at nothing.
+  try {
+    const items = await resolveGraph(registry, ["utils", "providers"]);
+    const { npmDeps } = await installItems(config, items);
+    if (npmDeps.size) {
+      console.log(c.dim("\nInstall the required packages:\n"));
+      console.log(`  npm install ${[...npmDeps].sort().join(" ")}\n`);
+    }
+  } catch {
+    console.log(
+      c.yellow(
+        `Couldn't fetch the starter files — run ${c.bold("oratiq add providers utils")} later.`,
+      ),
+    );
+  }
+
+  console.log(c.dim(`Next: ${c.bold("oratiq add button")}\n`));
+}
+
+/** Writes resolved registry items into the project. Shared by add and init. */
+async function installItems(config, items, { overwrite = false } = {}) {
+  const npmDeps = new Set();
+  let written = 0;
+  let skipped = 0;
+
+  for (const item of items) {
+    for (const dep of item.dependencies ?? []) npmDeps.add(dep);
+
+    for (const file of item.files ?? []) {
+      const dest = targetPath(config, file);
+      await mkdir(path.dirname(dest), { recursive: true });
+
+      if ((await exists(dest)) && !overwrite) {
+        console.log(c.yellow(`  ~ ${dest} exists, skipped`));
+        skipped++;
+        continue;
+      }
+
+      await writeFile(dest, file.content);
+      console.log(c.green(`  + ${dest}`));
+      written++;
+    }
+  }
+
+  return { npmDeps, written, skipped };
 }
 
 async function commandAdd(names, flags) {
@@ -200,29 +245,9 @@ async function commandAdd(names, flags) {
 
   console.log(c.dim(`Resolving from ${registry}…`));
   const items = await resolveGraph(registry, names);
-
-  const npmDeps = new Set();
-  let written = 0;
-  let skipped = 0;
-
-  for (const item of items) {
-    for (const dep of item.dependencies ?? []) npmDeps.add(dep);
-
-    for (const file of item.files ?? []) {
-      const dest = targetPath(config, file);
-      await mkdir(path.dirname(dest), { recursive: true });
-
-      if ((await exists(dest)) && !flags.overwrite) {
-        console.log(c.yellow(`  ~ ${dest} exists, skipped`));
-        skipped++;
-        continue;
-      }
-
-      await writeFile(dest, file.content);
-      console.log(c.green(`  + ${dest}`));
-      written++;
-    }
-  }
+  const { npmDeps, written, skipped } = await installItems(config, items, {
+    overwrite: flags.overwrite,
+  });
 
   console.log(`\n${written} written, ${skipped} skipped.`);
 

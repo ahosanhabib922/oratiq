@@ -37,7 +37,7 @@ export default function InstallationPage() {
 
       <Section
         title="1. Initialise"
-        description="Creates components.json and writes the token layer — the CSS every component reads its colours, radii, and motion from."
+        description="One command sets up everything components need: components.json, the token layer CSS, the cn() helper, and the Providers wrapper."
       >
         <CommandBlock command="npx @oratiq-js/ui init" />
         <Text size="sm" tone="muted" className="mt-3">
