@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 import { DocsPage, Note, Section } from "@/components/docs/docs-primitives";
-import { Alert, AlertContent, AlertDescription } from "@/components/ui/alert";
+import { CommandBlock } from "@/components/docs/code-block";
 import { Code, List, Text } from "@/components/ui/typography";
 
 export const metadata: Metadata = {
@@ -26,17 +26,7 @@ export default function InstallationPage() {
       title="Installation"
       description="Add the design system to a Next.js project."
     >
-      <Alert variant="warning">
-        <AlertContent>
-          <AlertDescription>
-            The CLI and public registry aren&apos;t published yet. Until they
-            are, copy the <Code>components/ui</Code> directory and the token
-            layer directly — the steps below describe that path.
-          </AlertDescription>
-        </AlertContent>
-      </Alert>
-
-      <Section title="1. Requirements">
+      <Section title="Requirements">
         <List>
           <li>Next.js 15 or 16 with the App Router</li>
           <li>React 19</li>
@@ -45,73 +35,42 @@ export default function InstallationPage() {
         </List>
       </Section>
 
-      <Section title="2. Install dependencies">
-        <Snippet>{`npm install radix-ui class-variance-authority clsx tailwind-merge lucide-react next-themes`}</Snippet>
+      <Section
+        title="1. Initialise"
+        description="Creates components.json and writes the token layer — the CSS every component reads its colours, radii, and motion from."
+      >
+        <CommandBlock command="npx @oratiq-js/ui init" />
         <Text size="sm" tone="muted" className="mt-3">
-          Individual components pull in their own extras — Command needs{" "}
-          <Code>cmdk</Code>, Drawer needs <Code>vaul</Code>, Chart needs{" "}
-          <Code>recharts</Code>. Each component page lists what it requires.
+          Accept the defaults with Enter, or run non-interactively with{" "}
+          <Code>init -y</Code>. If your Tailwind CSS file already exists, the
+          token layer is written next to it as <Code>oratiq-theme.css</Code> for
+          you to merge — nothing of yours is overwritten.
         </Text>
       </Section>
 
-      <Section title="3. Add the token layer">
-        <Text size="sm" tone="muted" className="mb-3">
-          Copy <Code>app/globals.css</Code>. It defines the three token layers
-          and the base styles. Nothing else in the system works without it.
+      <Section
+        title="2. Add components"
+        description="Components are copied into your repo, along with everything they depend on. The code is yours after this — edit any line."
+      >
+        <CommandBlock command="npx @oratiq-js/ui add button dialog field" />
+        <Text size="sm" tone="muted" className="mt-3">
+          The CLI finishes by listing the npm packages to install — typically:
         </Text>
-        <Snippet>{`@import "tailwindcss";
-
-@custom-variant dark (&:is(.dark *));
-
-:root {
-  /* Layer 1 — primitive ramps */
-  --brand-500: #cbfe00;
-  /* … */
-
-  /* Layer 2 — semantic roles */
-  --primary: var(--brand-500);
-  --primary-foreground: var(--brand-800);
-  /* … */
-}
-
-.dark { /* dark overrides for layer 2 */ }
-
-@theme inline {
-  --color-primary: var(--primary);
-  /* … */
-}`}</Snippet>
+        <CommandBlock
+          className="mt-3"
+          command="npm install radix-ui class-variance-authority clsx tailwind-merge lucide-react"
+        />
+        <Note title="Re-running is safe">
+          <Code>add</Code> skips files that already exist, so your edits are
+          never clobbered. Pass <Code>--overwrite</Code> to pull a component&apos;s
+          latest version, then review the change with <Code>git diff</Code>.
+        </Note>
       </Section>
 
-      <Section title="4. Add the cn() helper">
-        <Text size="sm" tone="muted" className="mb-3">
-          Copy <Code>lib/utils.ts</Code>. The tailwind-merge configuration in it
-          is not optional — without registering the custom scales, class merging
-          silently drops colours from components that set both a size and a
-          colour.
-        </Text>
-        <Snippet>{`import { clsx, type ClassValue } from "clsx";
-import { extendTailwindMerge } from "tailwind-merge";
-
-const twMerge = extendTailwindMerge({
-  extend: {
-    classGroups: {
-      "font-size": [{ text: ["2xs"] }],
-      "text-color": [{ text: ["primary", "muted-foreground", /* … */] }],
-    },
-  },
-});
-
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
-}`}</Snippet>
-      </Section>
-
-      <Section title="5. Wrap your app in the providers">
-        <Text size="sm" tone="muted" className="mb-3">
-          The direction provider keeps <Code>dir</Code>, Radix keyboard
-          navigation, and React state in sync. Skipping it means arrow keys move
-          the wrong way in RTL.
-        </Text>
+      <Section
+        title="3. Wrap your app in the providers"
+        description="One wrapper supplies theme, writing direction, tooltips, and toasts. Skipping it breaks dark mode and RTL keyboard navigation."
+      >
         <Snippet>{`// app/layout.tsx
 import { Providers } from "@/components/providers";
 
@@ -125,18 +84,44 @@ export default function RootLayout({ children }) {
   );
 }`}</Snippet>
         <Note title="suppressHydrationWarning is required">
-          Both the theme and direction providers write to <Code>&lt;html&gt;</Code>{" "}
-          before React hydrates. Without the attribute, React logs a mismatch on
-          every load.
+          The theme and direction providers both write to{" "}
+          <Code>&lt;html&gt;</Code> before React hydrates. Without the
+          attribute, React logs a mismatch on every load.
         </Note>
       </Section>
 
-      <Section title="6. Use a component">
+      <Section title="4. Use a component">
         <Snippet>{`import { Button } from "@/components/ui/button";
 
 export default function Page() {
   return <Button>Get started</Button>;
 }`}</Snippet>
+        <Text size="sm" tone="muted" className="mt-3">
+          Every component page shows its install command, import line, and full
+          source. For theming, see{" "}
+          <a
+            href="/design-library/theming"
+            className="font-medium text-primary underline underline-offset-4"
+          >
+            Theming
+          </a>
+          ; for RTL, set <Code>dir=&quot;rtl&quot;</Code> on{" "}
+          <Code>&lt;html&gt;</Code> — everything mirrors from there.
+        </Text>
+      </Section>
+
+      <Section
+        title="Without the CLI"
+        description="Every component page has a Source section — copy the file, plus lib/utils.ts and the token layer from the theme registry item, and you're set."
+      >
+        <CommandBlock command="curl -s https://ui.oratiq.com/r/theme.json" />
+      </Section>
+
+      <Section
+        title="For AI coding agents"
+        description="The whole system — conventions, tokens, component index — is published in machine-readable form. Point your agent at it."
+      >
+        <CommandBlock command="https://ui.oratiq.com/llms.txt" />
       </Section>
     </DocsPage>
   );
