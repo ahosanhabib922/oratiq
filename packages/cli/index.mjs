@@ -3,10 +3,10 @@
  * oratiq — add components from the registry into a project.
  *
  * Usage:
- *   npx @oratiq/ui init
- *   npx @oratiq/ui add button input field
- *   npx @oratiq/ui add --all
- *   npx @oratiq/ui list
+ *   npx @oratiq-js/ui init
+ *   npx @oratiq-js/ui add button input field
+ *   npx @oratiq-js/ui add --all
+ *   npx @oratiq-js/ui list
  *
  * Components are copied into the consumer's repo, not imported from a package.
  * They own the code after this runs; upgrades are a re-run plus a diff.

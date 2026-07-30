@@ -25,8 +25,8 @@ other way around:
 ## Install
 
 ```bash
-npx @oratiq/ui init
-npx @oratiq/ui add button input field
+npx @oratiq-js/ui init
+npx @oratiq-js/ui add button input field
 ```
 
 Components are copied into your repo — the code is yours to edit. See the
@@ -40,7 +40,7 @@ Components are copied into your repo — the code is yours to edit. See the
 | `components/providers/` | Theme + direction + toast providers |
 | `app/design-library/` | The documentation site |
 | `public/r/` | Generated registry items (`npm run registry`) |
-| `packages/cli/` | The `@oratiq/ui` CLI |
+| `packages/cli/` | The `@oratiq-js/ui` CLI |
 | `scripts/build-registry.mjs` | Generates the registry from source |
 
 ## Development

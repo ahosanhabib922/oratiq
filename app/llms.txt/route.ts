@@ -58,8 +58,8 @@ export function GET() {
     "## Install",
     "",
     "```",
-    "npx @oratiq/ui init",
-    "npx @oratiq/ui add button input field",
+    "npx @oratiq-js/ui init",
+    "npx @oratiq-js/ui add button input field",
     "```",
     "",
   );

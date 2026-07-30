@@ -55,7 +55,7 @@ export default async function ComponentPage({
             title="Installation"
             description="Copies the component — plus anything it depends on — into your project. The code is yours after this."
           >
-            <CommandBlock command={`npx @oratiq/ui add ${source.file}`} />
+            <CommandBlock command={`npx @oratiq-js/ui add ${source.file}`} />
             {source.dependencies.length > 0 && (
               <p className="mt-3 text-xs text-muted-foreground">
                 The CLI will ask you to install:{" "}

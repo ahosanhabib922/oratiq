@@ -107,7 +107,7 @@ function TypographyDocs() {
       <Section title="Inline and block">
         <Preview align="stretch">
           <Text>
-            Install with <Code>npm i @oratiq/ui</Code>, then read the{" "}
+            Install with <Code>npm i @oratiq-js/ui</Code>, then read the{" "}
             <TextLink href="#">theming guide</TextLink>.
           </Text>
           <Blockquote>

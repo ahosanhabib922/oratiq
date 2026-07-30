@@ -1,4 +1,4 @@
-# @oratiq/ui
+# @oratiq-js/ui
 
 CLI for [Oratiq](https://ui.oratiq.com) — an RTL-first, token-driven component
 registry for Next.js, React 19, and Tailwind CSS v4.
@@ -11,16 +11,16 @@ re-add reviewed through `git diff` — never a silent version bump.
 
 ```bash
 # create components.json and the token layer
-npx @oratiq/ui init
+npx @oratiq-js/ui init
 
 # copy components (transitive dependencies resolve automatically)
-npx @oratiq/ui add button input field
+npx @oratiq-js/ui add button input field
 
 # everything
-npx @oratiq/ui add --all
+npx @oratiq-js/ui add --all
 
 # what's available
-npx @oratiq/ui list
+npx @oratiq-js/ui list
 ```
 
 `add` skips files that already exist so your edits are never clobbered;
