@@ -41,10 +41,12 @@ export default function InstallationPage() {
       >
         <CommandBlock command="npx @oratiq-js/ui init" />
         <Text size="sm" tone="muted" className="mt-3">
-          Accept the defaults with Enter, or run non-interactively with{" "}
-          <Code>init -y</Code>. If your Tailwind CSS file already exists, the
-          token layer is written next to it as <Code>oratiq-theme.css</Code> for
-          you to merge — nothing of yours is overwritten.
+          No questions asked — the CLI detects your layout (<Code>src/</Code> or
+          root) and prints what it chose; override with <Code>--ui</Code>,{" "}
+          <Code>--lib</Code>, <Code>--css</Code>. If your Tailwind CSS file
+          already exists, the token layer is written next to it as{" "}
+          <Code>oratiq-theme.css</Code> for you to merge — nothing of yours is
+          overwritten.
         </Text>
       </Section>
 

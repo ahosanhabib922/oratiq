@@ -1,6 +1,6 @@
 {
   "name": "@oratiq-js/ui",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "CLI for Oratiq — an RTL-first, token-driven component registry for Next.js and Tailwind CSS.",
   "type": "module",
   "bin": {

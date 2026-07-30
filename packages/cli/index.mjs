@@ -14,7 +14,6 @@
 
 import { readFile, writeFile, mkdir, access } from "node:fs/promises";
 import { existsSync } from "node:fs";
-import { createInterface } from "node:readline/promises";
 import path from "node:path";
 import process from "node:process";
 
@@ -117,26 +116,29 @@ function targetPath(config, file) {
 }
 
 async function commandInit(flags) {
-  let uiDir = flags.ui ?? "components/ui";
-  let libDir = flags.lib ?? "lib";
-  let registry = flags.registry ?? DEFAULT_REGISTRY;
-  let cssPath = flags.css ?? "app/globals.css";
+  // Zero questions. The project layout is detectable, and a prompt is just an
+  // opportunity to typo it — flags override when detection is wrong.
+  const hasSrc = existsSync("src");
 
-  // `-y` (or any explicit flag) skips the prompts — required for CI and
-  // agent-driven setups, where there is no TTY to answer questions.
-  if (!flags.yes) {
-    const rl = createInterface({ input: process.stdin, output: process.stdout });
-    uiDir =
-      (await rl.question(`Components directory ${c.dim(`(${uiDir})`)}: `)) ||
-      uiDir;
-    libDir = (await rl.question(`Utils directory ${c.dim(`(${libDir})`)}: `)) || libDir;
-    registry =
-      (await rl.question(`Registry URL ${c.dim(`(${registry})`)}: `)) || registry;
-    cssPath =
-      (await rl.question(`Tailwind CSS file ${c.dim(`(${cssPath})`)}: `)) ||
-      cssPath;
-    rl.close();
-  }
+  const uiDir = flags.ui ?? (hasSrc ? "src/components/ui" : "components/ui");
+  const libDir = flags.lib ?? (hasSrc ? "src/lib" : "lib");
+  const registry = flags.registry ?? DEFAULT_REGISTRY;
+
+  const cssCandidates = [
+    "app/globals.css",
+    "src/app/globals.css",
+    "styles/globals.css",
+    "src/styles/globals.css",
+  ];
+  const cssPath =
+    flags.css ??
+    cssCandidates.find((p) => existsSync(p)) ??
+    (hasSrc ? "src/app/globals.css" : "app/globals.css");
+
+  console.log(c.dim("Detected layout:"));
+  console.log(c.dim(`  components → ${uiDir}`));
+  console.log(c.dim(`  utils      → ${libDir}`));
+  console.log(c.dim(`  css        → ${cssPath}`));
 
   const config = {
     $schema: "https://ui.oratiq.com/schema.json",
@@ -258,7 +260,6 @@ ${c.bold("oratiq")} — RTL-first component registry
 
 Flags:
   --overwrite            Replace files that already exist
-  -y, --yes              init: accept defaults, no prompts
   --registry <url>       init: registry URL
   --css <path>           init: Tailwind CSS file
   --ui <dir>             init: components directory
