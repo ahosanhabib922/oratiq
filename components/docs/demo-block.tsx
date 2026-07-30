@@ -41,7 +41,7 @@ export function DemoBlock({ name, align = "center", className }: DemoBlockProps)
     <div className={cn("overflow-hidden rounded-xl border border-border", className)}>
       <div
         className={cn(
-          "flex min-h-32 gap-4 p-8",
+          "flex min-h-32 gap-4 p-4 sm:p-8",
           align === "center" && "flex-wrap items-center justify-center",
           align === "stretch" && "flex-col items-stretch",
         )}

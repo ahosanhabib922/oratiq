@@ -49,8 +49,7 @@ function MirrorCard({ dir, label }: { dir: "ltr" | "rtl"; label: string }) {
             Same code. Zero changes.
           </Bubble>
         </BubbleGroup>
-        <div className="flex gap-2">
-          <Input size="sm" placeholder="you@example.com" />
+        <div className="hidden gap-2 sm:flex">          <Input size="sm" placeholder="you@example.com" />
           <Button size="sm">Send</Button>
         </div>
       </Card>
@@ -83,7 +82,7 @@ export default function HomePage() {
     <div className="min-h-screen overflow-x-clip bg-background text-foreground">
       {/* ── Nav ─────────────────────────────────────────────────────────── */}
       <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur-md">
-        <div className="mx-auto flex h-16 max-w-6xl items-center gap-4 px-6">
+        <div className="mx-auto flex h-16 max-w-6xl items-center gap-3 px-4 sm:px-6">
           <a href="/" className="flex items-center gap-2.5">
             <span className="flex size-8 items-center justify-center rounded-lg bg-primary text-sm font-bold text-primary-foreground">
               O

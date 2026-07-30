@@ -105,7 +105,7 @@ export function InputOTP({
       dir="ltr"
       role="group"
       aria-label={label}
-      className={cn("flex items-center gap-2", className)}
+      className={cn("flex items-center gap-1.5 sm:gap-2", className)}
     >
       {Array.from({ length }).map((_, i) => (
         <React.Fragment key={i}>
@@ -129,8 +129,8 @@ export function InputOTP({
             onKeyDown={(e) => handleKeyDown(i, e)}
             onFocus={(e) => e.target.select()}
             className={cn(
-              "size-12 rounded-lg border border-input bg-transparent text-center",
-              "text-lg font-medium tnum text-foreground",
+              "size-10 rounded-lg border border-input bg-transparent text-center sm:size-12",
+              "text-base font-medium tnum text-foreground sm:text-lg",
               "transition-[color,box-shadow,border-color] duration-150 ease-out-quart",
               "outline-none focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/30",
               "disabled:cursor-not-allowed disabled:opacity-50",

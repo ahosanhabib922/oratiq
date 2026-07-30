@@ -20,7 +20,7 @@ export function DocsPage({
   children: React.ReactNode;
 }) {
   return (
-    <article className="mx-auto w-full max-w-4xl px-6 py-12 lg:px-10">
+    <article className="mx-auto w-full max-w-4xl px-4 py-10 sm:px-6 lg:px-10">
       <header className="mb-12">
         <div className="mb-3 flex flex-wrap items-center gap-2">
           <h1 className="text-4xl font-semibold tracking-tight">{title}</h1>
@@ -100,7 +100,7 @@ export function Preview({
   return (
     <div
       className={cn(
-        "flex min-h-32 gap-4 rounded-xl border border-border p-8",
+        "flex min-h-32 gap-4 rounded-xl border border-border p-4 sm:p-8",
         // `flex-wrap` must not combine with `flex-col`: column wrapping turns
         // the container's min-height into a wrap constraint and children stop
         // contributing intrinsic height — they overflow the box invisibly.
@@ -140,7 +140,7 @@ export function Specimens({
   return (
     <div className={cn("grid gap-px overflow-hidden rounded-xl border border-border bg-border", cols, className)}>
       {items.map((item) => (
-        <div key={item.label} className="flex flex-col gap-3 bg-background p-5">
+        <div key={item.label} className="flex flex-col gap-3 bg-background p-4 sm:p-5">
           <div className="flex min-h-16 flex-wrap items-center gap-3">
             {item.node}
           </div>
