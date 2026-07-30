@@ -1,11 +1,14 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import { existsSync } from "node:fs";
+import path from "node:path";
 
 import { ALL_ITEMS, getItem } from "@/lib/registry";
 import { getComponentSource } from "@/lib/component-source";
 import { DocsPage, Section } from "@/components/docs/docs-primitives";
 import { CodeBlock, CommandBlock } from "@/components/docs/code-block";
 import { ComponentDocBody } from "@/components/docs/component-doc-body";
+import { DemoBlock } from "@/components/docs/demo-block";
 
 export function generateStaticParams() {
   return ALL_ITEMS.map((item) => ({ slug: item.slug }));
@@ -42,6 +45,13 @@ export default async function ComponentPage({
 
   const source = await getComponentSource(slug);
 
+  // Convention: a demo named `<file>-demo.tsx` becomes the page's hero
+  // preview, with the shadcn-style Code toggle underneath.
+  const heroDemo = source && `${source.file}-demo`;
+  const hasHeroDemo =
+    heroDemo &&
+    existsSync(path.join(process.cwd(), "components", "demos", `${heroDemo}.tsx`));
+
   return (
     <DocsPage
       title={item.name}
@@ -49,6 +59,8 @@ export default async function ComponentPage({
       status={item.status}
       dependencies={item.dependencies}
     >
+      {hasHeroDemo && <DemoBlock name={heroDemo} />}
+
       {source && (
         <>
           <Section

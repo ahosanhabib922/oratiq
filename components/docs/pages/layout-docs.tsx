@@ -10,7 +10,6 @@ import {
   PropsTable,
   Section,
 } from "@/components/docs/docs-primitives";
-import { DemoBlock } from "@/components/docs/demo-block";
 import {
   Accordion,
   AccordionContent,
@@ -86,10 +85,6 @@ import { Text } from "@/components/ui/typography";
 function AccordionDocs() {
   return (
     <>
-      <Section title="Default">
-        <DemoBlock name="accordion-demo" align="stretch" />
-      </Section>
-
       <Section title="Single and multiple">
         <Preview align="stretch">
           <Accordion type="single" collapsible className="w-full">
