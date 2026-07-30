@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "careers-section",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "lucide-react",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "badge"
+  ],
+  "files": [
+    {
+      "path": "components/blocks/careers-section.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/careers-section.tsx",
+      "content": "import { ArrowRight, MapPin } from \"lucide-react\";\nimport { Badge } from \"@/components/ui/badge\";\n\nconst ROLES = [\n  { title: \"Senior Frontend Engineer\", team: \"Engineering\", location: \"Remote\", type: \"Full-time\" },\n  { title: \"Product Designer\", team: \"Design\", location: \"Dhaka / Remote\", type: \"Full-time\" },\n  { title: \"Developer Advocate\", team: \"Community\", location: \"Remote\", type: \"Contract\" },\n];\n\n/** Open-roles list with team/location metadata. */\nexport function CareersSection() {\n  return (\n    <section className=\"mx-auto max-w-3xl px-4 py-16 sm:px-6\">\n      <ul className=\"divide-y divide-border rounded-xl border border-border\">\n        {ROLES.map((role) => (\n          <li key={role.title}>\n            <a\n              href=\"#\"\n              className=\"group flex flex-wrap items-center gap-x-4 gap-y-2 p-5 transition-colors hover:bg-accent/50 focus-visible:ring-2 focus-visible:ring-ring outline-none\"\n            >\n              <span className=\"min-w-0 flex-1\">\n                <span className=\"block truncate text-base font-medium group-hover:underline group-hover:underline-offset-4\">\n                  {role.title}\n                </span>\n                <span className=\"mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-muted-foreground\">\n                  <Badge variant=\"muted\" size=\"sm\">{role.team}</Badge>\n                  <span className=\"inline-flex items-center gap-1\">\n                    <MapPin className=\"size-3.5\" />\n                    {role.location}\n                  </span>\n                  <span>{role.type}</span>\n                </span>\n              </span>\n              <ArrowRight className=\"size-4 shrink-0 text-muted-foreground rtl-flip transition-transform group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5\" />\n            </a>\n          </li>\n        ))}\n      </ul>\n    </section>\n  );\n}\n"
+    }
+  ]
+}

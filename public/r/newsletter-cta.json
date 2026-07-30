@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "newsletter-cta",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "button",
+    "input"
+  ],
+  "files": [
+    {
+      "path": "components/blocks/newsletter-cta.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/newsletter-cta.tsx",
+      "content": "import { Button } from \"@/components/ui/button\";\nimport { Input } from \"@/components/ui/input\";\n\n/** Email-capture band. Wire the form action to your ESP. */\nexport function NewsletterCta() {\n  return (\n    <section className=\"border-y border-border bg-card/40\">\n      <div className=\"mx-auto flex max-w-4xl flex-col items-center gap-6 px-4 py-14 text-center sm:px-6\">\n        <div>\n          <h2 className=\"text-2xl font-semibold tracking-tight\">\n            Ship notes, monthly\n          </h2>\n          <p className=\"mt-2 text-sm text-muted-foreground\">\n            New blocks, new components, no noise. Unsubscribe anytime.\n          </p>\n        </div>\n        <form className=\"flex w-full max-w-md gap-2\" action=\"#\">\n          <Input\n            type=\"email\"\n            required\n            placeholder=\"you@example.com\"\n            aria-label=\"Email address\"\n          />\n          <Button type=\"submit\" className=\"shrink-0\">\n            Subscribe\n          </Button>\n        </form>\n      </div>\n    </section>\n  );\n}\n"
+    }
+  ]
+}

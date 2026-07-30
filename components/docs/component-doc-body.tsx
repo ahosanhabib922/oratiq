@@ -9,6 +9,7 @@ import { OVERLAY_DOCS } from "./pages/overlay-docs";
 import { LAYOUT_DOCS } from "./pages/layout-docs";
 import { DATA_DOCS } from "./pages/data-docs";
 import { PATTERN_DOCS } from "./pages/pattern-docs";
+import { BLOCK_DOCS } from "./pages/block-docs";
 import {
   Empty,
   EmptyDescription,
@@ -23,6 +24,7 @@ const DOCS: Record<string, () => React.JSX.Element> = {
   ...LAYOUT_DOCS,
   ...DATA_DOCS,
   ...PATTERN_DOCS,
+  ...BLOCK_DOCS,
 };
 
 export function ComponentDocBody({ slug }: { slug: string }) {

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "social-proof",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/blocks/social-proof.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/social-proof.tsx",
+      "content": "/** Logo cloud. Wordmarks are placeholders — swap for real client SVGs. */\nexport function SocialProof() {\n  const brands = [\"Acme Corp\", \"Northwind\", \"Globex\", \"Initech\", \"Umbra\", \"Vertex\"];\n  return (\n    <section className=\"mx-auto max-w-6xl px-4 py-14 sm:px-6\">\n      <p className=\"text-center text-sm text-muted-foreground\">\n        Trusted by teams shipping in every direction\n      </p>\n      <div className=\"mt-8 grid grid-cols-2 items-center gap-x-8 gap-y-6 sm:grid-cols-3 lg:grid-cols-6\">\n        {brands.map((brand) => (\n          <span\n            key={brand}\n            className=\"text-center text-lg font-semibold tracking-tight text-muted-foreground/60 transition-colors hover:text-muted-foreground\"\n          >\n            {brand}\n          </span>\n        ))}\n      </div>\n    </section>\n  );\n}\n"
+    }
+  ]
+}

@@ -8,6 +8,8 @@ const FILE_OVERRIDES: Record<string, string> = {
 
 export interface ComponentSource {
   file: string;
+  /** Where the source lives — ui components or composed blocks. */
+  dir: "ui" | "blocks";
   source: string;
   /** Value exports, in declaration order — what a consumer can import. */
   exports: string[];
@@ -50,15 +52,21 @@ export async function getComponentSource(
 ): Promise<ComponentSource | null> {
   const file = FILE_OVERRIDES[slug] ?? slug;
 
-  let source: string;
-  try {
-    source = await readFile(
-      path.join(process.cwd(), "components", "ui", `${file}.tsx`),
-      "utf8",
-    );
-  } catch {
-    return null;
+  let source: string | null = null;
+  let dir: "ui" | "blocks" = "ui";
+  for (const candidate of ["ui", "blocks"] as const) {
+    try {
+      source = await readFile(
+        path.join(process.cwd(), "components", candidate, `${file}.tsx`),
+        "utf8",
+      );
+      dir = candidate;
+      break;
+    } catch {
+      /* try the next location */
+    }
   }
+  if (source === null) return null;
 
   let dependencies: string[] = [];
   try {
@@ -73,5 +81,5 @@ export async function getComponentSource(
     // Registry not generated — the install command still works without it.
   }
 
-  return { file, source, exports: parseExports(source), dependencies };
+  return { file, dir, source, exports: parseExports(source), dependencies };
 }

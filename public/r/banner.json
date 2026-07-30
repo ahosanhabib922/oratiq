@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "banner",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "lucide-react",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/blocks/banner.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/banner.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { ArrowRight, X } from \"lucide-react\";\nimport { cn } from \"@/lib/utils\";\n\n/** Announcement bar for the very top of a page. Dismissible. */\nexport function Banner({\n  message = \"Oratiq Blocks is live — 17 sections, RTL-ready.\",\n  ctaLabel = \"See what's new\",\n  ctaHref = \"#\",\n  className,\n}: {\n  message?: string;\n  ctaLabel?: string;\n  ctaHref?: string;\n  className?: string;\n}) {\n  const [open, setOpen] = React.useState(true);\n  if (!open) return null;\n\n  return (\n    <div\n      className={cn(\n        \"relative flex flex-wrap items-center justify-center gap-x-3 gap-y-1\",\n        \"bg-primary px-10 py-2.5 text-center text-sm text-primary-foreground\",\n        className,\n      )}\n    >\n      <p className=\"font-medium\">{message}</p>\n      <a\n        href={ctaHref}\n        className=\"inline-flex items-center gap-1 font-semibold underline underline-offset-4 hover:no-underline\"\n      >\n        {ctaLabel}\n        <ArrowRight className=\"size-3.5 rtl-flip\" />\n      </a>\n      <button\n        type=\"button\"\n        aria-label=\"Dismiss\"\n        onClick={() => setOpen(false)}\n        className=\"absolute end-2 top-1/2 inline-flex size-7 -translate-y-1/2 items-center justify-center rounded-md transition-colors hover:bg-primary-foreground/10 outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground\"\n      >\n        <X className=\"size-4\" />\n      </button>\n    </div>\n  );\n}\n"
+    }
+  ]
+}

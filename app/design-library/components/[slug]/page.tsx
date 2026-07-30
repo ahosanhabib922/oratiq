@@ -26,12 +26,12 @@ export async function generateMetadata({
   return { title: item.name, description: item.description };
 }
 
-function usageSnippet(file: string, exports: string[]) {
+function usageSnippet(file: string, dir: string, exports: string[]) {
   // The import line is the part people actually copy. Cap the list so a
   // component with twenty exports still produces a readable snippet.
   const shown = exports.slice(0, 6);
   const suffix = exports.length > shown.length ? ", /* … */" : "";
-  return `import { ${shown.join(", ")}${suffix} } from "@/components/ui/${file}";`;
+  return `import { ${shown.join(", ")}${suffix} } from "@/components/${dir}/${file}";`;
 }
 
 export default async function ComponentPage({
@@ -60,7 +60,7 @@ export default async function ComponentPage({
       status={item.status}
       dependencies={item.dependencies}
     >
-      {hasHeroDemo && <DemoBlock name={heroDemo} />}
+      {hasHeroDemo && <DemoBlock name={heroDemo} align={source?.dir === "blocks" ? "stretch" : "center"} />}
 
       {source && (
         <>
@@ -72,7 +72,7 @@ export default async function ComponentPage({
             <Section title="Usage">
               <CodeBlock
                 label={`import`}
-                code={usageSnippet(source.file, source.exports)}
+                code={usageSnippet(source.file, source.dir, source.exports)}
               />
             </Section>
           )}
@@ -84,7 +84,7 @@ export default async function ComponentPage({
       {source && (
         <p className="border-t border-border pt-6 text-sm text-muted-foreground">
           <a
-            href={`https://github.com/ahosanhabib922/oratiq/blob/main/components/ui/${source.file}.tsx`}
+            href={`https://github.com/ahosanhabib922/oratiq/blob/main/components/${source.dir}/${source.file}.tsx`}
             target="_blank"
             rel="noreferrer"
             className="font-medium text-foreground underline underline-offset-4 hover:text-primary"
@@ -92,7 +92,7 @@ export default async function ComponentPage({
             View source on GitHub →
           </a>{" "}
           <span dir="ltr" className="font-mono text-xs">
-            components/ui/{source.file}.tsx
+            components/{source.dir}/{source.file}.tsx
           </span>
         </p>
       )}

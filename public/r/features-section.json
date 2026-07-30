@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "features-section",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "lucide-react",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "featured-icon"
+  ],
+  "files": [
+    {
+      "path": "components/blocks/features-section.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/features-section.tsx",
+      "content": "import { Globe2, Palette, ShieldCheck, Sparkles, Wand2, Zap } from \"lucide-react\";\nimport { FeaturedIcon } from \"@/components/ui/featured-icon\";\n\nconst FEATURES = [\n  { icon: <Globe2 />, title: \"RTL-first\", body: \"Logical properties end to end — layouts mirror with zero extra work.\" },\n  { icon: <Palette />, title: \"Token-driven\", body: \"Re-brand every section with one CSS override.\" },\n  { icon: <Zap />, title: \"Fast by default\", body: \"Static-friendly sections with no client JS unless needed.\" },\n  { icon: <ShieldCheck />, title: \"Accessible\", body: \"Landmarks, labels, and contrast handled for you.\" },\n  { icon: <Sparkles />, title: \"Dark mode\", body: \"Every section reads the theme — nothing to wire.\" },\n  { icon: <Wand2 />, title: \"Composable\", body: \"Built from Oratiq primitives you already own.\" },\n];\n\n/** Three-across feature grid with featured icons. */\nexport function FeaturesSection() {\n  return (\n    <section className=\"mx-auto max-w-6xl px-4 py-16 sm:px-6\">\n      <div className=\"grid gap-8 sm:grid-cols-2 lg:grid-cols-3\">\n        {FEATURES.map((feature) => (\n          <div key={feature.title} className=\"flex flex-col gap-3\">\n            <FeaturedIcon variant=\"light\">{feature.icon}</FeaturedIcon>\n            <h3 className=\"text-base font-medium\">{feature.title}</h3>\n            <p className=\"text-sm text-muted-foreground\">{feature.body}</p>\n          </div>\n        ))}\n      </div>\n    </section>\n  );\n}\n"
+    }
+  ]
+}

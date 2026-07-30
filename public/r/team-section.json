@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "team-section",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "avatar"
+  ],
+  "files": [
+    {
+      "path": "components/blocks/team-section.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/team-section.tsx",
+      "content": "import { Avatar, AvatarFallback } from \"@/components/ui/avatar\";\n\nconst PEOPLE = [\n  { name: \"Ahosan Habib\", role: \"Founder\", initials: \"AH\" },\n  { name: \"Layla Haddad\", role: \"Design\", initials: \"LH\" },\n  { name: \"Tomás Rivera\", role: \"Engineering\", initials: \"TR\" },\n  { name: \"Amina Chowdhury\", role: \"Developer relations\", initials: \"AC\" },\n];\n\n/** People grid with avatars. */\nexport function TeamSection() {\n  return (\n    <section className=\"mx-auto max-w-5xl px-4 py-16 sm:px-6\">\n      <div className=\"grid grid-cols-2 gap-8 sm:grid-cols-4\">\n        {PEOPLE.map((person) => (\n          <figure key={person.name} className=\"flex flex-col items-center gap-3 text-center\">\n            <Avatar size=\"xl\">\n              <AvatarFallback>{person.initials}</AvatarFallback>\n            </Avatar>\n            <figcaption>\n              <p className=\"text-sm font-medium\">{person.name}</p>\n              <p className=\"text-xs text-muted-foreground\">{person.role}</p>\n            </figcaption>\n          </figure>\n        ))}\n      </div>\n    </section>\n  );\n}\n"
+    }
+  ]
+}

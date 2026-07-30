@@ -108,6 +108,33 @@
       ]
     },
     {
+      "name": "banner",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "lucide-react",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "utils"
+      ]
+    },
+    {
+      "name": "blog-section",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "lucide-react",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "badge",
+        "card"
+      ]
+    },
+    {
       "name": "breadcrumb",
       "type": "registry:ui",
       "dependencies": [
@@ -185,6 +212,19 @@
       ],
       "registryDependencies": [
         "utils"
+      ]
+    },
+    {
+      "name": "careers-section",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "lucide-react",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "badge"
       ]
     },
     {
@@ -304,6 +344,23 @@
       ]
     },
     {
+      "name": "contact-section",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "lucide-react",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "button",
+        "featured-icon",
+        "field",
+        "input",
+        "textarea"
+      ]
+    },
+    {
       "name": "context-menu",
       "type": "registry:ui",
       "dependencies": [
@@ -316,6 +373,19 @@
       "registryDependencies": [
         "menu-styles",
         "utils"
+      ]
+    },
+    {
+      "name": "cta-section",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "lucide-react",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "button"
       ]
     },
     {
@@ -410,6 +480,18 @@
       ]
     },
     {
+      "name": "faq-section",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "accordion"
+      ]
+    },
+    {
       "name": "featured-icon",
       "type": "registry:ui",
       "dependencies": [
@@ -419,6 +501,19 @@
       ],
       "registryDependencies": [
         "utils"
+      ]
+    },
+    {
+      "name": "features-section",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "lucide-react",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "featured-icon"
       ]
     },
     {
@@ -459,6 +554,58 @@
       ],
       "registryDependencies": [
         "utils"
+      ]
+    },
+    {
+      "name": "footer",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "separator"
+      ]
+    },
+    {
+      "name": "header-navigation",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "lucide-react",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "button",
+        "utils"
+      ]
+    },
+    {
+      "name": "header-section",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "badge"
+      ]
+    },
+    {
+      "name": "hero-section",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "lucide-react",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "badge",
+        "button"
       ]
     },
     {
@@ -626,6 +773,16 @@
       ]
     },
     {
+      "name": "metrics-section",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "registryDependencies": []
+    },
+    {
       "name": "multi-select",
       "type": "registry:ui",
       "dependencies": [
@@ -666,6 +823,19 @@
       ],
       "registryDependencies": [
         "utils"
+      ]
+    },
+    {
+      "name": "newsletter-cta",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "button",
+        "input"
       ]
     },
     {
@@ -716,6 +886,24 @@
         "tailwind-merge"
       ],
       "registryDependencies": [
+        "utils"
+      ]
+    },
+    {
+      "name": "pricing-section",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "lucide-react",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "badge",
+        "button",
+        "card",
+        "label",
+        "switch",
         "utils"
       ]
     },
@@ -949,6 +1137,16 @@
       ]
     },
     {
+      "name": "social-proof",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "registryDependencies": []
+    },
+    {
       "name": "spinner",
       "type": "registry:ui",
       "dependencies": [
@@ -1009,6 +1207,32 @@
       ],
       "registryDependencies": [
         "utils"
+      ]
+    },
+    {
+      "name": "team-section",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "avatar"
+      ]
+    },
+    {
+      "name": "testimonial-section",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "avatar",
+        "card",
+        "rating"
       ]
     },
     {

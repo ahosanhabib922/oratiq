@@ -1,0 +1,27 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pricing-section",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "lucide-react",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "badge",
+    "button",
+    "card",
+    "label",
+    "switch",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/blocks/pricing-section.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/pricing-section.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { Check } from \"lucide-react\";\nimport { cn } from \"@/lib/utils\";\nimport { Badge } from \"@/components/ui/badge\";\nimport { Button } from \"@/components/ui/button\";\nimport { Card } from \"@/components/ui/card\";\nimport { Label } from \"@/components/ui/label\";\nimport { Switch } from \"@/components/ui/switch\";\n\nconst TIERS = [\n  {\n    name: \"Free\",\n    monthly: 0,\n    blurb: \"The full component library.\",\n    features: [\"81 components\", \"MIT license\", \"Community support\"],\n    cta: \"Start free\",\n    featured: false,\n  },\n  {\n    name: \"Pro\",\n    monthly: 29,\n    blurb: \"Everything, plus the blocks.\",\n    features: [\"All marketing sections\", \"App shells & dashboards\", \"Figma kit\", \"Priority support\"],\n    cta: \"Get Pro\",\n    featured: true,\n  },\n  {\n    name: \"Team\",\n    monthly: 79,\n    blurb: \"For product organisations.\",\n    features: [\"Everything in Pro\", \"Unlimited seats\", \"Private registry\", \"Invoice billing\"],\n    cta: \"Contact sales\",\n    featured: false,\n  },\n];\n\n/** Three tiers with a monthly/yearly toggle (yearly = 2 months free). */\nexport function PricingSection() {\n  const [yearly, setYearly] = React.useState(true);\n\n  return (\n    <section className=\"mx-auto max-w-6xl px-4 py-16 sm:px-6\">\n      <div className=\"flex items-center justify-center gap-3\">\n        <Label htmlFor=\"billing\">Monthly</Label>\n        <Switch\n          id=\"billing\"\n          checked={yearly}\n          onCheckedChange={setYearly}\n          aria-label=\"Bill yearly\"\n        />\n        <Label htmlFor=\"billing\" className=\"gap-2\">\n          Yearly\n          <Badge size=\"sm\" variant=\"success\">2 months free</Badge>\n        </Label>\n      </div>\n\n      <div className=\"mt-10 grid gap-5 md:grid-cols-3\">\n        {TIERS.map((tier) => {\n          const price = yearly ? Math.round((tier.monthly * 10) / 12) : tier.monthly;\n          return (\n            <Card\n              key={tier.name}\n              padding=\"default\"\n              className={cn(\"gap-5\", tier.featured && \"border-primary ring-1 ring-primary\")}\n            >\n              <div className=\"flex items-center justify-between\">\n                <h3 className=\"text-lg font-medium\">{tier.name}</h3>\n                {tier.featured && <Badge size=\"sm\">Popular</Badge>}\n              </div>\n              <div className=\"flex items-baseline gap-1\">\n                <span className=\"text-4xl font-semibold tracking-tight tnum\">\n                  ${price}\n                </span>\n                <span className=\"text-sm text-muted-foreground\">/mo</span>\n              </div>\n              <p className=\"text-sm text-muted-foreground\">{tier.blurb}</p>\n              <ul className=\"flex flex-1 flex-col gap-2.5\">\n                {tier.features.map((feature) => (\n                  <li key={feature} className=\"flex items-start gap-2 text-sm\">\n                    <Check className=\"mt-0.5 size-4 shrink-0 text-success\" strokeWidth={3} />\n                    {feature}\n                  </li>\n                ))}\n              </ul>\n              <Button fullWidth variant={tier.featured ? \"default\" : \"outline\"}>\n                {tier.cta}\n              </Button>\n            </Card>\n          );\n        })}\n      </div>\n    </section>\n  );\n}\n"
+    }
+  ]
+}

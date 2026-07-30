@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "footer",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "separator"
+  ],
+  "files": [
+    {
+      "path": "components/blocks/footer.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/footer.tsx",
+      "content": "import { Separator } from \"@/components/ui/separator\";\n\nconst COLUMNS = [\n  { heading: \"Product\", links: [\"Components\", \"Blocks\", \"Pricing\", \"Changelog\"] },\n  { heading: \"Resources\", links: [\"Documentation\", \"Theming\", \"RTL guide\", \"llms.txt\"] },\n  { heading: \"Company\", links: [\"About\", \"Blog\", \"Careers\", \"Contact\"] },\n  { heading: \"Legal\", links: [\"Privacy\", \"Terms\", \"License\"] },\n];\n\n/** Multi-column footer with brand row. */\nexport function Footer() {\n  return (\n    <footer className=\"border-t border-border\">\n      <div className=\"mx-auto max-w-6xl px-4 py-14 sm:px-6\">\n        <div className=\"grid gap-10 sm:grid-cols-2 lg:grid-cols-6\">\n          <div className=\"lg:col-span-2\">\n            <a href=\"#\" className=\"flex items-center gap-2.5\">\n              <span className=\"flex size-8 items-center justify-center rounded-lg bg-primary text-sm font-bold text-primary-foreground\">\n                O\n              </span>\n              <span className=\"text-lg font-semibold\">Oratiq</span>\n            </a>\n            <p className=\"mt-3 max-w-xs text-sm text-muted-foreground\">\n              The RTL-first design system for Next.js and Tailwind CSS.\n            </p>\n          </div>\n          {COLUMNS.map((column) => (\n            <nav key={column.heading} aria-label={column.heading}>\n              <p className=\"text-sm font-medium\">{column.heading}</p>\n              <ul className=\"mt-3 flex flex-col gap-2\">\n                {column.links.map((link) => (\n                  <li key={link}>\n                    <a\n                      href=\"#\"\n                      className=\"text-sm text-muted-foreground transition-colors hover:text-foreground\"\n                    >\n                      {link}\n                    </a>\n                  </li>\n                ))}\n              </ul>\n            </nav>\n          ))}\n        </div>\n        <Separator className=\"my-8\" />\n        <p className=\"text-sm text-muted-foreground\">\n          © 2026 Oratiq · MIT-licensed components, commercial blocks\n        </p>\n      </div>\n    </footer>\n  );\n}\n"
+    }
+  ]
+}

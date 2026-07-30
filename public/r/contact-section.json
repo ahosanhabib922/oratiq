@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "contact-section",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "lucide-react",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "button",
+    "featured-icon",
+    "field",
+    "input",
+    "textarea"
+  ],
+  "files": [
+    {
+      "path": "components/blocks/contact-section.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/contact-section.tsx",
+      "content": "import { Mail, MapPin, Phone } from \"lucide-react\";\nimport { Button } from \"@/components/ui/button\";\nimport { Field, FieldLabel } from \"@/components/ui/field\";\nimport { FeaturedIcon } from \"@/components/ui/featured-icon\";\nimport { Input } from \"@/components/ui/input\";\nimport { Textarea } from \"@/components/ui/textarea\";\n\n/** Contact info + form, two columns on desktop. */\nexport function ContactSection() {\n  return (\n    <section className=\"mx-auto grid max-w-5xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-2\">\n      <div className=\"flex flex-col gap-6\">\n        <div>\n          <h2 className=\"text-3xl font-semibold tracking-tight\">Talk to us</h2>\n          <p className=\"mt-2 text-muted-foreground\">\n            Questions about licensing, teams, or the roadmap — we answer within\n            one business day.\n          </p>\n        </div>\n        {[\n          { icon: <Mail />, label: \"Email\", value: <bdi dir=\"ltr\">hello@oratiq.com</bdi> },\n          { icon: <Phone />, label: \"Phone\", value: <bdi dir=\"ltr\">+880 1712 000000</bdi> },\n          { icon: <MapPin />, label: \"Office\", value: \"Dhaka, Bangladesh\" },\n        ].map((row) => (\n          <div key={row.label} className=\"flex items-center gap-3\">\n            <FeaturedIcon variant=\"light\" size=\"sm\">{row.icon}</FeaturedIcon>\n            <div>\n              <p className=\"text-xs text-muted-foreground\">{row.label}</p>\n              <p className=\"text-sm font-medium\">{row.value}</p>\n            </div>\n          </div>\n        ))}\n      </div>\n\n      <form className=\"flex flex-col gap-4\" action=\"#\">\n        <div className=\"grid gap-4 sm:grid-cols-2\">\n          <Field>\n            <FieldLabel required>Name</FieldLabel>\n            <Input required autoComplete=\"name\" />\n          </Field>\n          <Field>\n            <FieldLabel required>Email</FieldLabel>\n            <Input type=\"email\" required autoComplete=\"email\" />\n          </Field>\n        </div>\n        <Field>\n          <FieldLabel required>Message</FieldLabel>\n          <Textarea required rows={5} placeholder=\"How can we help?\" />\n        </Field>\n        <Button type=\"submit\" size=\"lg\" className=\"self-start\">\n          Send message\n        </Button>\n      </form>\n    </section>\n  );\n}\n"
+    }
+  ]
+}

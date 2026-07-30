@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "testimonial-section",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "avatar",
+    "card",
+    "rating"
+  ],
+  "files": [
+    {
+      "path": "components/blocks/testimonial-section.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/testimonial-section.tsx",
+      "content": "import { Avatar, AvatarFallback } from \"@/components/ui/avatar\";\nimport { Card } from \"@/components/ui/card\";\nimport { Rating } from \"@/components/ui/rating\";\n\nconst QUOTES = [\n  {\n    quote:\n      \"We shipped our Arabic locale in a day. The layout just… mirrored. I kept looking for the catch.\",\n    name: \"Layla Haddad\",\n    role: \"Frontend lead, Vertex\",\n    initials: \"LH\",\n  },\n  {\n    quote:\n      \"The first component library where dark mode and RTL aren't afterthoughts. Our design team finally stopped filing bugs.\",\n    name: \"Tomás Rivera\",\n    role: \"CTO, Northwind\",\n    initials: \"TR\",\n  },\n  {\n    quote:\n      \"Copy-in blocks meant our brand tokens applied everywhere instantly. Rebrand took an afternoon.\",\n    name: \"Amina Chowdhury\",\n    role: \"Design systems, Globex\",\n    initials: \"AC\",\n  },\n];\n\n/** Three-up testimonial cards with ratings. */\nexport function TestimonialSection() {\n  return (\n    <section className=\"mx-auto max-w-6xl px-4 py-16 sm:px-6\">\n      <div className=\"grid gap-5 md:grid-cols-3\">\n        {QUOTES.map((t) => (\n          <Card key={t.name} padding=\"default\" className=\"gap-4\">\n            <Rating value={5} readOnly size=\"sm\" label={`${t.name} rated 5 of 5`} />\n            <blockquote dir=\"auto\" className=\"flex-1 text-sm leading-relaxed text-foreground\">\n              “{t.quote}”\n            </blockquote>\n            <figcaption className=\"flex items-center gap-3\">\n              <Avatar size=\"sm\">\n                <AvatarFallback>{t.initials}</AvatarFallback>\n              </Avatar>\n              <span className=\"min-w-0\">\n                <span className=\"block truncate text-sm font-medium\">{t.name}</span>\n                <span className=\"block truncate text-xs text-muted-foreground\">{t.role}</span>\n              </span>\n            </figcaption>\n          </Card>\n        ))}\n      </div>\n    </section>\n  );\n}\n"
+    }
+  ]
+}

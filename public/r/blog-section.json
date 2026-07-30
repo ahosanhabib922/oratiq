@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "blog-section",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "lucide-react",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "badge",
+    "card"
+  ],
+  "files": [
+    {
+      "path": "components/blocks/blog-section.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/blog-section.tsx",
+      "content": "import { ArrowRight } from \"lucide-react\";\nimport { Badge } from \"@/components/ui/badge\";\nimport { Card, CardContent } from \"@/components/ui/card\";\n\nconst POSTS = [\n  { tag: \"Engineering\", title: \"How Oratiq mirrors a whole page with zero conditionals\", minutes: 7 },\n  { tag: \"Design\", title: \"Designing one system for two reading directions\", minutes: 5 },\n  { tag: \"Release\", title: \"81 components: the registry is complete\", minutes: 3 },\n];\n\n/** Blog teaser grid with gradient thumbnails (swap for real covers). */\nexport function BlogSection() {\n  return (\n    <section className=\"mx-auto max-w-6xl px-4 py-16 sm:px-6\">\n      <div className=\"grid gap-5 md:grid-cols-3\">\n        {POSTS.map((post, i) => (\n          <a key={post.title} href=\"#\" className=\"group rounded-xl outline-none focus-visible:ring-2 focus-visible:ring-ring\">\n            <Card padding=\"none\" className=\"h-full gap-0 overflow-hidden\">\n              <div\n                aria-hidden=\"true\"\n                className=\"aspect-video w-full\"\n                style={{\n                  background: `linear-gradient(135deg, color-mix(in oklab, var(--color-primary) ${25 + i * 20}%, var(--color-muted)), var(--color-card))`,\n                }}\n              />\n              <CardContent className=\"flex flex-col gap-2 p-5\">\n                <Badge variant=\"muted\" size=\"sm\" className=\"w-fit\">{post.tag}</Badge>\n                <h3 className=\"text-base font-medium leading-snug group-hover:underline group-hover:underline-offset-4\">\n                  {post.title}\n                </h3>\n                <span className=\"mt-auto inline-flex items-center gap-1 text-sm text-muted-foreground\">\n                  {post.minutes} min read\n                  <ArrowRight className=\"size-3.5 rtl-flip transition-transform group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5\" />\n                </span>\n              </CardContent>\n            </Card>\n          </a>\n        ))}\n      </div>\n    </section>\n  );\n}\n"
+    }
+  ]
+}

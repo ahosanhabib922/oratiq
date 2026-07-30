@@ -70,41 +70,55 @@ async function main() {
   await rm(OUT_DIR, { recursive: true, force: true });
   await mkdir(OUT_DIR, { recursive: true });
 
-  const files = (await readdir(UI_DIR)).filter(
-    (f) => f.endsWith(".tsx") || f.endsWith(".ts"),
-  );
-
   const items = [];
 
-  for (const file of files) {
-    const name = path.basename(file).replace(/\.tsx?$/, "");
-    const source = await readFile(path.join(UI_DIR, file), "utf8");
-    const { npm, internal } = parseImports(source);
+  // Two scanned source sets: primitives and composed blocks. Same pipeline,
+  // different target directory and registry type.
+  const SETS = [
+    { dir: UI_DIR, rel: "components/ui", type: "registry:ui" },
+    {
+      dir: path.join(ROOT, "components", "blocks"),
+      rel: "components/blocks",
+      type: "registry:block",
+    },
+  ];
 
-    const registryDependencies = internal.filter((d) => d !== name);
-    const dependencies = [...new Set([...BASE_DEPENDENCIES, ...npm])].sort();
-
-    const item = {
-      $schema: "https://ui.shadcn.com/schema/registry-item.json",
-      name,
-      type: "registry:ui",
-      dependencies,
-      registryDependencies: registryDependencies.sort(),
-      files: [
-        {
-          path: `components/ui/${file}`,
-          type: "registry:ui",
-          target: `components/ui/${file}`,
-          content: source,
-        },
-      ],
-    };
-
-    await writeFile(
-      path.join(OUT_DIR, `${name}.json`),
-      JSON.stringify(item, null, 2) + "\n",
+  for (const set of SETS) {
+    if (!existsSync(set.dir)) continue;
+    const files = (await readdir(set.dir)).filter(
+      (f) => f.endsWith(".tsx") || f.endsWith(".ts"),
     );
-    items.push({ name, dependencies, registryDependencies });
+
+    for (const file of files) {
+      const name = path.basename(file).replace(/\.tsx?$/, "");
+      const source = await readFile(path.join(set.dir, file), "utf8");
+      const { npm, internal } = parseImports(source);
+
+      const registryDependencies = internal.filter((d) => d !== name);
+      const dependencies = [...new Set([...BASE_DEPENDENCIES, ...npm])].sort();
+
+      const item = {
+        $schema: "https://ui.shadcn.com/schema/registry-item.json",
+        name,
+        type: set.type,
+        dependencies,
+        registryDependencies: registryDependencies.sort(),
+        files: [
+          {
+            path: `${set.rel}/${file}`,
+            type: set.type,
+            target: `${set.rel}/${file}`,
+            content: source,
+          },
+        ],
+      };
+
+      await writeFile(
+        path.join(OUT_DIR, `${name}.json`),
+        JSON.stringify(item, null, 2) + "\n",
+      );
+      items.push({ name, dependencies, registryDependencies });
+    }
   }
 
   // Shared, non-component files ship as their own items so `add` can pull

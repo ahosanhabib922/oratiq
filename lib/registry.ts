@@ -154,6 +154,28 @@ export const GROUPS: RegistryGroup[] = [
       { slug: "message-scroller", name: "Message Scroller", description: "Virtualised, stick-to-bottom message list.", status: "ready" },
     ],
   },
+  {
+    name: "Marketing blocks",
+    items: [
+      { slug: "banner", name: "Banner", description: "Dismissible announcement bar.", status: "ready" },
+      { slug: "header-navigation", name: "Header Navigation", description: "Marketing navbar with mobile menu.", status: "ready" },
+      { slug: "hero-section", name: "Hero Section", description: "Headline, sub, and CTA pair.", status: "ready" },
+      { slug: "header-section", name: "Header Section", description: "Centred intro for a page or section.", status: "ready" },
+      { slug: "features-section", name: "Features Section", description: "Feature grid with featured icons.", status: "ready" },
+      { slug: "metrics-section", name: "Metrics Section", description: "Big-number stats band.", status: "ready" },
+      { slug: "social-proof", name: "Social Proof", description: "Logo cloud.", status: "ready" },
+      { slug: "testimonial-section", name: "Testimonial Section", description: "Quote cards with ratings.", status: "ready" },
+      { slug: "pricing-section", name: "Pricing Section", description: "Tiers with a billing toggle.", status: "ready" },
+      { slug: "faq-section", name: "FAQ Section", description: "Accordion of common questions.", status: "ready" },
+      { slug: "cta-section", name: "CTA Section", description: "Full-bleed call to action.", status: "ready" },
+      { slug: "newsletter-cta", name: "Newsletter CTA", description: "Email-capture band.", status: "ready" },
+      { slug: "blog-section", name: "Blog Section", description: "Post teaser cards.", status: "ready" },
+      { slug: "team-section", name: "Team Section", description: "People grid with avatars.", status: "ready" },
+      { slug: "careers-section", name: "Careers Section", description: "Open-roles list.", status: "ready" },
+      { slug: "contact-section", name: "Contact Section", description: "Info column and message form.", status: "ready" },
+      { slug: "footer", name: "Footer", description: "Multi-column site footer.", status: "ready" },
+    ],
+  },
 ];
 
 export const ALL_ITEMS = GROUPS.flatMap((group) => group.items);

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "cta-section",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "lucide-react",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "components/blocks/cta-section.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/cta-section.tsx",
+      "content": "import { ArrowRight } from \"lucide-react\";\nimport { Button } from \"@/components/ui/button\";\n\n/** Full-bleed call-to-action band on the primary colour. */\nexport function CtaSection() {\n  return (\n    <section className=\"bg-primary\">\n      <div className=\"mx-auto flex max-w-4xl flex-col items-center px-4 py-16 text-center sm:px-6\">\n        <h2 className=\"text-3xl font-semibold tracking-tight text-balance text-primary-foreground sm:text-4xl\">\n          Ready to ship in every direction?\n        </h2>\n        <p className=\"mt-3 max-w-xl text-primary-foreground/80\">\n          One command installs the free library. The blocks take it from there.\n        </p>\n        <div className=\"mt-7 flex flex-wrap justify-center gap-3\">\n          <Button size=\"lg\" className=\"bg-background text-foreground hover:bg-background/90\">\n            Get started\n            <ArrowRight className=\"rtl-flip\" />\n          </Button>\n        </div>\n      </div>\n    </section>\n  );\n}\n"
+    }
+  ]
+}
