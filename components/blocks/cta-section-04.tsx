@@ -4,7 +4,7 @@ import { KbdGroup } from "@/components/ui/kbd";
 /** Dark gradient CTA with a keyboard-hint flourish. */
 export function CtaSection04() {
   return (
-    <section className="relative overflow-hidden bg-gray-950 text-white">
+    <section className="relative overflow-hidden dark bg-background text-foreground">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0"
@@ -17,12 +17,12 @@ export function CtaSection04() {
         <h2 className="text-4xl font-semibold tracking-tight text-balance">
           Stop translating layouts by hand
         </h2>
-        <p className="mt-3 max-w-md text-white/60">
+        <p className="mt-3 max-w-md text-muted-foreground">
           The system does the mirroring. You do the product.
         </p>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
           <Button size="lg">Get started free</Button>
-          <span className="inline-flex items-center gap-2 text-sm text-white/50">
+          <span className="inline-flex items-center gap-2 text-sm text-muted-foreground">
             or press <KbdGroup keys={["⌘", "K"]} /> in the docs
           </span>
         </div>
