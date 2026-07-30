@@ -1,0 +1,529 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   Foundations
+   --------------------------------------------------------------------------
+   Three layers, in order:
+
+     1. Primitive ramps  — raw colour values. Never referenced by components.
+     2. Semantic roles   — what a colour *means*. Components use only these.
+     3. Theme mapping    — @theme inline, exposing roles as Tailwind utilities.
+
+   Re-theming means overriding layer 2. Components never change.
+   ========================================================================== */
+
+@custom-variant dark (&:is(.dark *));
+
+/* ---------- Layer 1: primitive ramps ------------------------------------ */
+
+:root {
+  /* Brand — Oratiq acid green. 500 and 800 are the published Figma values. */
+  --brand-50: #fafee5;
+  --brand-100: #f4ffc2;
+  --brand-200: #e9ff8f;
+  --brand-300: #dcff4d;
+  --brand-400: #d3ff1a;
+  --brand-500: #cbfe00;
+  --brand-600: #a8d400;
+  --brand-700: #7d9e00;
+  --brand-800: #293300;
+  --brand-900: #1f2600;
+  --brand-950: #131700;
+
+  /* Neutral */
+  --neutral-0: #ffffff;
+  --neutral-50: #f9fafb;
+  --neutral-100: #f2f4f7;
+  --neutral-200: #eaecf0;
+  --neutral-300: #d0d5dd;
+  --neutral-400: #a3a3a3;
+  --neutral-500: #737373;
+  --neutral-600: #525252;
+  --neutral-700: #424242;
+  --neutral-800: #292929;
+  --neutral-850: #2a2a2a;
+  --neutral-875: #1d1d1d;
+  --neutral-900: #171717;
+  --neutral-950: #0a0a0a;
+  --neutral-1000: #000000;
+
+  /* Status */
+  --red-100: #fee2e2;
+  --red-400: #f87171;
+  --red-500: #ef4444;
+  --red-600: #dc2626;
+  --red-900: #450a0a;
+
+  --amber-100: #fef3c7;
+  --amber-400: #fbbf24;
+  --amber-500: #f59e0b;
+  --amber-600: #d97706;
+  --amber-900: #451a03;
+
+  --green-100: #dcfce7;
+  --green-400: #4ade80;
+  --green-500: #22c55e;
+  --green-600: #16a34a;
+  --green-900: #052e16;
+
+  --blue-100: #dbeafe;
+  --blue-400: #60a5fa;
+  --blue-500: #3b82f6;
+  --blue-600: #2563eb;
+  --blue-900: #172554;
+}
+
+/* ---------- Layer 2: semantic roles — light ----------------------------- */
+
+:root {
+  /* Native controls (date picker glyphs, file buttons, scrollbars, selection
+     highlights) render from the browser's own palette. Declaring the scheme
+     is the only way to theme them — CSS can't reach inside a date input. */
+  color-scheme: light;
+
+  --background: var(--neutral-0);
+  --foreground: var(--neutral-900);
+
+  --card: var(--neutral-0);
+  --card-foreground: var(--neutral-900);
+
+  --popover: var(--neutral-0);
+  --popover-foreground: var(--neutral-900);
+
+  --primary: var(--brand-500);
+  --primary-foreground: var(--brand-800);
+
+  --secondary: var(--neutral-100);
+  --secondary-foreground: var(--neutral-900);
+
+  --muted: var(--neutral-100);
+  --muted-foreground: var(--neutral-500);
+
+  --accent: var(--neutral-100);
+  --accent-foreground: var(--neutral-900);
+
+  --destructive: var(--red-600);
+  --destructive-foreground: var(--neutral-0);
+
+  --success: var(--green-600);
+  --success-foreground: var(--neutral-0);
+
+  --warning: var(--amber-500);
+  --warning-foreground: var(--neutral-900);
+
+  --info: var(--blue-600);
+  --info-foreground: var(--neutral-0);
+
+  --border: var(--neutral-200);
+  --input: var(--neutral-200);
+  --ring: var(--brand-500);
+
+  --sidebar: var(--neutral-50);
+  --sidebar-foreground: var(--neutral-900);
+  --sidebar-border: var(--neutral-200);
+  --sidebar-accent: var(--neutral-100);
+  --sidebar-accent-foreground: var(--neutral-900);
+
+  --chart-1: var(--brand-500);
+  --chart-2: var(--blue-500);
+  --chart-3: var(--amber-500);
+  --chart-4: var(--green-500);
+  --chart-5: var(--red-500);
+
+  /* ---------- Radii ---------- */
+  --radius: 0.75rem; /* 12 — the system's base radius */
+  --radius-xs: calc(var(--radius) - 8px);
+  --radius-sm: calc(var(--radius) - 6px);
+  --radius-md: calc(var(--radius) - 4px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+
+  /* ---------- Elevation ----------
+     Dark UI can't rely on shadow alone, so each level pairs a shadow with a
+     surface lift. Documented in Foundations → Elevation. */
+  --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+
+  /* ---------- Motion ---------- */
+  --duration-instant: 75ms;
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --duration-slow: 400ms;
+  --duration-slower: 600ms;
+
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ---------- Layer 2: semantic roles — dark ------------------------------ */
+
+.dark {
+  color-scheme: dark;
+
+  --background: var(--neutral-875);
+  --foreground: var(--neutral-0);
+
+  --card: var(--neutral-850);
+  --card-foreground: var(--neutral-0);
+
+  --popover: var(--neutral-800);
+  --popover-foreground: var(--neutral-0);
+
+  --primary: var(--brand-500);
+  --primary-foreground: var(--brand-800);
+
+  --secondary: #303030;
+  --secondary-foreground: var(--neutral-0);
+
+  --muted: #303030;
+  --muted-foreground: #9ca0a5;
+
+  --accent: var(--neutral-700);
+  --accent-foreground: var(--neutral-0);
+
+  --destructive: var(--red-500);
+  --destructive-foreground: var(--neutral-0);
+
+  --success: var(--green-500);
+  --success-foreground: var(--neutral-950);
+
+  --warning: var(--amber-400);
+  --warning-foreground: var(--neutral-950);
+
+  --info: var(--blue-400);
+  --info-foreground: var(--neutral-950);
+
+  --border: var(--neutral-800);
+  --input: var(--neutral-700);
+  --ring: var(--brand-500);
+
+  --sidebar: var(--neutral-900);
+  --sidebar-foreground: var(--neutral-0);
+  --sidebar-border: var(--neutral-800);
+  --sidebar-accent: var(--neutral-800);
+  --sidebar-accent-foreground: var(--neutral-0);
+
+  --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.4), 0 1px 2px -1px rgb(0 0 0 / 0.4);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.5), 0 2px 4px -2px rgb(0 0 0 / 0.5);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.6), 0 4px 6px -4px rgb(0 0 0 / 0.6);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.7), 0 8px 10px -6px rgb(0 0 0 / 0.7);
+  --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.9);
+}
+
+/* ---------- Layer 3: Tailwind theme mapping ----------------------------- */
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  /* Brand ramp stays addressable for marketing surfaces and charts. */
+  --color-brand-50: var(--brand-50);
+  --color-brand-100: var(--brand-100);
+  --color-brand-200: var(--brand-200);
+  --color-brand-300: var(--brand-300);
+  --color-brand-400: var(--brand-400);
+  --color-brand-500: var(--brand-500);
+  --color-brand-600: var(--brand-600);
+  --color-brand-700: var(--brand-700);
+  --color-brand-800: var(--brand-800);
+  --color-brand-900: var(--brand-900);
+  --color-brand-950: var(--brand-950);
+
+  /* ---------- Typography ----------
+     Standard Tailwind step names, Oratiq's values. Standard names matter:
+     they match what developers already type, and they keep tailwind-merge's
+     font-size/text-colour conflict groups correct out of the box. */
+  --font-sans: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
+
+  --text-2xs: 0.625rem; /* 10 */
+  --text-2xs--line-height: 1.125rem;
+  --text-xs: 0.75rem; /* 12 */
+  --text-xs--line-height: 1.25rem;
+  --text-sm: 0.875rem; /* 14 */
+  --text-sm--line-height: 1.25rem;
+  --text-base: 1rem; /* 16 */
+  --text-base--line-height: 1.5rem;
+  --text-lg: 1.125rem; /* 18 */
+  --text-lg--line-height: 1.625rem;
+  --text-xl: 1.25rem; /* 20 */
+  --text-xl--line-height: 1.75rem;
+  --text-2xl: 1.5rem; /* 24 */
+  --text-2xl--line-height: 2rem;
+  --text-3xl: 1.75rem; /* 28 */
+  --text-3xl--line-height: 2.25rem;
+  --text-4xl: 2rem; /* 32 */
+  --text-4xl--line-height: 2.625rem;
+  --text-5xl: 2.5rem; /* 40 */
+  --text-5xl--line-height: 3rem;
+  --text-6xl: 3rem; /* 48 */
+  --text-6xl--line-height: 3.5rem;
+  --text-7xl: 3.75rem; /* 60 */
+  --text-7xl--line-height: 4.25rem;
+
+  /* ---------- Radii ---------- */
+  --radius-xs: var(--radius-xs);
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
+  --radius-2xl: var(--radius-2xl);
+  --radius-3xl: var(--radius-3xl);
+
+  /* ---------- Elevation ---------- */
+  --shadow-xs: var(--shadow-xs);
+  --shadow-sm: var(--shadow-sm);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+  --shadow-xl: var(--shadow-xl);
+  --shadow-2xl: var(--shadow-2xl);
+
+  /* ---------- Motion ---------- */
+  --animate-duration-instant: var(--duration-instant);
+  --ease-out-quart: var(--ease-out-quart);
+  --ease-in-out-quart: var(--ease-in-out-quart);
+  --ease-spring: var(--ease-spring);
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    /* Themed scrollbars. `scrollbar-color` is inherited, so one declaration
+       covers every scroll container — and stops the OS overlay scrollbar from
+       rendering dark on a light page (or vice versa). */
+    scrollbar-color: var(--color-border) transparent;
+    /* Sign flip for transform-based motion. `translateX` is physical, so any
+       slide animation has to be negated under RTL — logical properties can't
+       express it. Every inline-axis keyframe multiplies by this. */
+    --dir-sign: 1;
+  }
+
+  /* Brand-tinted text selection — also themes the segment highlight inside
+     native date/time inputs, which otherwise falls back to selection blue. */
+  ::selection {
+    background-color: var(--color-primary);
+    color: var(--color-primary-foreground);
+  }
+
+  html[dir="rtl"] {
+    --dir-sign: -1;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Every component opts into the same focus treatment. */
+  :focus-visible {
+    outline: 2px solid var(--color-ring);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* ==========================================================================
+   Keyframes
+   ========================================================================== */
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes indeterminate {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Overlay enter/exit. Radix drives these via data-[state] attributes. */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes fade-out {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes zoom-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+}
+@keyframes zoom-out {
+  to {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+}
+
+/* Sheet/drawer edges. `inline` variants use logical offsets, so a sheet
+   anchored to the "start" edge slides from the right under RTL. */
+@keyframes slide-in-from-top {
+  from {
+    transform: translateY(-100%);
+  }
+}
+@keyframes slide-out-to-top {
+  to {
+    transform: translateY(-100%);
+  }
+}
+@keyframes slide-in-from-bottom {
+  from {
+    transform: translateY(100%);
+  }
+}
+@keyframes slide-out-to-bottom {
+  to {
+    transform: translateY(100%);
+  }
+}
+@keyframes slide-in-from-inline-start {
+  from {
+    transform: translateX(calc(-100% * var(--dir-sign, 1)));
+  }
+}
+@keyframes slide-out-to-inline-start {
+  to {
+    transform: translateX(calc(-100% * var(--dir-sign, 1)));
+  }
+}
+@keyframes slide-in-from-inline-end {
+  from {
+    transform: translateX(calc(100% * var(--dir-sign, 1)));
+  }
+}
+@keyframes slide-out-to-inline-end {
+  to {
+    transform: translateX(calc(100% * var(--dir-sign, 1)));
+  }
+}
+
+/* Collapsible/accordion. Radix exposes the measured height as a variable. */
+@keyframes collapsible-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-collapsible-content-height);
+  }
+}
+@keyframes collapsible-up {
+  from {
+    height: var(--radix-collapsible-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
+@keyframes accordion-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
+
+@layer utilities {
+  .tnum {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .no-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Mirror directional glyphs (chevrons, arrows, trend lines) under RTL.
+     Never apply to logos, numerals, or media. */
+  .rtl-flip:where(:dir(rtl), [dir="rtl"] *) {
+    transform: scaleX(-1);
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "item",
+  "type": "registry:ui",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "radix-ui",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/item.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/item.tsx",
+      "content": "import * as React from \"react\";\nimport { Slot } from \"radix-ui\";\nimport { cva, type VariantProps } from \"class-variance-authority\";\nimport { cn } from \"@/lib/utils\";\n\nconst itemVariants = cva(\n  [\n    \"group/item flex w-full items-center gap-3 text-start\",\n    \"transition-colors duration-150 ease-out-quart\",\n    \"outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background\",\n  ],\n  {\n    variants: {\n      variant: {\n        default: \"rounded-lg\",\n        outline: \"rounded-lg border border-border\",\n        muted: \"rounded-lg bg-muted\",\n      },\n      size: {\n        sm: \"px-3 py-2 text-sm\",\n        default: \"px-4 py-3 text-sm\",\n        lg: \"px-4 py-4 text-base\",\n      },\n      interactive: {\n        true: \"cursor-pointer hover:bg-accent hover:text-accent-foreground\",\n      },\n    },\n    defaultVariants: { variant: \"default\", size: \"default\" },\n  },\n);\n\nexport interface ItemProps\n  extends React.HTMLAttributes<HTMLDivElement>,\n    VariantProps<typeof itemVariants> {\n  asChild?: boolean;\n}\n\n/** Generic list row: media, content, actions. The base for menus and lists. */\nexport function Item({\n  className,\n  variant,\n  size,\n  interactive,\n  asChild,\n  ...props\n}: ItemProps) {\n  const Comp = asChild ? Slot.Root : \"div\";\n  return (\n    <Comp\n      className={cn(itemVariants({ variant, size, interactive }), className)}\n      {...props}\n    />\n  );\n}\n\nexport function ItemMedia({\n  className,\n  ...props\n}: React.HTMLAttributes<HTMLDivElement>) {\n  return (\n    <div\n      className={cn(\n        \"flex shrink-0 items-center justify-center text-muted-foreground\",\n        \"[&_svg]:size-5 [&_svg]:shrink-0\",\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\nexport function ItemContent({\n  className,\n  ...props\n}: React.HTMLAttributes<HTMLDivElement>) {\n  return (\n    <div className={cn(\"flex min-w-0 flex-1 flex-col gap-0.5\", className)} {...props} />\n  );\n}\n\nexport function ItemTitle({\n  className,\n  ...props\n}: React.HTMLAttributes<HTMLSpanElement>) {\n  return (\n    <span\n      className={cn(\"truncate font-medium text-foreground\", className)}\n      {...props}\n    />\n  );\n}\n\nexport function ItemDescription({\n  className,\n  ...props\n}: React.HTMLAttributes<HTMLSpanElement>) {\n  return (\n    <span\n      className={cn(\"truncate text-xs text-muted-foreground\", className)}\n      {...props}\n    />\n  );\n}\n\nexport function ItemActions({\n  className,\n  ...props\n}: React.HTMLAttributes<HTMLDivElement>) {\n  return (\n    <div\n      className={cn(\"flex shrink-0 items-center gap-1 text-muted-foreground\", className)}\n      {...props}\n    />\n  );\n}\n\nexport { itemVariants };\n"
+    }
+  ]
+}

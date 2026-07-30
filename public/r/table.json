@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "table",
+  "type": "registry:ui",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/table.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/table.tsx",
+      "content": "import * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\n/** Horizontal overflow is the table's own problem, never the page's. */\nexport function Table({\n  className,\n  containerClassName,\n  ...props\n}: React.TableHTMLAttributes<HTMLTableElement> & {\n  containerClassName?: string;\n}) {\n  return (\n    <div className={cn(\"w-full overflow-x-auto\", containerClassName)}>\n      <table\n        className={cn(\"w-full caption-bottom border-collapse text-sm\", className)}\n        {...props}\n      />\n    </div>\n  );\n}\n\nexport function TableHeader({\n  className,\n  ...props\n}: React.HTMLAttributes<HTMLTableSectionElement>) {\n  return <thead className={cn(\"[&_tr]:border-b [&_tr]:border-border\", className)} {...props} />;\n}\n\nexport function TableBody({\n  className,\n  ...props\n}: React.HTMLAttributes<HTMLTableSectionElement>) {\n  return <tbody className={cn(\"[&_tr:last-child]:border-0\", className)} {...props} />;\n}\n\nexport function TableFooter({\n  className,\n  ...props\n}: React.HTMLAttributes<HTMLTableSectionElement>) {\n  return (\n    <tfoot\n      className={cn(\"border-t border-border bg-muted/40 font-medium\", className)}\n      {...props}\n    />\n  );\n}\n\nexport function TableRow({\n  className,\n  ...props\n}: React.HTMLAttributes<HTMLTableRowElement>) {\n  return (\n    <tr\n      className={cn(\n        \"border-b border-border transition-colors\",\n        \"hover:bg-muted/40 data-[state=selected]:bg-accent/50\",\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\nexport function TableHead({\n  className,\n  ...props\n}: React.ThHTMLAttributes<HTMLTableCellElement>) {\n  return (\n    <th\n      className={cn(\n        \"h-11 px-4 text-start align-middle text-xs font-medium text-muted-foreground\",\n        \"whitespace-nowrap\",\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\nexport function TableCell({\n  className,\n  numeric,\n  ...props\n}: React.TdHTMLAttributes<HTMLTableCellElement> & { numeric?: boolean }) {\n  return (\n    <td\n      className={cn(\n        \"px-4 py-3 align-middle\",\n        // Numeric columns align to the end edge and use tabular figures, so\n        // digits line up whichever direction the table reads.\n        numeric && \"text-end tnum\",\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\nexport function TableCaption({\n  className,\n  ...props\n}: React.HTMLAttributes<HTMLTableCaptionElement>) {\n  return <caption className={cn(\"mt-4 text-sm text-muted-foreground\", className)} {...props} />;\n}\n"
+    }
+  ]
+}

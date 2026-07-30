@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "native-select",
+  "type": "registry:ui",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "lucide-react",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/native-select.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/native-select.tsx",
+      "content": "import * as React from \"react\";\nimport { ChevronDown } from \"lucide-react\";\nimport { cn } from \"@/lib/utils\";\n\nexport interface NativeSelectProps\n  extends Omit<React.SelectHTMLAttributes<HTMLSelectElement>, \"size\"> {\n  size?: \"sm\" | \"default\" | \"lg\";\n}\n\nconst sizes = {\n  sm: \"h-9 rounded-md ps-3 pe-9 text-sm\",\n  default: \"h-10 rounded-lg ps-3.5 pe-10 text-sm\",\n  lg: \"h-12 rounded-lg ps-4 pe-10 text-base\",\n};\n\n/**\n * The platform select. Prefer this over a custom Select on mobile and for\n * long option lists — it gets the OS picker, virtual keyboard handling, and\n * accessibility for free.\n */\nexport const NativeSelect = React.forwardRef<\n  HTMLSelectElement,\n  NativeSelectProps\n>(function NativeSelect({ className, size = \"default\", children, ...props }, ref) {\n  return (\n    <div className=\"relative w-full\">\n      <select\n        ref={ref}\n        className={cn(\n          \"w-full appearance-none border border-input bg-transparent text-foreground\",\n          \"transition-[color,box-shadow,border-color] duration-150 ease-out-quart\",\n          \"outline-none focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/30\",\n          \"disabled:cursor-not-allowed disabled:opacity-50\",\n          \"aria-invalid:border-destructive\",\n          sizes[size],\n          className,\n        )}\n        {...props}\n      >\n        {children}\n      </select>\n      <ChevronDown\n        aria-hidden=\"true\"\n        className=\"pointer-events-none absolute end-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground\"\n      />\n    </div>\n  );\n});\n"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "kbd",
+  "type": "registry:ui",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/kbd.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/kbd.tsx",
+      "content": "import * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport interface KbdProps extends React.HTMLAttributes<HTMLElement> {\n  size?: \"sm\" | \"default\";\n}\n\n/**\n * A keyboard key. Pinned to `dir=\"ltr\"` — shortcut notation is a technical\n * sequence and doesn't reorder with the surrounding language.\n */\nexport function Kbd({ className, size = \"default\", ...props }: KbdProps) {\n  return (\n    <kbd\n      dir=\"ltr\"\n      className={cn(\n        \"inline-flex items-center justify-center rounded-sm border border-border bg-muted\",\n        \"font-sans font-medium text-muted-foreground shadow-xs select-none\",\n        size === \"sm\"\n          ? \"h-4 min-w-4 px-1 text-2xs\"\n          : \"h-5 min-w-5 px-1.5 text-xs\",\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\n/** Renders a chord: ⌘ + K. */\nexport function KbdGroup({\n  keys,\n  className,\n  separator = \"+\",\n  ...props\n}: React.HTMLAttributes<HTMLSpanElement> & {\n  keys: string[];\n  separator?: React.ReactNode;\n}) {\n  return (\n    <span\n      dir=\"ltr\"\n      className={cn(\"inline-flex items-center gap-1\", className)}\n      {...props}\n    >\n      {keys.map((key, i) => (\n        <React.Fragment key={key}>\n          {i > 0 && (\n            <span aria-hidden=\"true\" className=\"text-2xs text-muted-foreground\">\n              {separator}\n            </span>\n          )}\n          <Kbd>{key}</Kbd>\n        </React.Fragment>\n      ))}\n    </span>\n  );\n}\n"
+    }
+  ]
+}

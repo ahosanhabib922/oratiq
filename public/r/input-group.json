@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-group",
+  "type": "registry:ui",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/input-group.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/input-group.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\n/**\n * Wraps an Input with inline affixes (icons, text, buttons).\n *\n * The group owns the border and the focus ring; the inner input is stripped\n * of both. That keeps the ring wrapped around the whole control rather than\n * around one segment of it.\n */\nexport function InputGroup({\n  className,\n  children,\n  ...props\n}: React.HTMLAttributes<HTMLDivElement>) {\n  return (\n    <div\n      data-slot=\"input-group\"\n      className={cn(\n        \"flex w-full items-center gap-2 rounded-lg border border-input bg-transparent px-3\",\n        \"transition-[color,box-shadow,border-color] duration-150 ease-out-quart\",\n        \"focus-within:border-ring focus-within:ring-2 focus-within:ring-ring/30\",\n        \"has-[[aria-invalid=true]]:border-destructive has-[[aria-invalid=true]]:focus-within:ring-destructive/30\",\n        \"has-[:disabled]:opacity-50\",\n        // Neutralise the nested input's own chrome.\n        \"[&_[data-slot=input]]:h-auto [&_[data-slot=input]]:flex-1 [&_[data-slot=input]]:border-0\",\n        \"[&_[data-slot=input]]:bg-transparent [&_[data-slot=input]]:px-0\",\n        \"[&_[data-slot=input]]:py-2.5 [&_[data-slot=input]]:shadow-none\",\n        \"[&_[data-slot=input]]:outline-none [&_[data-slot=input]]:focus-visible:ring-0\",\n        className,\n      )}\n      {...props}\n    >\n      {children}\n    </div>\n  );\n}\n\nexport interface InputGroupAddonProps\n  extends React.HTMLAttributes<HTMLDivElement> {\n  /** `inline` sits inside the border; `attached` is a bordered segment. */\n  variant?: \"inline\" | \"attached\";\n  align?: \"start\" | \"end\";\n}\n\nexport function InputGroupAddon({\n  className,\n  variant = \"inline\",\n  align = \"start\",\n  ...props\n}: InputGroupAddonProps) {\n  return (\n    <div\n      // Affixes are usually technical fragments — \"https://\", \"@oratiq.com\",\n      // \"USD\". Under RTL the bidi algorithm reorders their leading neutral\n      // characters (\"https://\" renders as \"//:https\"). `auto` resolves\n      // direction from the first strong character, so Latin affixes stay LTR\n      // while a translated affix still follows the page.\n      dir=\"auto\"\n      className={cn(\n        \"flex shrink-0 items-center gap-2 text-sm text-muted-foreground\",\n        \"[&_svg]:size-4 [&_svg]:shrink-0\",\n        variant === \"attached\" && [\n          \"-my-px self-stretch bg-muted px-3\",\n          align === \"start\"\n            ? \"-ms-3 rounded-s-lg border-e border-input\"\n            : \"-me-3 rounded-e-lg border-s border-input\",\n        ],\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\n/** A button that sits flush inside the group — e.g. a password reveal toggle. */\nexport function InputGroupButton({\n  className,\n  ...props\n}: React.ButtonHTMLAttributes<HTMLButtonElement>) {\n  return (\n    <button\n      type=\"button\"\n      className={cn(\n        \"-me-1 inline-flex size-8 shrink-0 items-center justify-center rounded-md\",\n        \"text-muted-foreground transition-colors\",\n        \"hover:bg-accent hover:text-accent-foreground\",\n        \"outline-none focus-visible:ring-2 focus-visible:ring-ring\",\n        \"disabled:pointer-events-none disabled:opacity-50\",\n        \"[&_svg]:size-4 [&_svg]:shrink-0\",\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n"
+    }
+  ]
+}

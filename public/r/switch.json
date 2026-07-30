@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "switch",
+  "type": "registry:ui",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "radix-ui",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/switch.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/switch.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { Switch as SwitchPrimitive } from \"radix-ui\";\nimport { cn } from \"@/lib/utils\";\n\nexport interface SwitchProps\n  extends React.ComponentPropsWithoutRef<typeof SwitchPrimitive.Root> {\n  size?: \"sm\" | \"default\" | \"lg\";\n}\n\nconst track = {\n  sm: \"h-5 w-9\",\n  default: \"h-6 w-11\",\n  lg: \"h-7 w-[52px]\",\n};\n\nconst thumb = {\n  // Travel = track width − 2×border − 2×padding − thumb width.\n  // sm: 36 − 4 − 4 − 16 = 12px; default: 44 − 4 − 4 − 20 = 16px;\n  // lg: 52 − 4 − 4 − 24 = 20px. Under `dir=\"rtl\"` the same distance is\n  // negated so the thumb travels toward the correct edge.\n  sm: \"size-4 data-[state=checked]:translate-x-3 rtl:data-[state=checked]:-translate-x-3\",\n  default:\n    \"size-5 data-[state=checked]:translate-x-4 rtl:data-[state=checked]:-translate-x-4\",\n  lg: \"size-6 data-[state=checked]:translate-x-5 rtl:data-[state=checked]:-translate-x-5\",\n};\n\nexport const Switch = React.forwardRef<\n  React.ElementRef<typeof SwitchPrimitive.Root>,\n  SwitchProps\n>(function Switch({ className, size = \"default\", ...props }, ref) {\n  return (\n    <SwitchPrimitive.Root\n      ref={ref}\n      className={cn(\n        \"peer inline-flex shrink-0 items-center rounded-full border-2 border-transparent p-0.5\",\n        \"transition-colors duration-200 ease-out-quart\",\n        \"outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background\",\n        \"disabled:cursor-not-allowed disabled:opacity-50\",\n        \"data-[state=checked]:bg-primary data-[state=unchecked]:bg-input\",\n        track[size],\n        className,\n      )}\n      {...props}\n    >\n      <SwitchPrimitive.Thumb\n        className={cn(\n          \"pointer-events-none block rounded-full bg-background shadow-sm ring-0\",\n          \"transition-transform duration-200 ease-out-quart\",\n          \"data-[state=unchecked]:translate-x-0\",\n          thumb[size],\n        )}\n      />\n    </SwitchPrimitive.Root>\n  );\n});\n"
+    }
+  ]
+}

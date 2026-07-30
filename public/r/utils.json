@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "utils",
+  "type": "registry:lib",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "lib/utils.ts",
+      "type": "registry:lib",
+      "target": "lib/utils.ts",
+      "content": "import { clsx, type ClassValue } from \"clsx\";\nimport { extendTailwindMerge } from \"tailwind-merge\";\n\n/**\n * The type scale uses standard Tailwind step names, so tailwind-merge already\n * resolves `text-sm` vs `text-lg` correctly. Two things it can't know about:\n * our extra `2xs` step, and our semantic colour roles — without registering\n * them, `cn(\"text-destructive\", \"text-sm\")` drops the colour.\n */\nconst twMerge = extendTailwindMerge({\n  extend: {\n    theme: {\n      radius: [\"xs\", \"sm\", \"md\", \"lg\", \"xl\", \"2xl\", \"3xl\"],\n    },\n    classGroups: {\n      \"font-size\": [{ text: [\"2xs\"] }],\n      \"text-color\": [\n        {\n          text: [\n            \"background\",\n            \"foreground\",\n            \"card-foreground\",\n            \"popover-foreground\",\n            \"primary\",\n            \"primary-foreground\",\n            \"secondary\",\n            \"secondary-foreground\",\n            \"muted\",\n            \"muted-foreground\",\n            \"accent\",\n            \"accent-foreground\",\n            \"destructive\",\n            \"destructive-foreground\",\n            \"success\",\n            \"success-foreground\",\n            \"warning\",\n            \"warning-foreground\",\n            \"info\",\n            \"info-foreground\",\n            \"sidebar-foreground\",\n            \"sidebar-accent-foreground\",\n          ],\n        },\n      ],\n    },\n  },\n});\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.oratiq.com/schema.json",
+  "style": "default",
+  "tsx": true,
+  "tailwind": {
+    "css": "app/globals.css",
+    "baseColor": "neutral"
+  },
+  "aliases": {
+    "ui": "components/ui",
+    "lib": "lib",
+    "components": "components"
+  },
+  "registry": "https://ui.oratiq.com/r"
+}

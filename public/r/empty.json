@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "empty",
+  "type": "registry:ui",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/empty.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/empty.tsx",
+      "content": "import * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport interface EmptyProps extends React.HTMLAttributes<HTMLDivElement> {\n  size?: \"sm\" | \"default\" | \"lg\";\n}\n\n/**\n * Empty state. Composed as Empty > EmptyMedia + EmptyTitle + EmptyDescription\n * + EmptyActions, so the same shell covers \"no results\", \"nothing yet\", and\n * error states.\n */\nexport function Empty({ className, size = \"default\", ...props }: EmptyProps) {\n  return (\n    <div\n      className={cn(\n        \"flex flex-col items-center justify-center text-center\",\n        size === \"sm\" && \"gap-2 p-6\",\n        size === \"default\" && \"gap-3 p-10\",\n        size === \"lg\" && \"gap-4 p-16\",\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\nexport function EmptyMedia({\n  className,\n  ...props\n}: React.HTMLAttributes<HTMLDivElement>) {\n  return (\n    <div\n      aria-hidden=\"true\"\n      className={cn(\n        \"mb-1 flex size-12 items-center justify-center rounded-full bg-muted text-muted-foreground\",\n        \"[&_svg]:size-6\",\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\nexport function EmptyTitle({\n  className,\n  ...props\n}: React.HTMLAttributes<HTMLHeadingElement>) {\n  return (\n    <h3 className={cn(\"text-base font-medium text-foreground\", className)} {...props} />\n  );\n}\n\nexport function EmptyDescription({\n  className,\n  ...props\n}: React.HTMLAttributes<HTMLParagraphElement>) {\n  return (\n    <p\n      className={cn(\"max-w-sm text-sm text-balance text-muted-foreground\", className)}\n      {...props}\n    />\n  );\n}\n\nexport function EmptyActions({\n  className,\n  ...props\n}: React.HTMLAttributes<HTMLDivElement>) {\n  return (\n    <div className={cn(\"mt-2 flex items-center gap-2\", className)} {...props} />\n  );\n}\n"
+    }
+  ]
+}

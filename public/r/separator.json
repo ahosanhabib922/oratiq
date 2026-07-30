@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "separator",
+  "type": "registry:ui",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "radix-ui",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/separator.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/separator.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { Separator as SeparatorPrimitive } from \"radix-ui\";\nimport { cn } from \"@/lib/utils\";\n\nexport interface SeparatorProps\n  extends React.ComponentPropsWithoutRef<typeof SeparatorPrimitive.Root> {\n  /** Centred label, e.g. \"or\". Forces the separator to be decorative. */\n  label?: React.ReactNode;\n}\n\nexport const Separator = React.forwardRef<\n  React.ElementRef<typeof SeparatorPrimitive.Root>,\n  SeparatorProps\n>(function Separator(\n  { className, orientation = \"horizontal\", decorative = true, label, ...props },\n  ref,\n) {\n  if (label) {\n    return (\n      <div\n        className={cn(\"flex items-center gap-3\", className)}\n        role=\"separator\"\n        aria-orientation=\"horizontal\"\n      >\n        <span className=\"h-px flex-1 bg-border\" />\n        <span className=\"text-xs text-muted-foreground\">{label}</span>\n        <span className=\"h-px flex-1 bg-border\" />\n      </div>\n    );\n  }\n\n  return (\n    <SeparatorPrimitive.Root\n      ref={ref}\n      orientation={orientation}\n      decorative={decorative}\n      className={cn(\n        \"shrink-0 bg-border\",\n        orientation === \"horizontal\" ? \"h-px w-full\" : \"h-full w-px self-stretch\",\n        className,\n      )}\n      {...props}\n    />\n  );\n});\n"
+    }
+  ]
+}

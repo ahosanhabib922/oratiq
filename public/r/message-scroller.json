@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "message-scroller",
+  "type": "registry:ui",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "lucide-react",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "button",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/message-scroller.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/message-scroller.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { ArrowDown } from \"lucide-react\";\nimport { cn } from \"@/lib/utils\";\nimport { Button } from \"./button\";\n\nexport interface MessageScrollerProps\n  extends React.HTMLAttributes<HTMLDivElement> {\n  /** Changing this triggers the stick-to-bottom check. */\n  dependency?: unknown;\n  /** Distance from the bottom, in px, still counted as \"at the bottom\". */\n  threshold?: number;\n  jumpLabel?: string;\n}\n\n/**\n * Scroll container for message lists.\n *\n * Sticks to the bottom while the user is already there, and stops sticking the\n * moment they scroll up to read history — the single behaviour every chat UI\n * needs and most get wrong. A jump-to-latest button appears while detached.\n */\nexport function MessageScroller({\n  dependency,\n  threshold = 80,\n  jumpLabel = \"Jump to latest\",\n  className,\n  children,\n  ...props\n}: MessageScrollerProps) {\n  const ref = React.useRef<HTMLDivElement>(null);\n  const [pinned, setPinned] = React.useState(true);\n\n  const scrollToBottom = React.useCallback((behavior: ScrollBehavior = \"smooth\") => {\n    const el = ref.current;\n    if (!el) return;\n    el.scrollTo({ top: el.scrollHeight, behavior });\n  }, []);\n\n  function handleScroll() {\n    const el = ref.current;\n    if (!el) return;\n    const distance = el.scrollHeight - el.scrollTop - el.clientHeight;\n    setPinned(distance <= threshold);\n  }\n\n  // Only follow new content while the user hasn't scrolled away.\n  React.useEffect(() => {\n    if (pinned) scrollToBottom(\"auto\");\n    // eslint-disable-next-line react-hooks/exhaustive-deps\n  }, [dependency]);\n\n  React.useEffect(() => {\n    scrollToBottom(\"auto\");\n  }, [scrollToBottom]);\n\n  return (\n    <div className=\"relative min-h-0 flex-1\">\n      <div\n        ref={ref}\n        onScroll={handleScroll}\n        className={cn(\"h-full overflow-y-auto overscroll-contain\", className)}\n        {...props}\n      >\n        {children}\n      </div>\n\n      {!pinned && (\n        <Button\n          size=\"sm\"\n          shape=\"pill\"\n          onClick={() => scrollToBottom()}\n          className={cn(\n            \"absolute bottom-4 start-1/2 -translate-x-1/2 rtl:translate-x-1/2\",\n            \"shadow-lg\",\n          )}\n        >\n          <ArrowDown />\n          {jumpLabel}\n        </Button>\n      )}\n    </div>\n  );\n}\n"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "message",
+  "type": "registry:ui",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/message.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/message.tsx",
+      "content": "import * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport interface MessageProps extends React.HTMLAttributes<HTMLDivElement> {\n  /** Collapses the avatar and header for consecutive messages from one author. */\n  continued?: boolean;\n}\n\n/**\n * A message with author, timestamp, and body — the threaded-conversation\n * shape, as opposed to Bubble's chat shape.\n */\nexport function Message({ className, continued, ...props }: MessageProps) {\n  return (\n    <div\n      className={cn(\n        \"group/message flex gap-3 px-4 py-2\",\n        \"transition-colors hover:bg-muted/40\",\n        continued ? \"mt-0\" : \"mt-4 first:mt-0\",\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\nexport function MessageAvatar({\n  className,\n  hidden,\n  ...props\n}: React.HTMLAttributes<HTMLDivElement> & { hidden?: boolean }) {\n  return (\n    <div className={cn(\"w-8 shrink-0\", className)} {...props}>\n      {!hidden && props.children}\n    </div>\n  );\n}\n\nexport function MessageContent({\n  className,\n  ...props\n}: React.HTMLAttributes<HTMLDivElement>) {\n  return <div className={cn(\"min-w-0 flex-1\", className)} {...props} />;\n}\n\nexport function MessageHeader({\n  className,\n  ...props\n}: React.HTMLAttributes<HTMLDivElement>) {\n  return (\n    <div className={cn(\"mb-0.5 flex items-baseline gap-2\", className)} {...props} />\n  );\n}\n\nexport function MessageAuthor({\n  className,\n  ...props\n}: React.HTMLAttributes<HTMLSpanElement>) {\n  return (\n    <span dir=\"auto\" className={cn(\"text-sm font-medium\", className)} {...props} />\n  );\n}\n\nexport function MessageTimestamp({\n  className,\n  ...props\n}: React.HTMLAttributes<HTMLTimeElement>) {\n  return (\n    <time className={cn(\"text-2xs tnum text-muted-foreground\", className)} {...props} />\n  );\n}\n\nexport function MessageBody({\n  className,\n  ...props\n}: React.HTMLAttributes<HTMLDivElement>) {\n  return (\n    <div\n      dir=\"auto\"\n      className={cn(\"text-sm leading-relaxed break-words text-foreground\", className)}\n      {...props}\n    />\n  );\n}\n\n/** Hover toolbar, revealed on the message's end edge. */\nexport function MessageActions({\n  className,\n  ...props\n}: React.HTMLAttributes<HTMLDivElement>) {\n  return (\n    <div\n      className={cn(\n        \"absolute end-4 -top-3 flex items-center gap-0.5 rounded-md border border-border bg-popover p-0.5 shadow-sm\",\n        \"opacity-0 transition-opacity group-hover/message:opacity-100 focus-within:opacity-100\",\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n"
+    }
+  ]
+}

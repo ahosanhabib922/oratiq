@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "marker",
+  "type": "registry:ui",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "popover",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/marker.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/marker.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { Popover, PopoverContent, PopoverTrigger } from \"./popover\";\n\nexport interface MarkerProps extends React.HTMLAttributes<HTMLButtonElement> {\n  /** Percent from the inline-start edge (0–100). Flips under RTL. */\n  x: number;\n  /** Percent from the top (0–100). */\n  y: number;\n  tone?: \"primary\" | \"destructive\" | \"info\" | \"success\";\n  /** Adds a pulsing halo to draw the eye. */\n  pulse?: boolean;\n  label: string;\n}\n\nconst tones = {\n  primary: \"bg-primary text-primary-foreground\",\n  destructive: \"bg-destructive text-destructive-foreground\",\n  info: \"bg-info text-info-foreground\",\n  success: \"bg-success text-success-foreground\",\n};\n\n/**\n * A point annotation on a surface — image hotspots, map pins, diagram callouts.\n * Positioned with logical inset, so an annotation \"20% from the start\" lands\n * on the correct side in both directions.\n */\nexport function Marker({\n  x,\n  y,\n  tone = \"primary\",\n  pulse,\n  label,\n  className,\n  children,\n  ...props\n}: MarkerProps) {\n  return (\n    <button\n      type=\"button\"\n      aria-label={label}\n      style={{ insetInlineStart: `${x}%`, top: `${y}%` }}\n      className={cn(\n        \"absolute z-10 flex size-6 -translate-x-1/2 -translate-y-1/2 rtl:translate-x-1/2\",\n        \"items-center justify-center rounded-full text-2xs font-bold ring-2 ring-background\",\n        \"transition-transform hover:scale-110\",\n        \"outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background\",\n        tones[tone],\n        className,\n      )}\n      {...props}\n    >\n      {pulse && (\n        <span\n          aria-hidden=\"true\"\n          className={cn(\n            \"absolute inset-0 animate-ping rounded-full opacity-60\",\n            tones[tone],\n          )}\n        />\n      )}\n      <span className=\"relative\">{children}</span>\n    </button>\n  );\n}\n\n/** Relative container that markers position against. */\nexport function MarkerSurface({\n  className,\n  ...props\n}: React.HTMLAttributes<HTMLDivElement>) {\n  return <div className={cn(\"relative\", className)} {...props} />;\n}\n\n/**\n * Marker that opens a popover on click.\n *\n * `content` is omitted from MarkerProps first — HTMLAttributes already\n * declares a `content` string attribute, and the intersection would otherwise\n * collapse to `string & ReactNode`.\n */\nexport function MarkerWithPopover({\n  content,\n  ...markerProps\n}: Omit<MarkerProps, \"content\"> & { content: React.ReactNode }) {\n  return (\n    <Popover>\n      <PopoverTrigger asChild>\n        <Marker {...markerProps} />\n      </PopoverTrigger>\n      <PopoverContent className=\"w-56 text-sm\">{content}</PopoverContent>\n    </Popover>\n  );\n}\n"
+    }
+  ]
+}

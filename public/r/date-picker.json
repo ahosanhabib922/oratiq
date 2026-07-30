@@ -1,0 +1,27 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "date-picker",
+  "type": "registry:ui",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "date-fns",
+    "lucide-react",
+    "react-day-picker",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "button",
+    "calendar",
+    "popover",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/date-picker.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/date-picker.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { format } from \"date-fns\";\nimport { CalendarIcon } from \"lucide-react\";\nimport type { DateRange } from \"react-day-picker\";\n\nimport { cn } from \"@/lib/utils\";\nimport { Button } from \"./button\";\nimport { Calendar } from \"./calendar\";\nimport { Popover, PopoverContent, PopoverTrigger } from \"./popover\";\n\nexport interface DatePickerProps {\n  value?: Date;\n  defaultValue?: Date;\n  onValueChange?: (date: Date | undefined) => void;\n  placeholder?: string;\n  disabled?: boolean;\n  /** date-fns format string. */\n  displayFormat?: string;\n  className?: string;\n  label?: string;\n}\n\nexport function DatePicker({\n  value,\n  defaultValue,\n  onValueChange,\n  placeholder = \"Pick a date\",\n  disabled,\n  displayFormat = \"PPP\",\n  className,\n  label,\n}: DatePickerProps) {\n  const [open, setOpen] = React.useState(false);\n  const [internal, setInternal] = React.useState<Date | undefined>(defaultValue);\n  const isControlled = value !== undefined;\n  const selected = isControlled ? value : internal;\n\n  function select(date: Date | undefined) {\n    if (!isControlled) setInternal(date);\n    onValueChange?.(date);\n    setOpen(false);\n  }\n\n  return (\n    <Popover open={open} onOpenChange={setOpen}>\n      <PopoverTrigger asChild>\n        <Button\n          variant=\"outline\"\n          disabled={disabled}\n          aria-label={label}\n          className={cn(\n            \"w-full justify-start gap-2 font-normal\",\n            !selected && \"text-muted-foreground\",\n            className,\n          )}\n        >\n          <CalendarIcon />\n          {selected ? format(selected, displayFormat) : placeholder}\n        </Button>\n      </PopoverTrigger>\n      <PopoverContent className=\"w-auto p-0\" align=\"start\">\n        <Calendar mode=\"single\" selected={selected} onSelect={select} autoFocus />\n      </PopoverContent>\n    </Popover>\n  );\n}\n\nexport interface DateRangePickerProps {\n  value?: DateRange;\n  onValueChange?: (range: DateRange | undefined) => void;\n  placeholder?: string;\n  className?: string;\n  label?: string;\n}\n\nexport function DateRangePicker({\n  value,\n  onValueChange,\n  placeholder = \"Pick a date range\",\n  className,\n  label,\n}: DateRangePickerProps) {\n  const [internal, setInternal] = React.useState<DateRange | undefined>();\n  const isControlled = value !== undefined;\n  const range = isControlled ? value : internal;\n\n  function select(next: DateRange | undefined) {\n    if (!isControlled) setInternal(next);\n    onValueChange?.(next);\n  }\n\n  return (\n    <Popover>\n      <PopoverTrigger asChild>\n        <Button\n          variant=\"outline\"\n          aria-label={label}\n          className={cn(\n            \"w-full justify-start gap-2 font-normal\",\n            !range?.from && \"text-muted-foreground\",\n            className,\n          )}\n        >\n          <CalendarIcon />\n          {range?.from ? (\n            range.to ? (\n              // Wrapped so the date range doesn't get reordered by the bidi\n              // algorithm in an RTL layout.\n              <bdi dir=\"auto\">\n                {format(range.from, \"LLL d, y\")} – {format(range.to, \"LLL d, y\")}\n              </bdi>\n            ) : (\n              <bdi dir=\"auto\">{format(range.from, \"LLL d, y\")}</bdi>\n            )\n          ) : (\n            placeholder\n          )}\n        </Button>\n      </PopoverTrigger>\n      <PopoverContent className=\"w-auto p-0\" align=\"start\">\n        <Calendar\n          mode=\"range\"\n          selected={range}\n          onSelect={select}\n          numberOfMonths={2}\n          autoFocus\n        />\n      </PopoverContent>\n    </Popover>\n  );\n}\n"
+    }
+  ]
+}

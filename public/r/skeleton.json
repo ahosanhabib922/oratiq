@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "skeleton",
+  "type": "registry:ui",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/skeleton.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/skeleton.tsx",
+      "content": "import * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport interface SkeletonProps extends React.HTMLAttributes<HTMLDivElement> {\n  /** `shimmer` sweeps a highlight; `pulse` fades. Shimmer reads faster. */\n  animation?: \"shimmer\" | \"pulse\" | \"none\";\n}\n\n/**\n * Loading placeholder. Always `aria-hidden` — the loading state itself should\n * be announced once by the region's own `aria-busy`, not by every bone.\n */\nexport function Skeleton({\n  className,\n  animation = \"shimmer\",\n  ...props\n}: SkeletonProps) {\n  return (\n    <div\n      aria-hidden=\"true\"\n      className={cn(\n        \"rounded-md bg-muted\",\n        animation === \"pulse\" && \"animate-pulse\",\n        animation === \"shimmer\" && [\n          \"relative overflow-hidden\",\n          \"after:absolute after:inset-0 after:-translate-x-full\",\n          \"after:bg-linear-to-r after:from-transparent after:via-foreground/10 after:to-transparent\",\n          \"after:animate-[shimmer_1.6s_infinite]\",\n          \"rtl:after:translate-x-full rtl:after:bg-linear-to-l\",\n        ],\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\n/** Convenience: N lines of text, last one short. */\nexport function SkeletonText({\n  lines = 3,\n  className,\n  ...props\n}: SkeletonProps & { lines?: number }) {\n  return (\n    <div className={cn(\"flex flex-col gap-2\", className)} {...props}>\n      {Array.from({ length: lines }).map((_, i) => (\n        <Skeleton\n          key={i}\n          className={cn(\"h-4\", i === lines - 1 && \"w-3/5\")}\n        />\n      ))}\n    </div>\n  );\n}\n"
+    }
+  ]
+}

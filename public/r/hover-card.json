@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hover-card",
+  "type": "registry:ui",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "radix-ui",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/hover-card.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/hover-card.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { HoverCard as HoverCardPrimitive } from \"radix-ui\";\nimport { cn } from \"@/lib/utils\";\n\nexport const HoverCard = HoverCardPrimitive.Root;\nexport const HoverCardTrigger = HoverCardPrimitive.Trigger;\n\nexport const HoverCardContent = React.forwardRef<\n  React.ElementRef<typeof HoverCardPrimitive.Content>,\n  React.ComponentPropsWithoutRef<typeof HoverCardPrimitive.Content>\n>(function HoverCardContent(\n  { className, align = \"center\", sideOffset = 8, ...props },\n  ref,\n) {\n  return (\n    <HoverCardPrimitive.Portal>\n      <HoverCardPrimitive.Content\n        ref={ref}\n        align={align}\n        sideOffset={sideOffset}\n        className={cn(\n          \"z-50 w-72 rounded-lg border border-border bg-popover p-4 text-popover-foreground shadow-lg\",\n          \"origin-(--radix-hover-card-content-transform-origin)\",\n          \"data-[state=open]:animate-[zoom-in_150ms_ease-out]\",\n          \"data-[state=closed]:animate-[zoom-out_100ms_ease-in]\",\n          className,\n        )}\n        {...props}\n      />\n    </HoverCardPrimitive.Portal>\n  );\n});\n"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "calendar",
+  "type": "registry:ui",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "lucide-react",
+    "react-day-picker",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "button",
+    "providers",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/calendar.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/calendar.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { DayPicker } from \"react-day-picker\";\nimport { ChevronLeft, ChevronRight } from \"lucide-react\";\nimport { cn } from \"@/lib/utils\";\nimport { useDirection } from \"@/components/providers\";\nimport { buttonVariants } from \"./button\";\n\nexport type CalendarProps = React.ComponentProps<typeof DayPicker>;\n\n/**\n * Date grid.\n *\n * `dir` is passed through so react-day-picker reverses the weekday column\n * order under RTL — a calendar that still runs Sunday-to-Saturday\n * left-to-right in an Arabic interface reads as broken.\n */\nexport function Calendar({\n  className,\n  classNames,\n  showOutsideDays = true,\n  ...props\n}: CalendarProps) {\n  const { direction } = useDirection();\n\n  return (\n    <DayPicker\n      dir={direction}\n      showOutsideDays={showOutsideDays}\n      className={cn(\"p-3\", className)}\n      classNames={{\n        months: \"flex flex-col gap-4 sm:flex-row\",\n        month: \"flex flex-col gap-4\",\n        month_caption: \"flex items-center justify-center h-9\",\n        caption_label: \"text-sm font-medium\",\n        nav: \"flex items-center gap-1 absolute inset-x-3 top-3 justify-between pointer-events-none\",\n        button_previous: cn(\n          buttonVariants({ variant: \"ghost\", size: \"icon-sm\" }),\n          \"pointer-events-auto\",\n        ),\n        button_next: cn(\n          buttonVariants({ variant: \"ghost\", size: \"icon-sm\" }),\n          \"pointer-events-auto\",\n        ),\n        month_grid: \"w-full border-collapse\",\n        weekdays: \"flex\",\n        weekday: \"w-9 text-xs font-normal text-muted-foreground\",\n        week: \"flex w-full mt-1.5\",\n        day: \"relative p-0 text-center\",\n        day_button: cn(\n          buttonVariants({ variant: \"ghost\", size: \"icon-sm\" }),\n          \"size-9 p-0 font-normal tnum aria-selected:opacity-100\",\n        ),\n        selected:\n          \"[&>button]:bg-primary [&>button]:text-primary-foreground [&>button]:hover:bg-primary\",\n        today: \"[&>button]:ring-1 [&>button]:ring-ring\",\n        outside: \"[&>button]:text-muted-foreground [&>button]:opacity-40\",\n        disabled: \"[&>button]:opacity-40 [&>button]:pointer-events-none\",\n        range_middle:\n          \"[&>button]:bg-accent [&>button]:text-accent-foreground [&>button]:rounded-none\",\n        hidden: \"invisible\",\n        ...classNames,\n      }}\n      components={{\n        // Both chevrons mirror: \"previous month\" points toward the start edge.\n        Chevron: ({ orientation, ...iconProps }) =>\n          orientation === \"left\" ? (\n            <ChevronLeft className=\"size-4 rtl-flip\" {...iconProps} />\n          ) : (\n            <ChevronRight className=\"size-4 rtl-flip\" {...iconProps} />\n          ),\n      }}\n      {...props}\n    />\n  );\n}\n"
+    }
+  ]
+}

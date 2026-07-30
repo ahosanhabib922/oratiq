@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "textarea",
+  "type": "registry:ui",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/textarea.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/textarea.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport interface TextareaProps\n  extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {\n  /** Grows with content instead of scrolling. */\n  autoResize?: boolean;\n  /** Renders a live character count against `maxLength`. */\n  showCount?: boolean;\n}\n\nexport const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(\n  function Textarea(\n    { className, autoResize, showCount, maxLength, onChange, ...props },\n    ref,\n  ) {\n    const innerRef = React.useRef<HTMLTextAreaElement>(null);\n    React.useImperativeHandle(ref, () => innerRef.current!, []);\n\n    const [count, setCount] = React.useState(\n      String(props.value ?? props.defaultValue ?? \"\").length,\n    );\n\n    const resize = React.useCallback(() => {\n      const el = innerRef.current;\n      if (!el || !autoResize) return;\n      el.style.height = \"auto\";\n      el.style.height = `${el.scrollHeight}px`;\n    }, [autoResize]);\n\n    React.useEffect(resize, [resize, props.value]);\n\n    function handleChange(e: React.ChangeEvent<HTMLTextAreaElement>) {\n      setCount(e.target.value.length);\n      resize();\n      onChange?.(e);\n    }\n\n    return (\n      <div className=\"relative w-full\">\n        <textarea\n          ref={innerRef}\n          data-slot=\"textarea\"\n          maxLength={maxLength}\n          onChange={handleChange}\n          className={cn(\n            \"flex min-h-20 w-full rounded-lg border border-input bg-transparent px-3.5 py-2.5\",\n            \"text-sm text-foreground placeholder:text-muted-foreground\",\n            \"transition-[color,box-shadow,border-color] duration-150 ease-out-quart\",\n            \"outline-none focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/30\",\n            \"disabled:cursor-not-allowed disabled:opacity-50\",\n            \"aria-invalid:border-destructive aria-invalid:focus-visible:ring-destructive/30\",\n            autoResize ? \"resize-none overflow-hidden\" : \"resize-y\",\n            showCount && \"pb-7\",\n            className,\n          )}\n          {...props}\n        />\n        {showCount && (\n          <span\n            aria-hidden=\"true\"\n            className=\"pointer-events-none absolute bottom-2 end-3 text-xs tnum text-muted-foreground\"\n          >\n            {count}\n            {maxLength ? `/${maxLength}` : \"\"}\n          </span>\n        )}\n      </div>\n    );\n  },\n);\n"
+    }
+  ]
+}

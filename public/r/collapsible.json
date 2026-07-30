@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "collapsible",
+  "type": "registry:ui",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "radix-ui",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/collapsible.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/collapsible.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { Collapsible as CollapsiblePrimitive } from \"radix-ui\";\nimport { cn } from \"@/lib/utils\";\n\nexport const Collapsible = CollapsiblePrimitive.Root;\nexport const CollapsibleTrigger = CollapsiblePrimitive.Trigger;\n\nexport const CollapsibleContent = React.forwardRef<\n  React.ElementRef<typeof CollapsiblePrimitive.Content>,\n  React.ComponentPropsWithoutRef<typeof CollapsiblePrimitive.Content>\n>(function CollapsibleContent({ className, children, ...props }, ref) {\n  return (\n    <CollapsiblePrimitive.Content\n      ref={ref}\n      className={cn(\n        \"overflow-hidden\",\n        \"data-[state=open]:animate-[collapsible-down_250ms_var(--ease-out-quart)]\",\n        \"data-[state=closed]:animate-[collapsible-up_200ms_ease-in]\",\n      )}\n      {...props}\n    >\n      <div className={className}>{children}</div>\n    </CollapsiblePrimitive.Content>\n  );\n});\n"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "providers",
+  "type": "registry:lib",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "next-themes",
+    "radix-ui",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "toast"
+  ],
+  "files": [
+    {
+      "path": "components/providers/index.tsx",
+      "type": "registry:lib",
+      "target": "components/providers/index.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { ThemeProvider } from \"next-themes\";\nimport { DirectionProvider } from \"./direction-provider\";\nimport { Tooltip } from \"radix-ui\";\nimport { Toaster } from \"@/components/ui/toast\";\n\nexport function Providers({ children }: { children: React.ReactNode }) {\n  return (\n    <ThemeProvider\n      attribute=\"class\"\n      defaultTheme=\"dark\"\n      enableSystem\n      disableTransitionOnChange\n    >\n      <DirectionProvider>\n        <Tooltip.Provider delayDuration={200}>\n          {children}\n          <Toaster />\n        </Tooltip.Provider>\n      </DirectionProvider>\n    </ThemeProvider>\n  );\n}\n\nexport { useDirection } from \"./direction-provider\";\nexport type { Direction } from \"./direction-provider\";\n"
+    },
+    {
+      "path": "components/providers/direction-provider.tsx",
+      "type": "registry:lib",
+      "target": "components/providers/direction-provider.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { Direction as RadixDirection } from \"radix-ui\";\n\nexport type Direction = \"ltr\" | \"rtl\";\n\ninterface DirectionContextValue {\n  direction: Direction;\n  setDirection: (direction: Direction) => void;\n  toggleDirection: () => void;\n}\n\nconst DirectionContext = React.createContext<DirectionContextValue | null>(null);\n\nexport function useDirection() {\n  const context = React.useContext(DirectionContext);\n  if (!context) {\n    throw new Error(\"useDirection must be used within a <DirectionProvider>.\");\n  }\n  return context;\n}\n\nconst STORAGE_KEY = \"ui-direction\";\n\n/**\n * Single source of truth for writing direction.\n *\n * Three things have to agree, or RTL breaks in subtle ways:\n *   1. `document.documentElement.dir` — drives CSS logical properties and\n *      Tailwind's `rtl:` variant.\n *   2. Radix's own DirectionProvider — drives keyboard navigation, so arrow\n *      keys move the right way in menus, tabs, and sliders.\n *   3. React state — so components can branch on direction when CSS can't.\n */\nexport function DirectionProvider({\n  children,\n  defaultDirection = \"ltr\",\n}: {\n  children: React.ReactNode;\n  defaultDirection?: Direction;\n}) {\n  const [direction, setDirectionState] =\n    React.useState<Direction>(defaultDirection);\n\n  // Restore the persisted choice after hydration, never during render.\n  React.useEffect(() => {\n    const stored = window.localStorage.getItem(STORAGE_KEY);\n    if (stored === \"ltr\" || stored === \"rtl\") setDirectionState(stored);\n  }, []);\n\n  React.useEffect(() => {\n    document.documentElement.dir = direction;\n    document.documentElement.lang = direction === \"rtl\" ? \"ar\" : \"en\";\n  }, [direction]);\n\n  const setDirection = React.useCallback((next: Direction) => {\n    setDirectionState(next);\n    window.localStorage.setItem(STORAGE_KEY, next);\n  }, []);\n\n  const value = React.useMemo<DirectionContextValue>(\n    () => ({\n      direction,\n      setDirection,\n      toggleDirection: () => setDirection(direction === \"ltr\" ? \"rtl\" : \"ltr\"),\n    }),\n    [direction, setDirection],\n  );\n\n  return (\n    <DirectionContext.Provider value={value}>\n      <RadixDirection.DirectionProvider dir={direction}>\n        {children}\n      </RadixDirection.DirectionProvider>\n    </DirectionContext.Provider>\n  );\n}\n"
+    }
+  ]
+}

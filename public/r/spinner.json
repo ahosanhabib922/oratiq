@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spinner",
+  "type": "registry:ui",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/spinner.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/spinner.tsx",
+      "content": "import * as React from \"react\";\nimport { cva, type VariantProps } from \"class-variance-authority\";\nimport { cn } from \"@/lib/utils\";\n\nconst spinnerVariants = cva(\"animate-spin text-current\", {\n  variants: {\n    size: {\n      xs: \"size-3\",\n      sm: \"size-4\",\n      default: \"size-5\",\n      lg: \"size-6\",\n      xl: \"size-8\",\n    },\n  },\n  defaultVariants: { size: \"default\" },\n});\n\nexport interface SpinnerProps\n  extends React.SVGAttributes<SVGSVGElement>,\n    VariantProps<typeof spinnerVariants> {\n  /** Announced to screen readers. Pass `null` when a parent already labels it. */\n  label?: string | null;\n}\n\nexport function Spinner({\n  className,\n  size,\n  label = \"Loading\",\n  ...props\n}: SpinnerProps) {\n  return (\n    <svg\n      viewBox=\"0 0 24 24\"\n      fill=\"none\"\n      role={label ? \"status\" : undefined}\n      aria-label={label ?? undefined}\n      aria-hidden={label ? undefined : true}\n      className={cn(spinnerVariants({ size }), className)}\n      {...props}\n    >\n      <circle\n        cx=\"12\"\n        cy=\"12\"\n        r=\"10\"\n        stroke=\"currentColor\"\n        strokeWidth=\"3\"\n        className=\"opacity-20\"\n      />\n      <path\n        d=\"M12 2a10 10 0 0 1 10 10\"\n        stroke=\"currentColor\"\n        strokeWidth=\"3\"\n        strokeLinecap=\"round\"\n      />\n    </svg>\n  );\n}\n\nexport { spinnerVariants };\n"
+    }
+  ]
+}

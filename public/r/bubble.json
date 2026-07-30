@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "bubble",
+  "type": "registry:ui",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/bubble.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/bubble.tsx",
+      "content": "import * as React from \"react\";\nimport { cva, type VariantProps } from \"class-variance-authority\";\nimport { cn } from \"@/lib/utils\";\n\nconst bubbleVariants = cva(\n  \"relative max-w-[75%] px-3.5 py-2.5 text-sm break-words\",\n  {\n    variants: {\n      /**\n       * `outgoing` hugs the end edge, `incoming` the start edge — both\n       * logical, so a conversation mirrors correctly under RTL without\n       * swapping which side \"mine\" is on.\n       */\n      side: {\n        incoming: \"me-auto bg-muted text-foreground rounded-2xl rounded-es-sm\",\n        outgoing:\n          \"ms-auto bg-primary text-primary-foreground rounded-2xl rounded-ee-sm\",\n      },\n      state: {\n        default: \"\",\n        pending: \"opacity-60\",\n        failed: \"ring-1 ring-destructive\",\n      },\n    },\n    defaultVariants: { side: \"incoming\", state: \"default\" },\n  },\n);\n\nexport interface BubbleProps\n  extends React.HTMLAttributes<HTMLDivElement>,\n    VariantProps<typeof bubbleVariants> {}\n\nexport function Bubble({ className, side, state, ...props }: BubbleProps) {\n  return (\n    // Message bodies are user content in an unknown language — `auto` lets\n    // each bubble resolve its own direction from its first strong character.\n    <div dir=\"auto\" className={cn(bubbleVariants({ side, state }), className)} {...props} />\n  );\n}\n\n/** Groups consecutive bubbles from one author, tightening the gaps. */\nexport function BubbleGroup({\n  className,\n  side = \"incoming\",\n  ...props\n}: React.HTMLAttributes<HTMLDivElement> & {\n  side?: \"incoming\" | \"outgoing\";\n}) {\n  return (\n    <div\n      className={cn(\n        \"flex flex-col gap-1\",\n        side === \"outgoing\" ? \"items-end\" : \"items-start\",\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\nexport function BubbleTimestamp({\n  className,\n  ...props\n}: React.HTMLAttributes<HTMLSpanElement>) {\n  return (\n    <span\n      className={cn(\"px-1 text-2xs tnum text-muted-foreground\", className)}\n      {...props}\n    />\n  );\n}\n"
+    }
+  ]
+}

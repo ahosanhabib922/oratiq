@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "slider",
+  "type": "registry:ui",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "radix-ui",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/slider.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/slider.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { Slider as SliderPrimitive } from \"radix-ui\";\nimport { cn } from \"@/lib/utils\";\n\nexport interface SliderProps\n  extends React.ComponentPropsWithoutRef<typeof SliderPrimitive.Root> {\n  /** Renders the current value above each thumb. */\n  showValue?: boolean;\n  formatValue?: (value: number) => string;\n}\n\n/**\n * Radix handles RTL natively once a DirectionProvider is in the tree — arrow\n * keys and the fill direction both invert. Nothing here needs to branch.\n */\nexport const Slider = React.forwardRef<\n  React.ElementRef<typeof SliderPrimitive.Root>,\n  SliderProps\n>(function Slider(\n  { className, showValue, formatValue = String, value, defaultValue, ...props },\n  ref,\n) {\n  const thumbs = value ?? defaultValue ?? [0];\n\n  return (\n    <SliderPrimitive.Root\n      ref={ref}\n      value={value}\n      defaultValue={defaultValue}\n      className={cn(\n        \"relative flex w-full touch-none items-center select-none\",\n        \"data-[orientation=vertical]:h-44 data-[orientation=vertical]:w-auto data-[orientation=vertical]:flex-col\",\n        \"data-[disabled]:opacity-50\",\n        className,\n      )}\n      {...props}\n    >\n      <SliderPrimitive.Track\n        className={cn(\n          \"relative grow overflow-hidden rounded-full bg-input\",\n          \"data-[orientation=horizontal]:h-1.5 data-[orientation=horizontal]:w-full\",\n          \"data-[orientation=vertical]:h-full data-[orientation=vertical]:w-1.5\",\n        )}\n      >\n        <SliderPrimitive.Range\n          className={cn(\n            \"absolute rounded-full bg-primary\",\n            \"data-[orientation=horizontal]:h-full\",\n            \"data-[orientation=vertical]:w-full\",\n          )}\n        />\n      </SliderPrimitive.Track>\n\n      {thumbs.map((_, i) => (\n        <SliderPrimitive.Thumb\n          key={i}\n          className={cn(\n            \"group relative block size-5 rounded-full border-2 border-primary bg-background shadow-sm\",\n            \"transition-[box-shadow,transform] duration-150 ease-out-quart\",\n            \"hover:scale-110\",\n            \"outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background\",\n            \"disabled:pointer-events-none\",\n          )}\n        >\n          {showValue && (\n            <span\n              className={cn(\n                \"pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2\",\n                \"rounded-md bg-popover px-2 py-1 text-xs tnum text-popover-foreground shadow-md\",\n                \"opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100\",\n              )}\n            >\n              {formatValue(thumbs[i])}\n            </span>\n          )}\n        </SliderPrimitive.Thumb>\n      ))}\n    </SliderPrimitive.Root>\n  );\n});\n"
+    }
+  ]
+}

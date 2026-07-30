@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "scroll-area",
+  "type": "registry:ui",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "radix-ui",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/scroll-area.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/scroll-area.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { ScrollArea as ScrollAreaPrimitive } from \"radix-ui\";\nimport { cn } from \"@/lib/utils\";\n\nexport const ScrollArea = React.forwardRef<\n  React.ElementRef<typeof ScrollAreaPrimitive.Root>,\n  React.ComponentPropsWithoutRef<typeof ScrollAreaPrimitive.Root>\n>(function ScrollArea({ className, children, ...props }, ref) {\n  return (\n    <ScrollAreaPrimitive.Root\n      ref={ref}\n      className={cn(\"relative overflow-hidden\", className)}\n      {...props}\n    >\n      <ScrollAreaPrimitive.Viewport className=\"size-full rounded-[inherit] outline-none focus-visible:ring-2 focus-visible:ring-ring\">\n        {children}\n      </ScrollAreaPrimitive.Viewport>\n      <ScrollBar />\n      <ScrollBar orientation=\"horizontal\" />\n      <ScrollAreaPrimitive.Corner />\n    </ScrollAreaPrimitive.Root>\n  );\n});\n\nexport const ScrollBar = React.forwardRef<\n  React.ElementRef<typeof ScrollAreaPrimitive.ScrollAreaScrollbar>,\n  React.ComponentPropsWithoutRef<typeof ScrollAreaPrimitive.ScrollAreaScrollbar>\n>(function ScrollBar({ className, orientation = \"vertical\", ...props }, ref) {\n  return (\n    <ScrollAreaPrimitive.ScrollAreaScrollbar\n      ref={ref}\n      orientation={orientation}\n      className={cn(\n        \"flex touch-none select-none transition-colors\",\n        orientation === \"vertical\" && \"h-full w-2.5 border-s border-transparent p-px\",\n        orientation === \"horizontal\" && \"h-2.5 flex-col border-t border-transparent p-px\",\n        className,\n      )}\n      {...props}\n    >\n      <ScrollAreaPrimitive.ScrollAreaThumb className=\"relative flex-1 rounded-full bg-border\" />\n    </ScrollAreaPrimitive.ScrollAreaScrollbar>\n  );\n});\n"
+    }
+  ]
+}

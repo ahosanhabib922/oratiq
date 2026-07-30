@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "toggle-group",
+  "type": "registry:ui",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "radix-ui",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "toggle",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/toggle-group.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/toggle-group.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { ToggleGroup as ToggleGroupPrimitive } from \"radix-ui\";\nimport { type VariantProps } from \"class-variance-authority\";\nimport { cn } from \"@/lib/utils\";\nimport { toggleVariants } from \"./toggle\";\n\ntype ToggleGroupContextValue = VariantProps<typeof toggleVariants> & {\n  attached?: boolean;\n};\n\nconst ToggleGroupContext = React.createContext<ToggleGroupContextValue>({});\n\nexport const ToggleGroup = React.forwardRef<\n  React.ElementRef<typeof ToggleGroupPrimitive.Root>,\n  React.ComponentPropsWithoutRef<typeof ToggleGroupPrimitive.Root> &\n    VariantProps<typeof toggleVariants> & {\n      /** Joins the items into one control with shared borders. */\n      attached?: boolean;\n    }\n>(function ToggleGroup(\n  { className, variant, size, attached = false, children, ...props },\n  ref,\n) {\n  const context = React.useMemo(\n    () => ({ variant, size, attached }),\n    [variant, size, attached],\n  );\n\n  return (\n    <ToggleGroupPrimitive.Root\n      ref={ref}\n      className={cn(\n        \"flex items-center\",\n        attached\n          ? [\n              \"isolate\",\n              \"[&>*]:rounded-none\",\n              \"[&>*:first-child]:rounded-s-lg\",\n              \"[&>*:last-child]:rounded-e-lg\",\n              \"[&>*+*]:-ms-px\",\n              \"[&>*:focus-visible]:z-10\",\n            ]\n          : \"gap-1\",\n        className,\n      )}\n      {...props}\n    >\n      <ToggleGroupContext.Provider value={context}>\n        {children}\n      </ToggleGroupContext.Provider>\n    </ToggleGroupPrimitive.Root>\n  );\n});\n\nexport const ToggleGroupItem = React.forwardRef<\n  React.ElementRef<typeof ToggleGroupPrimitive.Item>,\n  React.ComponentPropsWithoutRef<typeof ToggleGroupPrimitive.Item> &\n    VariantProps<typeof toggleVariants>\n>(function ToggleGroupItem({ className, variant, size, ...props }, ref) {\n  const context = React.useContext(ToggleGroupContext);\n  return (\n    <ToggleGroupPrimitive.Item\n      ref={ref}\n      className={cn(\n        toggleVariants({\n          variant: variant ?? context.variant,\n          size: size ?? context.size,\n        }),\n        className,\n      )}\n      {...props}\n    />\n  );\n});\n"
+    }
+  ]
+}

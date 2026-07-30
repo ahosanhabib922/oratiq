@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "menu-styles",
+  "type": "registry:ui",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/ui/menu-styles.ts",
+      "type": "registry:ui",
+      "target": "components/ui/menu-styles.ts",
+      "content": "/**\n * Shared styling for the three menu families — Dropdown Menu, Context Menu,\n * and Menubar. They wrap different Radix primitives but are the same control\n * to a user, so the classes live in one place rather than being copied three\n * times and drifting apart.\n */\n\nexport const menuContent = [\n  \"z-50 min-w-[10rem] overflow-hidden rounded-lg border border-border bg-popover p-1\",\n  \"text-popover-foreground shadow-lg\",\n  \"origin-(--radix-dropdown-menu-content-transform-origin)\",\n  \"data-[state=open]:animate-[zoom-in_120ms_ease-out]\",\n  \"data-[state=closed]:animate-[zoom-out_80ms_ease-in]\",\n].join(\" \");\n\nexport const menuItem = [\n  \"relative flex cursor-default select-none items-center gap-2 rounded-md px-2 py-1.5 text-sm\",\n  \"outline-none transition-colors\",\n  \"focus:bg-accent focus:text-accent-foreground\",\n  \"data-[disabled]:pointer-events-none data-[disabled]:opacity-50\",\n  \"data-[variant=destructive]:text-destructive\",\n  \"data-[variant=destructive]:focus:bg-destructive/10 data-[variant=destructive]:focus:text-destructive\",\n  \"[&_svg]:size-4 [&_svg]:shrink-0\",\n].join(\" \");\n\n/** Checkbox and radio items reserve room for their indicator. */\nexport const menuIndicatorItem = `${menuItem} ps-8`;\n\nexport const menuIndicator =\n  \"absolute start-2 flex size-4 items-center justify-center\";\n\nexport const menuLabel = \"px-2 py-1.5 text-xs font-medium text-muted-foreground\";\n\nexport const menuSeparator = \"-mx-1 my-1 h-px bg-border\";\n\n/** Trailing shortcut hint. Pushed to the end edge, so it flips under RTL. */\nexport const menuShortcut =\n  \"ms-auto text-xs tracking-widest text-muted-foreground\";\n\n/** Sub-triggers keep the same shape as items but always show a chevron. */\nexport const menuSubTrigger = `${menuItem} data-[state=open]:bg-accent data-[state=open]:text-accent-foreground`;\n"
+    }
+  ]
+}

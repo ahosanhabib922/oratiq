@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "drawer",
+  "type": "registry:ui",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge",
+    "vaul"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/drawer.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/drawer.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { Drawer as DrawerPrimitive } from \"vaul\";\nimport { cn } from \"@/lib/utils\";\n\nexport const Drawer = ({\n  shouldScaleBackground = true,\n  ...props\n}: React.ComponentProps<typeof DrawerPrimitive.Root>) => (\n  <DrawerPrimitive.Root shouldScaleBackground={shouldScaleBackground} {...props} />\n);\n\nexport const DrawerTrigger = DrawerPrimitive.Trigger;\nexport const DrawerPortal = DrawerPrimitive.Portal;\nexport const DrawerClose = DrawerPrimitive.Close;\n\nexport const DrawerOverlay = React.forwardRef<\n  React.ElementRef<typeof DrawerPrimitive.Overlay>,\n  React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Overlay>\n>(function DrawerOverlay({ className, ...props }, ref) {\n  return (\n    <DrawerPrimitive.Overlay\n      ref={ref}\n      className={cn(\"fixed inset-0 z-50 bg-black/60\", className)}\n      {...props}\n    />\n  );\n});\n\n/**\n * Bottom sheet with drag-to-dismiss. Prefer this over Sheet on touch: the\n * drag handle gives a reachable dismiss target on tall phones, where a close\n * button in the top corner is not.\n */\nexport const DrawerContent = React.forwardRef<\n  React.ElementRef<typeof DrawerPrimitive.Content>,\n  React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Content> & {\n    hideHandle?: boolean;\n  }\n>(function DrawerContent({ className, children, hideHandle, ...props }, ref) {\n  return (\n    <DrawerPortal>\n      <DrawerOverlay />\n      <DrawerPrimitive.Content\n        ref={ref}\n        className={cn(\n          \"fixed inset-x-0 bottom-0 z-50 mt-24 flex max-h-[92vh] flex-col\",\n          \"rounded-t-2xl border-t border-border bg-popover\",\n          className,\n        )}\n        {...props}\n      >\n        {!hideHandle && (\n          <div\n            aria-hidden=\"true\"\n            className=\"mx-auto mt-3 h-1.5 w-12 shrink-0 rounded-full bg-muted-foreground/40\"\n          />\n        )}\n        {children}\n      </DrawerPrimitive.Content>\n    </DrawerPortal>\n  );\n});\n\nexport function DrawerHeader({\n  className,\n  ...props\n}: React.HTMLAttributes<HTMLDivElement>) {\n  return (\n    <div className={cn(\"flex flex-col gap-1.5 p-6 pb-2 text-start\", className)} {...props} />\n  );\n}\n\nexport function DrawerBody({\n  className,\n  ...props\n}: React.HTMLAttributes<HTMLDivElement>) {\n  return <div className={cn(\"min-h-0 flex-1 overflow-y-auto px-6\", className)} {...props} />;\n}\n\nexport function DrawerFooter({\n  className,\n  ...props\n}: React.HTMLAttributes<HTMLDivElement>) {\n  return <div className={cn(\"mt-auto flex flex-col gap-2 p-6\", className)} {...props} />;\n}\n\nexport const DrawerTitle = React.forwardRef<\n  React.ElementRef<typeof DrawerPrimitive.Title>,\n  React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Title>\n>(function DrawerTitle({ className, ...props }, ref) {\n  return (\n    <DrawerPrimitive.Title\n      ref={ref}\n      className={cn(\"text-lg font-medium tracking-tight\", className)}\n      {...props}\n    />\n  );\n});\n\nexport const DrawerDescription = React.forwardRef<\n  React.ElementRef<typeof DrawerPrimitive.Description>,\n  React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Description>\n>(function DrawerDescription({ className, ...props }, ref) {\n  return (\n    <DrawerPrimitive.Description\n      ref={ref}\n      className={cn(\"text-sm text-muted-foreground\", className)}\n      {...props}\n    />\n  );\n});\n"
+    }
+  ]
+}

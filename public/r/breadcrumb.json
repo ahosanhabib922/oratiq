@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "breadcrumb",
+  "type": "registry:ui",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "lucide-react",
+    "radix-ui",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/breadcrumb.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/breadcrumb.tsx",
+      "content": "import * as React from \"react\";\nimport { Slot } from \"radix-ui\";\nimport { ChevronRight, MoreHorizontal } from \"lucide-react\";\nimport { cn } from \"@/lib/utils\";\n\nexport function Breadcrumb({\n  className,\n  ...props\n}: React.ComponentPropsWithoutRef<\"nav\">) {\n  return <nav aria-label=\"Breadcrumb\" className={className} {...props} />;\n}\n\nexport function BreadcrumbList({\n  className,\n  ...props\n}: React.ComponentPropsWithoutRef<\"ol\">) {\n  return (\n    <ol\n      className={cn(\n        \"flex flex-wrap items-center gap-1.5 text-sm text-muted-foreground\",\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\nexport function BreadcrumbItem({\n  className,\n  ...props\n}: React.ComponentPropsWithoutRef<\"li\">) {\n  return <li className={cn(\"inline-flex items-center gap-1.5\", className)} {...props} />;\n}\n\nexport function BreadcrumbLink({\n  className,\n  asChild,\n  ...props\n}: React.ComponentPropsWithoutRef<\"a\"> & { asChild?: boolean }) {\n  const Comp = asChild ? Slot.Root : \"a\";\n  return (\n    <Comp\n      className={cn(\n        \"rounded-xs transition-colors hover:text-foreground\",\n        \"outline-none focus-visible:ring-2 focus-visible:ring-ring\",\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\n/** The current page. Not a link — it's where you already are. */\nexport function BreadcrumbPage({\n  className,\n  ...props\n}: React.ComponentPropsWithoutRef<\"span\">) {\n  return (\n    <span\n      role=\"link\"\n      aria-disabled=\"true\"\n      aria-current=\"page\"\n      className={cn(\"font-medium text-foreground\", className)}\n      {...props}\n    />\n  );\n}\n\nexport function BreadcrumbSeparator({\n  children,\n  className,\n  ...props\n}: React.ComponentPropsWithoutRef<\"li\">) {\n  return (\n    <li\n      role=\"presentation\"\n      aria-hidden=\"true\"\n      className={cn(\"[&>svg]:size-3.5\", className)}\n      {...props}\n    >\n      {children ?? <ChevronRight className=\"rtl-flip\" />}\n    </li>\n  );\n}\n\n/** Collapses the middle of a long trail. */\nexport function BreadcrumbEllipsis({\n  className,\n  ...props\n}: React.ComponentPropsWithoutRef<\"span\">) {\n  return (\n    <span\n      role=\"presentation\"\n      aria-hidden=\"true\"\n      className={cn(\"flex size-5 items-center justify-center\", className)}\n      {...props}\n    >\n      <MoreHorizontal className=\"size-4\" />\n      <span className=\"sr-only\">More</span>\n    </span>\n  );\n}\n"
+    }
+  ]
+}

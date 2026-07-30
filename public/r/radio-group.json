@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "radio-group",
+  "type": "registry:ui",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "radix-ui",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/radio-group.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/radio-group.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { RadioGroup as RadioGroupPrimitive } from \"radix-ui\";\nimport { cn } from \"@/lib/utils\";\n\nexport const RadioGroup = React.forwardRef<\n  React.ElementRef<typeof RadioGroupPrimitive.Root>,\n  React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Root>\n>(function RadioGroup({ className, ...props }, ref) {\n  return (\n    <RadioGroupPrimitive.Root\n      ref={ref}\n      className={cn(\"grid gap-3\", className)}\n      {...props}\n    />\n  );\n});\n\nexport interface RadioGroupItemProps\n  extends React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Item> {\n  size?: \"sm\" | \"default\" | \"lg\";\n}\n\nconst sizes = {\n  sm: \"size-4 [&>span>span]:size-1.5\",\n  default: \"size-5 [&>span>span]:size-2\",\n  lg: \"size-6 [&>span>span]:size-2.5\",\n};\n\nexport const RadioGroupItem = React.forwardRef<\n  React.ElementRef<typeof RadioGroupPrimitive.Item>,\n  RadioGroupItemProps\n>(function RadioGroupItem({ className, size = \"default\", ...props }, ref) {\n  return (\n    <RadioGroupPrimitive.Item\n      ref={ref}\n      className={cn(\n        \"aspect-square shrink-0 rounded-full border border-input bg-transparent\",\n        \"transition-[color,background-color,border-color,box-shadow] duration-150 ease-out-quart\",\n        \"outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background\",\n        \"disabled:cursor-not-allowed disabled:opacity-50\",\n        \"data-[state=checked]:border-primary data-[state=checked]:bg-primary\",\n        \"aria-invalid:border-destructive\",\n        sizes[size],\n        className,\n      )}\n      {...props}\n    >\n      <RadioGroupPrimitive.Indicator className=\"flex items-center justify-center\">\n        <span className=\"block rounded-full bg-primary-foreground\" />\n      </RadioGroupPrimitive.Indicator>\n    </RadioGroupPrimitive.Item>\n  );\n});\n"
+    }
+  ]
+}

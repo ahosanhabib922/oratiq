@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "attachment",
+  "type": "registry:ui",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "lucide-react",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "progress",
+    "spinner",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/attachment.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/attachment.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport {\n  File,\n  FileArchive,\n  FileAudio,\n  FileImage,\n  FileText,\n  FileVideo,\n  X,\n} from \"lucide-react\";\nimport { cn } from \"@/lib/utils\";\nimport { Progress } from \"./progress\";\nimport { Spinner } from \"./spinner\";\n\nfunction iconFor(mime: string) {\n  if (mime.startsWith(\"image/\")) return FileImage;\n  if (mime.startsWith(\"video/\")) return FileVideo;\n  if (mime.startsWith(\"audio/\")) return FileAudio;\n  if (mime.includes(\"zip\") || mime.includes(\"tar\") || mime.includes(\"rar\"))\n    return FileArchive;\n  if (mime.startsWith(\"text/\") || mime.includes(\"pdf\")) return FileText;\n  return File;\n}\n\n/** Binary units, rounded the way file managers show them. */\nexport function formatBytes(bytes: number) {\n  if (bytes === 0) return \"0 B\";\n  const units = [\"B\", \"KB\", \"MB\", \"GB\", \"TB\"];\n  const i = Math.floor(Math.log(bytes) / Math.log(1024));\n  const value = bytes / Math.pow(1024, i);\n  return `${value.toFixed(i === 0 ? 0 : 1)} ${units[i]}`;\n}\n\nexport interface AttachmentProps extends React.HTMLAttributes<HTMLDivElement> {\n  name: string;\n  size?: number;\n  type?: string;\n  /** 0–100 while uploading. Omit once complete. */\n  progress?: number;\n  status?: \"uploading\" | \"complete\" | \"error\";\n  error?: string;\n  onRemove?: () => void;\n  /** Thumbnail URL for image attachments. */\n  preview?: string;\n}\n\nexport function Attachment({\n  name,\n  size,\n  type = \"\",\n  progress,\n  status = \"complete\",\n  error,\n  onRemove,\n  preview,\n  className,\n  ...props\n}: AttachmentProps) {\n  const Icon = iconFor(type);\n\n  return (\n    <div\n      className={cn(\n        \"flex items-center gap-3 rounded-lg border border-border bg-card p-2.5\",\n        status === \"error\" && \"border-destructive/40 bg-destructive/5\",\n        className,\n      )}\n      {...props}\n    >\n      <span className=\"flex size-10 shrink-0 items-center justify-center overflow-hidden rounded-md bg-muted text-muted-foreground\">\n        {preview ? (\n          // eslint-disable-next-line @next/next/no-img-element\n          <img src={preview} alt=\"\" className=\"size-full object-cover\" />\n        ) : status === \"uploading\" ? (\n          <Spinner size=\"sm\" label={null} />\n        ) : (\n          <Icon className=\"size-5\" />\n        )}\n      </span>\n\n      <div className=\"min-w-0 flex-1\">\n        {/* Filenames are user data and often mixed-script; `auto` keeps the\n            extension attached to the name instead of jumping to the far end. */}\n        <p dir=\"auto\" className=\"truncate text-sm font-medium text-foreground\">\n          {name}\n        </p>\n        {status === \"error\" ? (\n          <p className=\"truncate text-xs text-destructive\">{error ?? \"Upload failed\"}</p>\n        ) : status === \"uploading\" && progress !== undefined ? (\n          <Progress value={progress} size=\"sm\" className=\"mt-1.5\" />\n        ) : (\n          size !== undefined && (\n            <p className=\"text-xs tnum text-muted-foreground\">{formatBytes(size)}</p>\n          )\n        )}\n      </div>\n\n      {onRemove && (\n        <button\n          type=\"button\"\n          onClick={onRemove}\n          aria-label={`Remove ${name}`}\n          className={cn(\n            \"inline-flex size-7 shrink-0 items-center justify-center rounded-md\",\n            \"text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground\",\n            \"outline-none focus-visible:ring-2 focus-visible:ring-ring\",\n          )}\n        >\n          <X className=\"size-4\" />\n        </button>\n      )}\n    </div>\n  );\n}\n\nexport function AttachmentList({\n  className,\n  ...props\n}: React.HTMLAttributes<HTMLDivElement>) {\n  return <div className={cn(\"flex flex-col gap-2\", className)} {...props} />;\n}\n"
+    }
+  ]
+}

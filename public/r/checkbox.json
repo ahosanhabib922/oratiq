@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "checkbox",
+  "type": "registry:ui",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "lucide-react",
+    "radix-ui",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/checkbox.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/checkbox.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { Checkbox as CheckboxPrimitive } from \"radix-ui\";\nimport { Check, Minus } from \"lucide-react\";\nimport { cn } from \"@/lib/utils\";\n\nexport interface CheckboxProps\n  extends React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root> {\n  size?: \"sm\" | \"default\" | \"lg\";\n}\n\nconst sizes = {\n  sm: \"size-4 rounded-[4px] [&_svg]:size-3\",\n  default: \"size-5 rounded-[5px] [&_svg]:size-3.5\",\n  lg: \"size-6 rounded-md [&_svg]:size-4\",\n};\n\nexport const Checkbox = React.forwardRef<\n  React.ElementRef<typeof CheckboxPrimitive.Root>,\n  CheckboxProps\n>(function Checkbox({ className, size = \"default\", ...props }, ref) {\n  return (\n    <CheckboxPrimitive.Root\n      ref={ref}\n      className={cn(\n        \"peer shrink-0 border border-input bg-transparent\",\n        \"transition-[color,background-color,border-color,box-shadow] duration-150 ease-out-quart\",\n        \"outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background\",\n        \"disabled:cursor-not-allowed disabled:opacity-50\",\n        \"data-[state=checked]:border-primary data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground\",\n        \"data-[state=indeterminate]:border-primary data-[state=indeterminate]:bg-primary data-[state=indeterminate]:text-primary-foreground\",\n        \"aria-invalid:border-destructive\",\n        sizes[size],\n        className,\n      )}\n      {...props}\n    >\n      <CheckboxPrimitive.Indicator className=\"flex items-center justify-center text-current\">\n        {props.checked === \"indeterminate\" ? (\n          <Minus strokeWidth={3} />\n        ) : (\n          <Check strokeWidth={3} />\n        )}\n      </CheckboxPrimitive.Indicator>\n    </CheckboxPrimitive.Root>\n  );\n});\n"
+    }
+  ]
+}

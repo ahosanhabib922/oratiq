@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "field",
+  "type": "registry:ui",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "label",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/field.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/field.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { Label } from \"./label\";\n\ninterface FieldContextValue {\n  id: string;\n  descriptionId: string;\n  errorId: string;\n  hasError: boolean;\n  hasDescription: boolean;\n  disabled: boolean;\n}\n\nconst FieldContext = React.createContext<FieldContextValue | null>(null);\n\n/**\n * Returns the ids and aria wiring for the control inside a <Field>.\n * Spread the result onto the input: `<Input {...useFieldControl()} />`.\n */\nexport function useFieldControl() {\n  const context = React.useContext(FieldContext);\n  if (!context) return {};\n\n  const describedBy =\n    [\n      context.hasDescription ? context.descriptionId : null,\n      context.hasError ? context.errorId : null,\n    ]\n      .filter(Boolean)\n      .join(\" \") || undefined;\n\n  return {\n    id: context.id,\n    \"aria-describedby\": describedBy,\n    \"aria-invalid\": context.hasError || undefined,\n    disabled: context.disabled || undefined,\n  } as const;\n}\n\nexport interface FieldProps extends React.HTMLAttributes<HTMLDivElement> {\n  /** Presence of a message switches the field into its error state. */\n  error?: React.ReactNode;\n  description?: React.ReactNode;\n  disabled?: boolean;\n  /** Horizontal puts the label beside the control — for switches and checkboxes. */\n  orientation?: \"vertical\" | \"horizontal\";\n}\n\n/**\n * Binds a label, control, description, and error message into one accessible\n * unit. Generates the ids and the `aria-describedby` / `aria-invalid` wiring\n * so individual controls don't each reimplement it.\n */\nexport function Field({\n  className,\n  error,\n  description,\n  disabled = false,\n  orientation = \"vertical\",\n  children,\n  ...props\n}: FieldProps) {\n  const id = React.useId();\n\n  const value = React.useMemo<FieldContextValue>(\n    () => ({\n      id: `${id}-control`,\n      descriptionId: `${id}-description`,\n      errorId: `${id}-error`,\n      hasError: Boolean(error),\n      hasDescription: Boolean(description),\n      disabled,\n    }),\n    [id, error, description, disabled],\n  );\n\n  return (\n    <FieldContext.Provider value={value}>\n      <div\n        data-disabled={disabled || undefined}\n        data-invalid={error ? true : undefined}\n        data-orientation={orientation}\n        className={cn(\n          \"group/field\",\n          orientation === \"vertical\"\n            ? \"flex flex-col gap-2\"\n            : \"flex flex-row-reverse items-center justify-end gap-3\",\n          className,\n        )}\n        {...props}\n      >\n        {children}\n\n        {(description || error) && (\n          <div\n            className={cn(\n              \"flex flex-col gap-1\",\n              orientation === \"horizontal\" && \"order-last basis-full\",\n            )}\n          >\n            {description && !error && (\n              <p id={value.descriptionId} className=\"text-xs text-muted-foreground\">\n                {description}\n              </p>\n            )}\n            {error && (\n              <p id={value.errorId} className=\"text-xs text-destructive\">\n                {error}\n              </p>\n            )}\n          </div>\n        )}\n      </div>\n    </FieldContext.Provider>\n  );\n}\n\n/** Label bound to the field's generated control id. */\nexport function FieldLabel({\n  className,\n  ...props\n}: React.ComponentPropsWithoutRef<typeof Label>) {\n  const context = React.useContext(FieldContext);\n  return <Label htmlFor={context?.id} className={className} {...props} />;\n}\n\n/** Groups related fields, e.g. a two-column row. */\nexport function FieldSet({\n  className,\n  legend,\n  children,\n  ...props\n}: React.FieldsetHTMLAttributes<HTMLFieldSetElement> & { legend?: React.ReactNode }) {\n  return (\n    <fieldset className={cn(\"flex flex-col gap-4\", className)} {...props}>\n      {legend && (\n        <legend className=\"mb-1 text-sm font-medium\">{legend}</legend>\n      )}\n      {children}\n    </fieldset>\n  );\n}\n"
+    }
+  ]
+}

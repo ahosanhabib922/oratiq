@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pagination",
+  "type": "registry:ui",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "lucide-react",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "button",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/pagination.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/pagination.tsx",
+      "content": "import * as React from \"react\";\nimport { ChevronLeft, ChevronRight, MoreHorizontal } from \"lucide-react\";\nimport { cn } from \"@/lib/utils\";\nimport { buttonVariants } from \"./button\";\n\nexport function Pagination({\n  className,\n  ...props\n}: React.ComponentPropsWithoutRef<\"nav\">) {\n  return (\n    <nav\n      aria-label=\"Pagination\"\n      className={cn(\"mx-auto flex w-full justify-center\", className)}\n      {...props}\n    />\n  );\n}\n\nexport function PaginationContent({\n  className,\n  ...props\n}: React.ComponentPropsWithoutRef<\"ul\">) {\n  return <ul className={cn(\"flex flex-row items-center gap-1\", className)} {...props} />;\n}\n\nexport function PaginationItem(props: React.ComponentPropsWithoutRef<\"li\">) {\n  return <li {...props} />;\n}\n\nexport interface PaginationLinkProps\n  extends React.ComponentPropsWithoutRef<\"a\"> {\n  isActive?: boolean;\n  size?: \"icon-sm\" | \"icon\" | \"sm\" | \"default\";\n}\n\nexport function PaginationLink({\n  className,\n  isActive,\n  size = \"icon\",\n  ...props\n}: PaginationLinkProps) {\n  return (\n    <a\n      aria-current={isActive ? \"page\" : undefined}\n      className={cn(\n        buttonVariants({ variant: isActive ? \"outline\" : \"ghost\", size }),\n        \"tnum\",\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\n/**\n * Previous/next carry both an icon and a label. The chevrons mirror under\n * RTL — \"previous\" points toward the start edge in either direction.\n */\nexport function PaginationPrevious({\n  className,\n  ...props\n}: React.ComponentPropsWithoutRef<\"a\">) {\n  return (\n    <PaginationLink\n      aria-label=\"Go to previous page\"\n      size=\"default\"\n      className={cn(\"gap-1 ps-2.5\", className)}\n      {...props}\n    >\n      <ChevronLeft className=\"size-4 rtl-flip\" />\n      <span className=\"hidden sm:inline\">Previous</span>\n    </PaginationLink>\n  );\n}\n\nexport function PaginationNext({\n  className,\n  ...props\n}: React.ComponentPropsWithoutRef<\"a\">) {\n  return (\n    <PaginationLink\n      aria-label=\"Go to next page\"\n      size=\"default\"\n      className={cn(\"gap-1 pe-2.5\", className)}\n      {...props}\n    >\n      <span className=\"hidden sm:inline\">Next</span>\n      <ChevronRight className=\"size-4 rtl-flip\" />\n    </PaginationLink>\n  );\n}\n\nexport function PaginationEllipsis({\n  className,\n  ...props\n}: React.ComponentPropsWithoutRef<\"span\">) {\n  return (\n    <span\n      aria-hidden=\"true\"\n      className={cn(\"flex size-9 items-center justify-center\", className)}\n      {...props}\n    >\n      <MoreHorizontal className=\"size-4 text-muted-foreground\" />\n      <span className=\"sr-only\">More pages</span>\n    </span>\n  );\n}\n"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "alert-dialog",
+  "type": "registry:ui",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "radix-ui",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "button",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/alert-dialog.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/alert-dialog.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { AlertDialog as AlertDialogPrimitive } from \"radix-ui\";\nimport { cn } from \"@/lib/utils\";\nimport { buttonVariants } from \"./button\";\n\nexport const AlertDialog = AlertDialogPrimitive.Root;\nexport const AlertDialogTrigger = AlertDialogPrimitive.Trigger;\nexport const AlertDialogPortal = AlertDialogPrimitive.Portal;\n\nexport const AlertDialogOverlay = React.forwardRef<\n  React.ElementRef<typeof AlertDialogPrimitive.Overlay>,\n  React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Overlay>\n>(function AlertDialogOverlay({ className, ...props }, ref) {\n  return (\n    <AlertDialogPrimitive.Overlay\n      ref={ref}\n      className={cn(\n        \"fixed inset-0 z-50 bg-black/60 backdrop-blur-[2px]\",\n        \"data-[state=open]:animate-[fade-in_200ms_ease-out]\",\n        \"data-[state=closed]:animate-[fade-out_150ms_ease-in]\",\n        className,\n      )}\n      {...props}\n    />\n  );\n});\n\n/**\n * Unlike Dialog, this has no close button and no dismiss-on-outside-click.\n * An alert dialog interrupts to ask a question — the user must answer it.\n */\nexport const AlertDialogContent = React.forwardRef<\n  React.ElementRef<typeof AlertDialogPrimitive.Content>,\n  React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Content>\n>(function AlertDialogContent({ className, ...props }, ref) {\n  return (\n    <AlertDialogPortal>\n      <AlertDialogOverlay />\n      <AlertDialogPrimitive.Content\n        ref={ref}\n        className={cn(\n          \"fixed start-1/2 top-1/2 z-50 w-[calc(100vw-2rem)] max-w-md -translate-y-1/2\",\n          \"-translate-x-1/2 rtl:translate-x-1/2\",\n          \"flex flex-col gap-4 rounded-xl border border-border bg-popover p-6 shadow-2xl\",\n          \"data-[state=open]:animate-[zoom-in_200ms_ease-out]\",\n          \"data-[state=closed]:animate-[zoom-out_150ms_ease-in]\",\n          className,\n        )}\n        {...props}\n      />\n    </AlertDialogPortal>\n  );\n});\n\nexport function AlertDialogHeader({\n  className,\n  ...props\n}: React.HTMLAttributes<HTMLDivElement>) {\n  return <div className={cn(\"flex flex-col gap-1.5\", className)} {...props} />;\n}\n\nexport function AlertDialogFooter({\n  className,\n  ...props\n}: React.HTMLAttributes<HTMLDivElement>) {\n  return (\n    <div\n      className={cn(\n        \"flex flex-col-reverse gap-2 sm:flex-row sm:justify-end\",\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\nexport const AlertDialogTitle = React.forwardRef<\n  React.ElementRef<typeof AlertDialogPrimitive.Title>,\n  React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Title>\n>(function AlertDialogTitle({ className, ...props }, ref) {\n  return (\n    <AlertDialogPrimitive.Title\n      ref={ref}\n      className={cn(\"text-lg font-medium tracking-tight\", className)}\n      {...props}\n    />\n  );\n});\n\nexport const AlertDialogDescription = React.forwardRef<\n  React.ElementRef<typeof AlertDialogPrimitive.Description>,\n  React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Description>\n>(function AlertDialogDescription({ className, ...props }, ref) {\n  return (\n    <AlertDialogPrimitive.Description\n      ref={ref}\n      className={cn(\"text-sm text-muted-foreground\", className)}\n      {...props}\n    />\n  );\n});\n\nexport const AlertDialogAction = React.forwardRef<\n  React.ElementRef<typeof AlertDialogPrimitive.Action>,\n  React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Action> & {\n    variant?: \"default\" | \"destructive\";\n  }\n>(function AlertDialogAction({ className, variant = \"default\", ...props }, ref) {\n  return (\n    <AlertDialogPrimitive.Action\n      ref={ref}\n      className={cn(buttonVariants({ variant }), className)}\n      {...props}\n    />\n  );\n});\n\nexport const AlertDialogCancel = React.forwardRef<\n  React.ElementRef<typeof AlertDialogPrimitive.Cancel>,\n  React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Cancel>\n>(function AlertDialogCancel({ className, ...props }, ref) {\n  return (\n    <AlertDialogPrimitive.Cancel\n      ref={ref}\n      className={cn(buttonVariants({ variant: \"outline\" }), className)}\n      {...props}\n    />\n  );\n});\n"
+    }
+  ]
+}

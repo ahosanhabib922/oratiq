@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "resizable",
+  "type": "registry:ui",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "lucide-react",
+    "react-resizable-panels",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/resizable.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/resizable.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { GripVertical } from \"lucide-react\";\nimport { Group, Panel, Separator } from \"react-resizable-panels\";\nimport { cn } from \"@/lib/utils\";\n\nexport interface ResizablePanelGroupProps\n  extends React.ComponentProps<typeof Group> {}\n\n/**\n * Split panes.\n *\n * The underlying library (v4) lays panels out with flexbox, so their visual\n * order already follows the inherited `direction` — a group under `dir=\"rtl\"`\n * renders the first panel on the right, and the drag math follows the same\n * flex axis. Nothing has to be passed through.\n */\nexport function ResizablePanelGroup({\n  className,\n  orientation = \"horizontal\",\n  ...props\n}: ResizablePanelGroupProps) {\n  return (\n    <Group\n      orientation={orientation}\n      className={cn(\"flex size-full\", className)}\n      {...props}\n    />\n  );\n}\n\nexport const ResizablePanel = Panel;\n\nexport interface ResizableHandleProps\n  extends React.ComponentProps<typeof Separator> {\n  /** Renders a visible grip, which makes the target easier to find and hit. */\n  withHandle?: boolean;\n}\n\nexport function ResizableHandle({\n  withHandle,\n  className,\n  ...props\n}: ResizableHandleProps) {\n  return (\n    <Separator\n      className={cn(\n        \"relative flex items-center justify-center bg-border\",\n        // A 1px line is far below the 24px minimum target size, so the\n        // interactive area is widened with a pseudo-element while the visible\n        // line stays hairline.\n        \"data-[orientation=horizontal]:w-px data-[orientation=horizontal]:cursor-col-resize\",\n        \"data-[orientation=vertical]:h-px data-[orientation=vertical]:cursor-row-resize\",\n        \"after:absolute after:z-10\",\n        \"data-[orientation=horizontal]:after:inset-y-0 data-[orientation=horizontal]:after:w-3\",\n        \"data-[orientation=vertical]:after:inset-x-0 data-[orientation=vertical]:after:h-3\",\n        \"transition-colors hover:bg-ring data-[state=dragging]:bg-ring\",\n        \"focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none\",\n        className,\n      )}\n      {...props}\n    >\n      {withHandle && (\n        <div className=\"z-20 flex h-5 w-3 items-center justify-center rounded-xs border border-border bg-card\">\n          <GripVertical className=\"size-2.5 text-muted-foreground\" />\n        </div>\n      )}\n    </Separator>\n  );\n}\n"
+    }
+  ]
+}
