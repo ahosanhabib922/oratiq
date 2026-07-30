@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pricing-section-06",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "components/blocks/pricing-section-06.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/pricing-section-06.tsx",
+      "content": "import { Button } from \"@/components/ui/button\";\n\n/** One number, centred — for products with exactly one answer. */\nexport function PricingSection06() {\n  return (\n    <section className=\"mx-auto max-w-xl px-4 py-20 text-center sm:px-6\">\n      <h2 className=\"text-2xl font-semibold tracking-tight\">Simple, honest pricing</h2>\n      <p className=\"mt-10 text-7xl font-semibold tracking-tight tnum\">\n        $19<span className=\"text-xl font-normal text-muted-foreground\">/mo</span>\n      </p>\n      <p className=\"mt-4 text-muted-foreground\">\n        Everything included. Cancel anytime, keep what you shipped.\n      </p>\n      <Button size=\"lg\" className=\"mt-8\">Start your 14-day trial</Button>\n      <p className=\"mt-3 text-xs text-muted-foreground\">No card required</p>\n    </section>\n  );\n}\n"
+    }
+  ]
+}

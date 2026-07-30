@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "contact-section-04",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "lucide-react",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "button",
+    "field",
+    "input",
+    "textarea"
+  ],
+  "files": [
+    {
+      "path": "components/blocks/contact-section-04.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/contact-section-04.tsx",
+      "content": "import { MapPin } from \"lucide-react\";\nimport { Button } from \"@/components/ui/button\";\nimport { Field, FieldLabel } from \"@/components/ui/field\";\nimport { Input } from \"@/components/ui/input\";\nimport { Textarea } from \"@/components/ui/textarea\";\n\n/** Location panel beside the form — for businesses with a place. */\nexport function ContactSection04() {\n  return (\n    <section className=\"mx-auto grid max-w-6xl gap-8 px-4 py-16 sm:px-6 lg:grid-cols-2\">\n      <div className=\"relative min-h-64 overflow-hidden rounded-2xl border border-border\">\n        <div\n          aria-hidden=\"true\"\n          className=\"absolute inset-0\"\n          style={{\n            background:\n              \"linear-gradient(135deg, var(--color-muted), var(--color-card))\",\n            backgroundImage:\n              \"linear-gradient(to right, var(--color-border) 1px, transparent 1px), linear-gradient(to bottom, var(--color-border) 1px, transparent 1px)\",\n            backgroundSize: \"40px 40px\",\n          }}\n        />\n        <span className=\"absolute start-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rtl:translate-x-1/2\">\n          <span className=\"flex size-10 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg\">\n            <MapPin className=\"size-5\" />\n          </span>\n        </span>\n        <p className=\"absolute inset-x-0 bottom-0 bg-background/80 p-3 text-center text-xs text-muted-foreground backdrop-blur\">\n          Dhaka, Bangladesh · replace with your map embed\n        </p>\n      </div>\n      <form className=\"flex flex-col gap-4\" action=\"#\">\n        <Field>\n          <FieldLabel required>Email</FieldLabel>\n          <Input type=\"email\" required />\n        </Field>\n        <Field>\n          <FieldLabel required>Message</FieldLabel>\n          <Textarea required rows={5} />\n        </Field>\n        <Button type=\"submit\" size=\"lg\" className=\"self-start\">Send</Button>\n      </form>\n    </section>\n  );\n}\n"
+    }
+  ]
+}

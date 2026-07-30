@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "header-section-04",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "lucide-react",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "input",
+    "input-group"
+  ],
+  "files": [
+    {
+      "path": "components/blocks/header-section-04.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/header-section-04.tsx",
+      "content": "import { Search } from \"lucide-react\";\nimport { Input } from \"@/components/ui/input\";\nimport { InputGroup, InputGroupAddon } from \"@/components/ui/input-group\";\n\n/** Help-center header: big title with a search field front and centre. */\nexport function HeaderSection04() {\n  return (\n    <div className=\"border-b border-border bg-card/40\">\n      <div className=\"mx-auto flex max-w-2xl flex-col items-center px-4 py-16 text-center sm:px-6\">\n        <h1 className=\"text-3xl font-semibold tracking-tight sm:text-4xl\">\n          How can we help?\n        </h1>\n        <p className=\"mt-2 text-muted-foreground\">\n          Guides, references, and answers — searchable.\n        </p>\n        <div className=\"mt-6 w-full\">\n          <InputGroup>\n            <InputGroupAddon><Search /></InputGroupAddon>\n            <Input size=\"lg\" placeholder=\"Search articles…\" aria-label=\"Search articles\" />\n          </InputGroup>\n        </div>\n      </div>\n    </div>\n  );\n}\n"
+    }
+  ]
+}

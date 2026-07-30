@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "header-navigation-05",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/blocks/header-navigation-05.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/header-navigation-05.tsx",
+      "content": "/** Editorial nav: link groups flanking a centred logo. */\nexport function HeaderNavigation05() {\n  return (\n    <header className=\"border-b border-border bg-background\">\n      <nav className=\"mx-auto grid h-16 max-w-5xl grid-cols-[1fr_auto_1fr] items-center px-4 sm:px-6\">\n        <div className=\"flex gap-6 justify-self-start\">\n          {[\"Work\", \"About\"].map((l) => (\n            <a key={l} href=\"#\" className=\"text-sm font-medium text-muted-foreground transition-colors hover:text-foreground\">{l}</a>\n          ))}\n        </div>\n        <a href=\"#\" className=\"flex items-center gap-2.5\">\n          <span className=\"flex size-8 items-center justify-center rounded-lg bg-primary text-sm font-bold text-primary-foreground\">O</span>\n          <span className=\"text-lg font-semibold tracking-tight\">Oratiq</span>\n        </a>\n        <div className=\"flex gap-6 justify-self-end\">\n          {[\"Journal\", \"Contact\"].map((l) => (\n            <a key={l} href=\"#\" className=\"text-sm font-medium text-muted-foreground transition-colors hover:text-foreground\">{l}</a>\n          ))}\n        </div>\n      </nav>\n    </header>\n  );\n}\n"
+    }
+  ]
+}

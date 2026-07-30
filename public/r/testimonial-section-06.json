@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "testimonial-section-06",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "lucide-react",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "avatar",
+    "button"
+  ],
+  "files": [
+    {
+      "path": "components/blocks/testimonial-section-06.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/testimonial-section-06.tsx",
+      "content": "import { ArrowRight } from \"lucide-react\";\nimport { Avatar, AvatarFallback } from \"@/components/ui/avatar\";\nimport { Button } from \"@/components/ui/button\";\n\n/** Case-study teaser: quote, hard number, and a link to the story. */\nexport function TestimonialSection06() {\n  return (\n    <section className=\"border-y border-border bg-card/40\">\n      <div className=\"mx-auto grid max-w-6xl items-center gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[1.5fr_1fr]\">\n        <div>\n          <blockquote dir=\"auto\" className=\"text-xl font-medium leading-relaxed tracking-tight\">\n            “We migrated 214 screens to Oratiq tokens in six weeks. The RTL\n            release that used to be a quarter's work came free.”\n          </blockquote>\n          <figcaption className=\"mt-5 flex items-center gap-3\">\n            <Avatar size=\"sm\"><AvatarFallback>AC</AvatarFallback></Avatar>\n            <span className=\"text-sm\">\n              <span className=\"font-medium\">Amina Chowdhury</span>\n              <span className=\"text-muted-foreground\"> · Design systems lead, Globex</span>\n            </span>\n          </figcaption>\n          <Button variant=\"outline\" size=\"sm\" className=\"mt-6\">\n            Read the case study\n            <ArrowRight className=\"rtl-flip\" />\n          </Button>\n        </div>\n        <div className=\"rounded-2xl border border-border bg-background p-8 text-center\">\n          <p className=\"text-5xl font-semibold tracking-tight tnum text-primary\">6 wks</p>\n          <p className=\"mt-2 text-sm text-muted-foreground\">\n            full migration, 214 screens, 2 directions\n          </p>\n        </div>\n      </div>\n    </section>\n  );\n}\n"
+    }
+  ]
+}

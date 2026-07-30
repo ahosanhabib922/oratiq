@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "features-section-06",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "lucide-react",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "featured-icon"
+  ],
+  "files": [
+    {
+      "path": "components/blocks/features-section-06.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/features-section-06.tsx",
+      "content": "import { Globe2 } from \"lucide-react\";\nimport { FeaturedIcon } from \"@/components/ui/featured-icon\";\n\n/** One flagship feature spotlighted beside supporting points. */\nexport function FeaturesSection06() {\n  const rest = [\n    [\"Token theming\", \"One override, whole system.\"],\n    [\"Copy-in code\", \"Your repo, your rules.\"],\n    [\"Agent-ready\", \"llms.txt ships the conventions.\"],\n  ];\n  return (\n    <section className=\"mx-auto grid max-w-6xl gap-6 px-4 py-16 sm:px-6 lg:grid-cols-[1.3fr_1fr]\">\n      <div\n        className=\"flex flex-col justify-between gap-10 rounded-3xl border border-border p-8\"\n        style={{\n          background:\n            \"radial-gradient(30rem 18rem at 0% 100%, color-mix(in oklab, var(--color-primary) 15%, transparent), transparent 70%)\",\n        }}\n      >\n        <FeaturedIcon variant=\"solid\" size=\"xl\"><Globe2 /></FeaturedIcon>\n        <div>\n          <h3 className=\"text-2xl font-semibold tracking-tight\">RTL is the headline act</h3>\n          <p className=\"mt-2 max-w-md text-muted-foreground\">\n            Logical properties, bidi isolation, mirrored glyphs, direction-aware\n            keyboarding — measured at zero physical classes, not promised.\n          </p>\n        </div>\n      </div>\n      <div className=\"flex flex-col gap-4\">\n        {rest.map(([title, body]) => (\n          <div key={title} className=\"flex-1 rounded-2xl border border-border bg-card p-6\">\n            <h4 className=\"font-medium\">{title}</h4>\n            <p className=\"mt-1 text-sm text-muted-foreground\">{body}</p>\n          </div>\n        ))}\n      </div>\n    </section>\n  );\n}\n"
+    }
+  ]
+}

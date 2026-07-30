@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "social-proof-04",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "rating"
+  ],
+  "files": [
+    {
+      "path": "components/blocks/social-proof-04.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/social-proof-04.tsx",
+      "content": "import { Rating } from \"@/components/ui/rating\";\n\n/** Aggregate rating headline with the logo strip. */\nexport function SocialProof04() {\n  return (\n    <section className=\"mx-auto max-w-5xl px-4 py-14 sm:px-6\">\n      <div className=\"flex flex-col items-center gap-3 text-center\">\n        <Rating value={5} readOnly label=\"4.9 out of 5\" />\n        <p className=\"text-sm text-muted-foreground\">\n          <span className=\"font-semibold text-foreground tnum\">4.9/5</span> from 320+ production teams\n        </p>\n      </div>\n      <div className=\"mt-8 flex flex-wrap items-center justify-center gap-x-10 gap-y-4\">\n        {[\"Acme Corp\", \"Northwind\", \"Globex\", \"Initech\", \"Umbra\", \"Vertex\"].map((b) => (\n          <span key={b} className=\"text-base font-semibold text-muted-foreground/50\">{b}</span>\n        ))}\n      </div>\n    </section>\n  );\n}\n"
+    }
+  ]
+}

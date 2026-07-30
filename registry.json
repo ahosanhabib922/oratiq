@@ -145,6 +145,41 @@
       "registryDependencies": []
     },
     {
+      "name": "banner-04",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "lucide-react",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "button"
+      ]
+    },
+    {
+      "name": "banner-05",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "lucide-react",
+        "tailwind-merge"
+      ],
+      "registryDependencies": []
+    },
+    {
+      "name": "banner-06",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "lucide-react",
+        "tailwind-merge"
+      ],
+      "registryDependencies": []
+    },
+    {
       "name": "blog-section",
       "type": "registry:ui",
       "dependencies": [
@@ -180,6 +215,44 @@
         "tailwind-merge"
       ],
       "registryDependencies": []
+    },
+    {
+      "name": "blog-section-04",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "avatar",
+        "badge",
+        "card"
+      ]
+    },
+    {
+      "name": "blog-section-05",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "badge"
+      ]
+    },
+    {
+      "name": "blog-section-06",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "badge"
+      ]
     },
     {
       "name": "breadcrumb",
@@ -299,6 +372,46 @@
         "badge",
         "button",
         "card"
+      ]
+    },
+    {
+      "name": "careers-section-04",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "lucide-react",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "featured-icon"
+      ]
+    },
+    {
+      "name": "careers-section-05",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "badge",
+        "button"
+      ]
+    },
+    {
+      "name": "careers-section-06",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "lucide-react",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "card",
+        "featured-icon"
       ]
     },
     {
@@ -466,6 +579,46 @@
       ]
     },
     {
+      "name": "contact-section-04",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "lucide-react",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "button",
+        "field",
+        "input",
+        "textarea"
+      ]
+    },
+    {
+      "name": "contact-section-05",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "lucide-react",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "button",
+        "featured-icon"
+      ]
+    },
+    {
+      "name": "contact-section-06",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "registryDependencies": []
+    },
+    {
       "name": "context-menu",
       "type": "registry:ui",
       "dependencies": [
@@ -508,6 +661,44 @@
     },
     {
       "name": "cta-section-03",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "lucide-react",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "button"
+      ]
+    },
+    {
+      "name": "cta-section-04",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "button",
+        "kbd"
+      ]
+    },
+    {
+      "name": "cta-section-05",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "code-snippet"
+      ]
+    },
+    {
+      "name": "cta-section-06",
       "type": "registry:ui",
       "dependencies": [
         "class-variance-authority",
@@ -646,6 +837,43 @@
       ]
     },
     {
+      "name": "faq-section-04",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "accordion",
+        "button"
+      ]
+    },
+    {
+      "name": "faq-section-05",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "accordion"
+      ]
+    },
+    {
+      "name": "faq-section-06",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "accordion"
+      ]
+    },
+    {
       "name": "featured-icon",
       "type": "registry:ui",
       "dependencies": [
@@ -695,6 +923,40 @@
       "registryDependencies": [
         "featured-icon",
         "utils"
+      ]
+    },
+    {
+      "name": "features-section-04",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "registryDependencies": []
+    },
+    {
+      "name": "features-section-05",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "lucide-react",
+        "tailwind-merge"
+      ],
+      "registryDependencies": []
+    },
+    {
+      "name": "features-section-06",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "lucide-react",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "featured-icon"
       ]
     },
     {
@@ -774,6 +1036,39 @@
       ]
     },
     {
+      "name": "footer-04",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "registryDependencies": []
+    },
+    {
+      "name": "footer-05",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "lucide-react",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "button"
+      ]
+    },
+    {
+      "name": "footer-06",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "registryDependencies": []
+    },
+    {
       "name": "header-navigation",
       "type": "registry:ui",
       "dependencies": [
@@ -813,6 +1108,44 @@
       ]
     },
     {
+      "name": "header-navigation-04",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "button"
+      ]
+    },
+    {
+      "name": "header-navigation-05",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "registryDependencies": []
+    },
+    {
+      "name": "header-navigation-06",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "lucide-react",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "button",
+        "input",
+        "input-group",
+        "kbd"
+      ]
+    },
+    {
       "name": "header-section",
       "type": "registry:ui",
       "dependencies": [
@@ -849,6 +1182,46 @@
       "registryDependencies": [
         "badge",
         "separator"
+      ]
+    },
+    {
+      "name": "header-section-04",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "lucide-react",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "input",
+        "input-group"
+      ]
+    },
+    {
+      "name": "header-section-05",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "badge"
+      ]
+    },
+    {
+      "name": "header-section-06",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "lucide-react",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "avatar",
+        "button"
       ]
     },
     {
@@ -895,6 +1268,46 @@
       "registryDependencies": [
         "button",
         "separator"
+      ]
+    },
+    {
+      "name": "hero-section-04",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "lucide-react",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "button"
+      ]
+    },
+    {
+      "name": "hero-section-05",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "badge",
+        "button"
+      ]
+    },
+    {
+      "name": "hero-section-06",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "avatar",
+        "button",
+        "input"
       ]
     },
     {
@@ -1095,6 +1508,40 @@
       "registryDependencies": []
     },
     {
+      "name": "metrics-section-04",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "progress"
+      ]
+    },
+    {
+      "name": "metrics-section-05",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "registryDependencies": []
+    },
+    {
+      "name": "metrics-section-06",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "progress"
+      ]
+    },
+    {
       "name": "multi-select",
       "type": "registry:ui",
       "dependencies": [
@@ -1175,6 +1622,46 @@
       "registryDependencies": [
         "button",
         "featured-icon",
+        "input"
+      ]
+    },
+    {
+      "name": "newsletter-cta-04",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "lucide-react",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "button",
+        "input"
+      ]
+    },
+    {
+      "name": "newsletter-cta-05",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "button",
+        "input"
+      ]
+    },
+    {
+      "name": "newsletter-cta-06",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "button",
         "input"
       ]
     },
@@ -1271,6 +1758,45 @@
       ],
       "registryDependencies": [
         "badge",
+        "button"
+      ]
+    },
+    {
+      "name": "pricing-section-04",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "lucide-react",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "button",
+        "card"
+      ]
+    },
+    {
+      "name": "pricing-section-05",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "lucide-react",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "button"
+      ]
+    },
+    {
+      "name": "pricing-section-06",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
         "button"
       ]
     },
@@ -1537,6 +2063,42 @@
       ]
     },
     {
+      "name": "social-proof-04",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "rating"
+      ]
+    },
+    {
+      "name": "social-proof-05",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "card"
+      ]
+    },
+    {
+      "name": "social-proof-06",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "avatar"
+      ]
+    },
+    {
       "name": "spinner",
       "type": "registry:ui",
       "dependencies": [
@@ -1638,6 +2200,43 @@
       ]
     },
     {
+      "name": "team-section-04",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "registryDependencies": []
+    },
+    {
+      "name": "team-section-05",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "avatar"
+      ]
+    },
+    {
+      "name": "team-section-06",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "lucide-react",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "avatar",
+        "button",
+        "card"
+      ]
+    },
+    {
       "name": "testimonial-section",
       "type": "registry:ui",
       "dependencies": [
@@ -1675,6 +2274,48 @@
       "registryDependencies": [
         "avatar",
         "card"
+      ]
+    },
+    {
+      "name": "testimonial-section-04",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "avatar",
+        "badge"
+      ]
+    },
+    {
+      "name": "testimonial-section-05",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "avatar",
+        "card",
+        "rating",
+        "separator"
+      ]
+    },
+    {
+      "name": "testimonial-section-06",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "lucide-react",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "avatar",
+        "button"
       ]
     },
     {

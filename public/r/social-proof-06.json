@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "social-proof-06",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "avatar"
+  ],
+  "files": [
+    {
+      "path": "components/blocks/social-proof-06.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/social-proof-06.tsx",
+      "content": "import { Avatar, AvatarFallback, AvatarGroup } from \"@/components/ui/avatar\";\n\n/** Compact inline strip — drop under any hero. */\nexport function SocialProof06() {\n  return (\n    <div className=\"mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-3 px-4 py-8 sm:px-6\">\n      <AvatarGroup max={5} total={2140}>\n        {[\"LH\", \"TR\", \"AC\", \"NP\", \"JW\", \"SW\"].map((i) => (\n          <Avatar key={i} size=\"sm\"><AvatarFallback>{i}</AvatarFallback></Avatar>\n        ))}\n      </AvatarGroup>\n      <p className=\"text-sm text-muted-foreground\">\n        Trusted by <span className=\"font-semibold text-foreground tnum\">2,140+</span> developers shipping worldwide\n      </p>\n    </div>\n  );\n}\n"
+    }
+  ]
+}

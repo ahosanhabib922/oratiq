@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "contact-section-06",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/blocks/contact-section-06.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/contact-section-06.tsx",
+      "content": "/** The minimalist's contact page: one address, said plainly. */\nexport function ContactSection06() {\n  return (\n    <section className=\"mx-auto max-w-2xl px-4 py-24 text-center sm:px-6\">\n      <h2 className=\"text-3xl font-semibold tracking-tight\">Say hello</h2>\n      <p className=\"mt-3 text-muted-foreground\">\n        No forms, no queues. Email us and a human replies.\n      </p>\n      <a\n        href=\"mailto:hello@oratiq.com\"\n        className=\"mt-6 inline-block text-2xl font-medium text-primary underline-offset-8 hover:underline\"\n      >\n        <bdi dir=\"ltr\">hello@oratiq.com</bdi>\n      </a>\n    </section>\n  );\n}\n"
+    }
+  ]
+}

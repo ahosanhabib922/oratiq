@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "testimonial-section-04",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "avatar",
+    "badge"
+  ],
+  "files": [
+    {
+      "path": "components/blocks/testimonial-section-04.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/testimonial-section-04.tsx",
+      "content": "import { Avatar, AvatarFallback } from \"@/components/ui/avatar\";\nimport { Badge } from \"@/components/ui/badge\";\n\n/** Split feature-quote: person panel beside a long-form endorsement. */\nexport function TestimonialSection04() {\n  return (\n    <section className=\"mx-auto max-w-6xl px-4 py-16 sm:px-6\">\n      <div className=\"grid overflow-hidden rounded-3xl border border-border lg:grid-cols-[1fr_1.6fr]\">\n        <div\n          className=\"flex flex-col items-start justify-end gap-3 p-8\"\n          style={{\n            background:\n              \"linear-gradient(160deg, color-mix(in oklab, var(--color-primary) 22%, var(--color-card)), var(--color-card))\",\n          }}\n        >\n          <Avatar size=\"xl\"><AvatarFallback>NP</AvatarFallback></Avatar>\n          <div>\n            <p className=\"font-medium\">Noa Peretz</p>\n            <p className=\"text-sm text-muted-foreground\">Frontend lead, Umbra</p>\n          </div>\n          <Badge variant=\"muted\" size=\"sm\">Hebrew + English product</Badge>\n        </div>\n        <blockquote dir=\"auto\" className=\"flex items-center p-8 text-xl font-medium leading-relaxed tracking-tight lg:p-12\">\n          “We maintain one codebase for a bidirectional product used in nine\n          countries. Before Oratiq that meant a parallel stylesheet and a\n          prayer. Now it means a dir attribute.”\n        </blockquote>\n      </div>\n    </section>\n  );\n}\n"
+    }
+  ]
+}

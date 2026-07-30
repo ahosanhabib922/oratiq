@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "cta-section-05",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "code-snippet"
+  ],
+  "files": [
+    {
+      "path": "components/blocks/cta-section-05.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/cta-section-05.tsx",
+      "content": "import { CodeSnippet } from \"@/components/ui/code-snippet\";\n\n/** Developer CTA: the command IS the call to action. */\nexport function CtaSection05() {\n  return (\n    <section className=\"mx-auto max-w-2xl px-4 py-16 text-center sm:px-6\">\n      <h2 className=\"text-3xl font-semibold tracking-tight\">One command away</h2>\n      <p className=\"mt-2 text-muted-foreground\">\n        Tokens, providers, and your first component — sixty seconds, start to\n        render.\n      </p>\n      <div className=\"mt-7 text-start\">\n        <CodeSnippet inline code=\"npx @oratiq-js/ui init\" />\n      </div>\n      <p className=\"mt-3 text-xs text-muted-foreground\">\n        Works in any Next.js 15+ project with Tailwind v4\n      </p>\n    </section>\n  );\n}\n"
+    }
+  ]
+}

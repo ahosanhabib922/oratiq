@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "faq-section-06",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "accordion"
+  ],
+  "files": [
+    {
+      "path": "components/blocks/faq-section-06.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/faq-section-06.tsx",
+      "content": "import {\n  Accordion, AccordionContent, AccordionItem, AccordionTrigger,\n} from \"@/components/ui/accordion\";\n\n/** Compact multi-open FAQ inside a bordered panel. */\nexport function FaqSection06() {\n  const items = [\n    [\"Refund policy?\", \"14 days, no questions asked.\"],\n    [\"Team seats?\", \"Unlimited on Team; per-seat elsewhere.\"],\n    [\"Invoices?\", \"Yes — automatic, with VAT fields.\"],\n    [\"Educational discount?\", \"50% for students and educators — write in.\"],\n  ];\n  return (\n    <section className=\"mx-auto max-w-2xl px-4 py-16 sm:px-6\">\n      <div className=\"rounded-2xl border border-border px-6 py-2\">\n        <Accordion type=\"multiple\" defaultValue={[items[0][0]]} className=\"w-full\">\n          {items.map(([q, a]) => (\n            <AccordionItem key={q} value={q}>\n              <AccordionTrigger>{q}</AccordionTrigger>\n              <AccordionContent>{a}</AccordionContent>\n            </AccordionItem>\n          ))}\n        </Accordion>\n      </div>\n    </section>\n  );\n}\n"
+    }
+  ]
+}

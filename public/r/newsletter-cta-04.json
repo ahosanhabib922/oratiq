@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "newsletter-cta-04",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "lucide-react",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "button",
+    "input"
+  ],
+  "files": [
+    {
+      "path": "components/blocks/newsletter-cta-04.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/newsletter-cta-04.tsx",
+      "content": "import { Check } from \"lucide-react\";\nimport { Button } from \"@/components/ui/button\";\nimport { Input } from \"@/components/ui/input\";\n\n/** Split signup: what you get, then the field. */\nexport function NewsletterCta04() {\n  const benefits = [\"New block drops first\", \"Migration heads-ups\", \"Zero marketing fluff\"];\n  return (\n    <section className=\"mx-auto max-w-6xl px-4 py-16 sm:px-6\">\n      <div className=\"grid items-center gap-8 rounded-3xl border border-border p-8 lg:grid-cols-2 lg:p-12\">\n        <div>\n          <h2 className=\"text-2xl font-semibold tracking-tight\">The ship-notes list</h2>\n          <ul className=\"mt-4 flex flex-col gap-2 text-sm\">\n            {benefits.map((b) => (\n              <li key={b} className=\"flex items-center gap-2 text-muted-foreground\">\n                <Check className=\"size-4 text-success\" strokeWidth={3} />{b}\n              </li>\n            ))}\n          </ul>\n        </div>\n        <form className=\"flex w-full gap-2\" action=\"#\">\n          <Input type=\"email\" required size=\"lg\" placeholder=\"you@example.com\" aria-label=\"Email address\" />\n          <Button type=\"submit\" size=\"lg\" className=\"shrink-0\">Subscribe</Button>\n        </form>\n      </div>\n    </section>\n  );\n}\n"
+    }
+  ]
+}

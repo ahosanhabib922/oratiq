@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "team-section-04",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/blocks/team-section-04.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/team-section-04.tsx",
+      "content": "/** Portrait-style cards with gradient placeholders for photos. */\nexport function TeamSection04() {\n  const people = [\n    [\"Ahosan Habib\", \"Founder\"], [\"Layla Haddad\", \"Design lead\"],\n    [\"Tomás Rivera\", \"Engineering\"], [\"Noa Peretz\", \"Frontend\"],\n  ];\n  return (\n    <section className=\"mx-auto max-w-6xl px-4 py-16 sm:px-6\">\n      <div className=\"grid grid-cols-2 gap-5 lg:grid-cols-4\">\n        {people.map(([name, role], i) => (\n          <figure key={name} className=\"group overflow-hidden rounded-2xl border border-border\">\n            <div\n              aria-hidden=\"true\"\n              className=\"aspect-[4/5] w-full transition-transform duration-300 group-hover:scale-105\"\n              style={{ background: `linear-gradient(${140 + i * 40}deg, color-mix(in oklab, var(--color-primary) ${20 + i * 12}%, var(--color-muted)), var(--color-card))` }}\n            />\n            <figcaption className=\"p-4\">\n              <p className=\"text-sm font-medium\">{name}</p>\n              <p className=\"text-xs text-muted-foreground\">{role}</p>\n            </figcaption>\n          </figure>\n        ))}\n      </div>\n    </section>\n  );\n}\n"
+    }
+  ]
+}

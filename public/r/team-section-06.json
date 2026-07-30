@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "team-section-06",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "lucide-react",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "avatar",
+    "button",
+    "card"
+  ],
+  "files": [
+    {
+      "path": "components/blocks/team-section-06.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/team-section-06.tsx",
+      "content": "import { AtSign, Globe, Link2 } from \"lucide-react\";\nimport { Avatar, AvatarFallback } from \"@/components/ui/avatar\";\nimport { Button } from \"@/components/ui/button\";\nimport { Card } from \"@/components/ui/card\";\n\n/** Cards with contact/social actions per person. */\nexport function TeamSection06() {\n  const people = [\n    [\"Tomás Rivera\", \"Engineering\", \"TR\"], [\"Amina Chowdhury\", \"DevRel\", \"AC\"], [\"Jonas Weber\", \"Platform\", \"JW\"],\n  ];\n  return (\n    <section className=\"mx-auto max-w-5xl px-4 py-16 sm:px-6\">\n      <div className=\"grid gap-5 md:grid-cols-3\">\n        {people.map(([name, role, i]) => (\n          <Card key={name} padding=\"default\" className=\"items-center gap-3 text-center\">\n            <Avatar size=\"xl\"><AvatarFallback>{i}</AvatarFallback></Avatar>\n            <div>\n              <p className=\"font-medium\">{name}</p>\n              <p className=\"text-sm text-muted-foreground\">{role}</p>\n            </div>\n            <div className=\"mt-1 flex gap-1\">\n              <Button variant=\"ghost\" size=\"icon-sm\" aria-label={`Email ${name}`}><AtSign /></Button>\n              <Button variant=\"ghost\" size=\"icon-sm\" aria-label={`${name}'s profile`}><Link2 /></Button>\n              <Button variant=\"ghost\" size=\"icon-sm\" aria-label={`${name}'s website`}><Globe /></Button>\n            </div>\n          </Card>\n        ))}\n      </div>\n    </section>\n  );\n}\n"
+    }
+  ]
+}

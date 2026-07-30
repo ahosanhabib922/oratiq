@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "footer-06",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/blocks/footer-06.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/footer-06.tsx",
+      "content": "/** Compact two-zone footer: brand line and inline nav, nothing else. */\nexport function Footer06() {\n  return (\n    <footer className=\"border-t border-border bg-card/40\">\n      <div className=\"mx-auto flex max-w-6xl flex-wrap items-start justify-between gap-6 px-4 py-10 sm:px-6\">\n        <div className=\"max-w-xs\">\n          <a href=\"#\" className=\"flex items-center gap-2\">\n            <span className=\"flex size-6 items-center justify-center rounded-md bg-primary text-xs font-bold text-primary-foreground\">O</span>\n            <span className=\"text-sm font-semibold\">Oratiq</span>\n          </a>\n          <p className=\"mt-2 text-xs leading-relaxed text-muted-foreground\">\n            98 components and sections for interfaces that read both ways.\n            MIT licensed, built in Dhaka.\n          </p>\n        </div>\n        <nav className=\"grid grid-cols-2 gap-x-12 gap-y-2\">\n          {[\"Docs\", \"Blocks\", \"GitHub\", \"npm\", \"License\", \"Contact\"].map((link) => (\n            <a key={link} href=\"#\" className=\"text-sm text-muted-foreground transition-colors hover:text-foreground\">{link}</a>\n          ))}\n        </nav>\n      </div>\n    </footer>\n  );\n}\n"
+    }
+  ]
+}

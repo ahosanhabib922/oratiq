@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "banner-06",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "lucide-react",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/blocks/banner-06.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/banner-06.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { ArrowRight, X } from \"lucide-react\";\n\n/** Floating pill banner — sits inside the page flow with breathing room. */\nexport function Banner06() {\n  const [open, setOpen] = React.useState(true);\n  if (!open) return null;\n  return (\n    <div className=\"px-4 pt-4\">\n      <div className=\"relative mx-auto flex max-w-3xl flex-wrap items-center justify-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-10 py-2.5 text-center text-sm\">\n        <p>\n          <span className=\"font-semibold\">Workshop:</span>{\" \"}\n          <span className=\"text-muted-foreground\">Shipping RTL right — Aug 14, live.</span>\n        </p>\n        <a href=\"#\" className=\"inline-flex items-center gap-1 font-semibold text-primary hover:underline hover:underline-offset-4\">\n          Save a seat\n          <ArrowRight className=\"size-3.5 rtl-flip\" />\n        </a>\n        <button\n          type=\"button\"\n          aria-label=\"Dismiss\"\n          onClick={() => setOpen(false)}\n          className=\"absolute end-2 top-1/2 inline-flex size-6 -translate-y-1/2 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-primary/20 hover:text-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring\"\n        >\n          <X className=\"size-3.5\" />\n        </button>\n      </div>\n    </div>\n  );\n}\n"
+    }
+  ]
+}

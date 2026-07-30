@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pricing-section-05",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "lucide-react",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "components/blocks/pricing-section-05.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/pricing-section-05.tsx",
+      "content": "import { Check, Plus } from \"lucide-react\";\nimport { Button } from \"@/components/ui/button\";\n\n/** Base plan plus priced add-ons — the unbundled model. */\nexport function PricingSection05() {\n  const addons = [\n    [\"Figma kit\", \"$49\"], [\"Priority support\", \"$99/yr\"], [\"Private registry\", \"$199/yr\"],\n  ];\n  return (\n    <section className=\"mx-auto max-w-3xl px-4 py-16 sm:px-6\">\n      <div className=\"rounded-2xl border border-border\">\n        <div className=\"flex flex-wrap items-center justify-between gap-4 p-6\">\n          <div>\n            <h3 className=\"text-lg font-medium\">Oratiq Base</h3>\n            <p className=\"text-sm text-muted-foreground\">Components, blocks, updates.</p>\n          </div>\n          <div className=\"flex items-center gap-4\">\n            <p className=\"text-3xl font-semibold tnum\">$0</p>\n            <Button>Start free</Button>\n          </div>\n        </div>\n        <ul className=\"divide-y divide-border border-t border-border\">\n          {addons.map(([name, price]) => (\n            <li key={name} className=\"flex items-center justify-between gap-4 px-6 py-4\">\n              <span className=\"inline-flex items-center gap-2 text-sm\">\n                <Plus className=\"size-4 text-primary\" />\n                {name}\n              </span>\n              <span className=\"text-sm font-medium tnum\">{price}</span>\n            </li>\n          ))}\n        </ul>\n        <p className=\"flex items-center gap-2 border-t border-border px-6 py-3 text-xs text-muted-foreground\">\n          <Check className=\"size-3.5 text-success\" strokeWidth={3} />\n          Every add-on is one-click removable — no bundles, no lock.\n        </p>\n      </div>\n    </section>\n  );\n}\n"
+    }
+  ]
+}

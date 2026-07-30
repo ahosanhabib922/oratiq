@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pricing-section-04",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "lucide-react",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "button",
+    "card"
+  ],
+  "files": [
+    {
+      "path": "components/blocks/pricing-section-04.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/pricing-section-04.tsx",
+      "content": "import { Check } from \"lucide-react\";\nimport { Button } from \"@/components/ui/button\";\nimport { Card } from \"@/components/ui/card\";\n\n/** Flat annual pricing — three cards, no toggle, no drama. */\nexport function PricingSection04() {\n  const tiers = [\n    { name: \"Solo\", price: \"$99\", per: \"/yr\", features: [\"1 seat\", \"All blocks\", \"Updates\"], cta: \"Choose Solo\" },\n    { name: \"Studio\", price: \"$299\", per: \"/yr\", features: [\"5 seats\", \"All blocks\", \"Priority support\"], cta: \"Choose Studio\" },\n    { name: \"Agency\", price: \"$799\", per: \"/yr\", features: [\"Unlimited seats\", \"Client projects\", \"Invoice billing\"], cta: \"Choose Agency\" },\n  ];\n  return (\n    <section className=\"mx-auto max-w-5xl px-4 py-16 sm:px-6\">\n      <div className=\"grid gap-5 md:grid-cols-3\">\n        {tiers.map((tier) => (\n          <Card key={tier.name} padding=\"default\" className=\"gap-4\">\n            <h3 className=\"font-medium\">{tier.name}</h3>\n            <p className=\"text-3xl font-semibold tracking-tight tnum\">\n              {tier.price}\n              <span className=\"text-sm font-normal text-muted-foreground\">{tier.per}</span>\n            </p>\n            <ul className=\"flex flex-1 flex-col gap-2 text-sm\">\n              {tier.features.map((f) => (\n                <li key={f} className=\"flex items-center gap-2\">\n                  <Check className=\"size-4 text-success\" strokeWidth={3} />{f}\n                </li>\n              ))}\n            </ul>\n            <Button variant=\"outline\" fullWidth>{tier.cta}</Button>\n          </Card>\n        ))}\n      </div>\n    </section>\n  );\n}\n"
+    }
+  ]
+}

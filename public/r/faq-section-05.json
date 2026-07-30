@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "faq-section-05",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "accordion"
+  ],
+  "files": [
+    {
+      "path": "components/blocks/faq-section-05.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/faq-section-05.tsx",
+      "content": "import {\n  Accordion, AccordionContent, AccordionItem, AccordionTrigger,\n} from \"@/components/ui/accordion\";\n\n/** Grouped FAQ — for products with distinct question areas. */\nexport function FaqSection05() {\n  const groups = [\n    {\n      heading: \"Licensing\",\n      items: [\n        [\"Commercial projects?\", \"Yes — MIT covers commercial use, client work, and redistribution.\"],\n        [\"Attribution?\", \"Appreciated, never required.\"],\n      ],\n    },\n    {\n      heading: \"Technical\",\n      items: [\n        [\"Tailwind v3?\", \"No — the token layer is built on v4's @theme.\"],\n        [\"Server components?\", \"Static components are RSC-safe; interactive ones are client, marked as such.\"],\n      ],\n    },\n  ];\n  return (\n    <section className=\"mx-auto max-w-3xl px-4 py-16 sm:px-6\">\n      <div className=\"flex flex-col gap-10\">\n        {groups.map((group) => (\n          <div key={group.heading}>\n            <h3 className=\"text-sm font-semibold uppercase tracking-wide text-muted-foreground\">\n              {group.heading}\n            </h3>\n            <Accordion type=\"single\" collapsible className=\"mt-2 w-full\">\n              {group.items.map(([q, a]) => (\n                <AccordionItem key={q} value={q}>\n                  <AccordionTrigger>{q}</AccordionTrigger>\n                  <AccordionContent>{a}</AccordionContent>\n                </AccordionItem>\n              ))}\n            </Accordion>\n          </div>\n        ))}\n      </div>\n    </section>\n  );\n}\n"
+    }
+  ]
+}

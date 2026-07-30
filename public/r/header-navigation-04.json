@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "header-navigation-04",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "components/blocks/header-navigation-04.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/header-navigation-04.tsx",
+      "content": "import { Button } from \"@/components/ui/button\";\n\n/** Utility bar over the main nav — the classic SaaS double-decker. */\nexport function HeaderNavigation04() {\n  return (\n    <header className=\"border-b border-border bg-background\">\n      <div className=\"border-b border-border bg-muted/40\">\n        <div className=\"mx-auto flex h-9 max-w-6xl items-center justify-end gap-5 px-4 text-xs text-muted-foreground sm:px-6\">\n          <a href=\"#\" className=\"hover:text-foreground\">Status</a>\n          <a href=\"#\" className=\"hover:text-foreground\">Changelog</a>\n          <a href=\"#\" className=\"hover:text-foreground\">Support</a>\n        </div>\n      </div>\n      <nav className=\"mx-auto flex h-14 max-w-6xl items-center gap-6 px-4 sm:px-6\">\n        <a href=\"#\" className=\"flex items-center gap-2.5\">\n          <span className=\"flex size-7 items-center justify-center rounded-md bg-primary text-xs font-bold text-primary-foreground\">O</span>\n          <span className=\"font-semibold\">Oratiq</span>\n        </a>\n        <div className=\"hidden gap-1 md:flex\">\n          {[\"Components\", \"Blocks\", \"Pricing\"].map((l) => (\n            <a key={l} href=\"#\" className=\"rounded-md px-3 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground\">{l}</a>\n          ))}\n        </div>\n        <Button size=\"sm\" className=\"ms-auto\">Get started</Button>\n      </nav>\n    </header>\n  );\n}\n"
+    }
+  ]
+}

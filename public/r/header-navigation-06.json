@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "header-navigation-06",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "lucide-react",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "button",
+    "input",
+    "input-group",
+    "kbd"
+  ],
+  "files": [
+    {
+      "path": "components/blocks/header-navigation-06.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/header-navigation-06.tsx",
+      "content": "import { Search } from \"lucide-react\";\nimport { Button } from \"@/components/ui/button\";\nimport { Input } from \"@/components/ui/input\";\nimport { InputGroup, InputGroupAddon } from \"@/components/ui/input-group\";\nimport { Kbd } from \"@/components/ui/kbd\";\n\n/** Docs-style nav with an inline search field. */\nexport function HeaderNavigation06() {\n  return (\n    <header className=\"border-b border-border bg-background\">\n      <nav className=\"mx-auto flex h-16 max-w-6xl items-center gap-4 px-4 sm:px-6\">\n        <a href=\"#\" className=\"flex shrink-0 items-center gap-2.5\">\n          <span className=\"flex size-8 items-center justify-center rounded-lg bg-primary text-sm font-bold text-primary-foreground\">O</span>\n          <span className=\"text-lg font-semibold max-sm:hidden\">Oratiq</span>\n        </a>\n        <div className=\"mx-auto w-full max-w-md\">\n          <InputGroup>\n            <InputGroupAddon><Search /></InputGroupAddon>\n            <Input size=\"sm\" placeholder=\"Search docs…\" aria-label=\"Search docs\" />\n            <InputGroupAddon align=\"end\"><Kbd>/</Kbd></InputGroupAddon>\n          </InputGroup>\n        </div>\n        <div className=\"flex shrink-0 items-center gap-2\">\n          <Button variant=\"ghost\" size=\"sm\" className=\"max-sm:hidden\">GitHub</Button>\n          <Button size=\"sm\">Install</Button>\n        </div>\n      </nav>\n    </header>\n  );\n}\n"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "careers-section-04",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "lucide-react",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "featured-icon"
+  ],
+  "files": [
+    {
+      "path": "components/blocks/careers-section-04.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/careers-section-04.tsx",
+      "content": "import { ArrowRight, Globe2, HeartPulse, Laptop } from \"lucide-react\";\nimport { FeaturedIcon } from \"@/components/ui/featured-icon\";\n\n/** Benefits column beside the openings list. */\nexport function CareersSection04() {\n  const benefits = [\n    { icon: <Globe2 />, text: \"Remote-first, async by default\" },\n    { icon: <Laptop />, text: \"Hardware budget, yearly refresh\" },\n    { icon: <HeartPulse />, text: \"Health cover, wherever you are\" },\n  ];\n  const roles = [[\"Senior Frontend Engineer\", \"Remote\"], [\"Developer Advocate\", \"Remote\"]];\n  return (\n    <section className=\"mx-auto grid max-w-6xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-2\">\n      <div>\n        <h2 className=\"text-3xl font-semibold tracking-tight\">Why join</h2>\n        <ul className=\"mt-6 flex flex-col gap-4\">\n          {benefits.map((b) => (\n            <li key={b.text} className=\"flex items-center gap-3\">\n              <FeaturedIcon variant=\"light\" size=\"sm\">{b.icon}</FeaturedIcon>\n              <span className=\"text-sm\">{b.text}</span>\n            </li>\n          ))}\n        </ul>\n      </div>\n      <div>\n        <h3 className=\"text-sm font-semibold uppercase tracking-wide text-muted-foreground\">Open now</h3>\n        <ul className=\"mt-3 divide-y divide-border rounded-xl border border-border\">\n          {roles.map(([title, location]) => (\n            <li key={title}>\n              <a href=\"#\" className=\"group flex items-center gap-4 p-4 outline-none transition-colors hover:bg-accent/50 focus-visible:ring-2 focus-visible:ring-ring\">\n                <span className=\"min-w-0 flex-1\">\n                  <span className=\"block truncate text-sm font-medium group-hover:underline group-hover:underline-offset-4\">{title}</span>\n                  <span className=\"text-xs text-muted-foreground\">{location}</span>\n                </span>\n                <ArrowRight className=\"size-4 shrink-0 text-muted-foreground rtl-flip\" />\n              </a>\n            </li>\n          ))}\n        </ul>\n      </div>\n    </section>\n  );\n}\n"
+    }
+  ]
+}

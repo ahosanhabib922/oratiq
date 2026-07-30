@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "features-section-04",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/blocks/features-section-04.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/features-section-04.tsx",
+      "content": "/** Numbered editorial list — for narrative feature storytelling. */\nexport function FeaturesSection04() {\n  const steps = [\n    [\"Install the system\", \"One command writes the tokens, providers, and helpers into your repo.\"],\n    [\"Compose your pages\", \"Components and blocks snap together — dark mode and RTL ride along.\"],\n    [\"Ship every locale\", \"Flip dir per locale route. That's the whole migration.\"],\n  ];\n  return (\n    <section className=\"mx-auto max-w-3xl px-4 py-16 sm:px-6\">\n      <ol className=\"flex flex-col gap-10\">\n        {steps.map(([title, body], i) => (\n          <li key={title} className=\"grid grid-cols-[auto_1fr] gap-5\">\n            <span className=\"font-mono text-4xl font-light text-primary tnum\">\n              {String(i + 1).padStart(2, \"0\")}\n            </span>\n            <div className=\"pt-1.5\">\n              <h3 className=\"text-lg font-medium\">{title}</h3>\n              <p className=\"mt-1.5 text-muted-foreground\">{body}</p>\n            </div>\n          </li>\n        ))}\n      </ol>\n    </section>\n  );\n}\n"
+    }
+  ]
+}

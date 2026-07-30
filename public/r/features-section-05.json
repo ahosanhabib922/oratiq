@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "features-section-05",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "lucide-react",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/blocks/features-section-05.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/features-section-05.tsx",
+      "content": "import { Check } from \"lucide-react\";\n\n/** Dense capability checklist, two columns. */\nexport function FeaturesSection05() {\n  const items = [\n    \"81 primitives\", \"51 marketing sections\", \"Radix behaviour\", \"Tailwind v4 tokens\",\n    \"Dark mode built-in\", \"RTL built-in\", \"Copy-in ownership\", \"MIT license\",\n    \"CLI with dependency graph\", \"llms.txt for agents\", \"A11y contracts per component\", \"Zero physical direction classes\",\n  ];\n  return (\n    <section className=\"mx-auto max-w-4xl px-4 py-16 sm:px-6\">\n      <h2 className=\"text-center text-3xl font-semibold tracking-tight\">Everything in the box</h2>\n      <ul className=\"mt-10 grid gap-x-12 gap-y-3.5 sm:grid-cols-2\">\n        {items.map((item) => (\n          <li key={item} className=\"flex items-center gap-3 border-b border-border pb-3.5 text-sm\">\n            <span className=\"flex size-5 shrink-0 items-center justify-center rounded-full bg-success/15\">\n              <Check className=\"size-3 text-success\" strokeWidth={3} />\n            </span>\n            {item}\n          </li>\n        ))}\n      </ul>\n    </section>\n  );\n}\n"
+    }
+  ]
+}

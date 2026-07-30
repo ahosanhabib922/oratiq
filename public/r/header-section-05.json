@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "header-section-05",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "badge"
+  ],
+  "files": [
+    {
+      "path": "components/blocks/header-section-05.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/header-section-05.tsx",
+      "content": "import { Badge } from \"@/components/ui/badge\";\n\n/** Page header on a soft gradient panel. */\nexport function HeaderSection05() {\n  return (\n    <div className=\"px-4 pt-6 sm:px-6\">\n      <div\n        className=\"mx-auto max-w-6xl rounded-3xl border border-border px-8 py-14\"\n        style={{\n          background:\n            \"radial-gradient(36rem 16rem at 20% 0%, color-mix(in oklab, var(--color-primary) 16%, transparent), transparent 70%)\",\n        }}\n      >\n        <Badge size=\"sm\">Guides</Badge>\n        <h1 className=\"mt-4 max-w-xl text-4xl font-semibold tracking-tight text-balance\">\n          Everything about theming Oratiq\n        </h1>\n        <p className=\"mt-3 max-w-lg text-muted-foreground\">\n          Ramps, roles, radii, and the one rule that keeps rebrands to a\n          single CSS file.\n        </p>\n      </div>\n    </div>\n  );\n}\n"
+    }
+  ]
+}

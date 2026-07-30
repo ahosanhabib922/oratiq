@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "blog-section-06",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "badge"
+  ],
+  "files": [
+    {
+      "path": "components/blocks/blog-section-06.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/blog-section-06.tsx",
+      "content": "import { Badge } from \"@/components/ui/badge\";\n\n/** Topic-first archive: pill rail over a title grid. */\nexport function BlogSection06() {\n  const topics = [\"All\", \"Engineering\", \"Design\", \"Releases\", \"Guides\"];\n  const posts = [\n    \"Bidi isolation in 90 seconds\", \"Surface lift beats shadows in dark mode\",\n    \"What the CLI actually writes\", \"A field guide to logical properties\",\n    \"Reading order is UX\", \"Typedown: tabular numerals everywhere\",\n  ];\n  return (\n    <section className=\"mx-auto max-w-5xl px-4 py-16 sm:px-6\">\n      <div className=\"flex flex-wrap gap-2\">\n        {topics.map((topic, i) => (\n          <Badge key={topic} variant={i === 0 ? \"default\" : \"outline\"} className=\"cursor-pointer\">\n            {topic}\n          </Badge>\n        ))}\n      </div>\n      <ul className=\"mt-8 grid gap-x-10 gap-y-4 sm:grid-cols-2\">\n        {posts.map((title) => (\n          <li key={title}>\n            <a href=\"#\" className=\"group flex items-baseline justify-between gap-4 border-b border-border py-3 outline-none focus-visible:ring-2 focus-visible:ring-ring\">\n              <span className=\"text-base font-medium group-hover:underline group-hover:underline-offset-4\">{title}</span>\n              <span className=\"shrink-0 text-xs text-muted-foreground\">4 min</span>\n            </a>\n          </li>\n        ))}\n      </ul>\n    </section>\n  );\n}\n"
+    }
+  ]
+}

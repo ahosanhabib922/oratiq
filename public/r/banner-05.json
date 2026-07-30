@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "banner-05",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "lucide-react",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/blocks/banner-05.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/banner-05.tsx",
+      "content": "import { Globe2, ShieldCheck, Truck } from \"lucide-react\";\n\n/** Value-props strip — the e-commerce trust bar. */\nexport function Banner05() {\n  const items = [\n    { icon: <Truck className=\"size-4\" />, text: \"Free updates forever\" },\n    { icon: <ShieldCheck className=\"size-4\" />, text: \"MIT licensed\" },\n    { icon: <Globe2 className=\"size-4\" />, text: \"RTL included\" },\n  ];\n  return (\n    <div className=\"border-b border-border bg-muted/40\">\n      <div className=\"mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-x-10 gap-y-2 px-4 py-2.5\">\n        {items.map((item) => (\n          <span key={item.text} className=\"inline-flex items-center gap-2 text-sm text-muted-foreground\">\n            <span className=\"text-primary\">{item.icon}</span>\n            {item.text}\n          </span>\n        ))}\n      </div>\n    </div>\n  );\n}\n"
+    }
+  ]
+}

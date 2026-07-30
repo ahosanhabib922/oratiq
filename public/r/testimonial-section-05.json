@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "testimonial-section-05",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "avatar",
+    "card",
+    "rating",
+    "separator"
+  ],
+  "files": [
+    {
+      "path": "components/blocks/testimonial-section-05.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/testimonial-section-05.tsx",
+      "content": "import { Avatar, AvatarFallback } from \"@/components/ui/avatar\";\nimport { Card } from \"@/components/ui/card\";\nimport { Rating } from \"@/components/ui/rating\";\nimport { Separator } from \"@/components/ui/separator\";\n\n/** Aggregate score column beside two supporting quotes. */\nexport function TestimonialSection05() {\n  const quotes = [\n    { q: \"Setup to shipped landing page: 40 minutes.\", n: \"Sam Whitaker\", i: \"SW\" },\n    { q: \"The docs' Code toggle is how all docs should work.\", n: \"Jonas Weber\", i: \"JW\" },\n  ];\n  return (\n    <section className=\"mx-auto grid max-w-5xl gap-8 px-4 py-16 sm:px-6 lg:grid-cols-[auto_1fr] lg:items-center\">\n      <div className=\"flex flex-col items-center gap-2 text-center lg:pe-10\">\n        <p className=\"text-6xl font-semibold tracking-tight tnum\">4.9</p>\n        <Rating value={5} readOnly label=\"4.9 out of 5\" />\n        <p className=\"text-sm text-muted-foreground\">320+ reviews</p>\n      </div>\n      <div className=\"flex flex-col gap-4\">\n        {quotes.map((t, i) => (\n          <div key={t.n} className=\"contents\">\n            {i > 0 && <Separator />}\n            <Card padding=\"default\" variant=\"ghost\" className=\"flex-row items-center gap-4 border-0 p-0\">\n              <Avatar size=\"sm\" className=\"shrink-0\"><AvatarFallback>{t.i}</AvatarFallback></Avatar>\n              <div className=\"min-w-0\">\n                <blockquote dir=\"auto\" className=\"text-sm leading-relaxed\">“{t.q}”</blockquote>\n                <p className=\"mt-1 text-xs text-muted-foreground\">{t.n}</p>\n              </div>\n            </Card>\n          </div>\n        ))}\n      </div>\n    </section>\n  );\n}\n"
+    }
+  ]
+}

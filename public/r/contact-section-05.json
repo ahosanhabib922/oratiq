@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "contact-section-05",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "lucide-react",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "button",
+    "featured-icon"
+  ],
+  "files": [
+    {
+      "path": "components/blocks/contact-section-05.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/contact-section-05.tsx",
+      "content": "import { Headset, Briefcase } from \"lucide-react\";\nimport { Button } from \"@/components/ui/button\";\nimport { FeaturedIcon } from \"@/components/ui/featured-icon\";\n\n/** Route by intent: sales on one side, support on the other. */\nexport function ContactSection05() {\n  const panels = [\n    { icon: <Briefcase />, title: \"Talk to sales\", body: \"Licensing, teams, procurement, invoices.\", cta: \"Book a call\" },\n    { icon: <Headset />, title: \"Get support\", body: \"Bugs, questions, integration help.\", cta: \"Open a ticket\" },\n  ];\n  return (\n    <section className=\"mx-auto max-w-4xl px-4 py-16 sm:px-6\">\n      <div className=\"grid gap-5 md:grid-cols-2\">\n        {panels.map((p) => (\n          <div key={p.title} className=\"flex flex-col items-start gap-3 rounded-2xl border border-border bg-card p-8\">\n            <FeaturedIcon variant=\"light\" size=\"lg\">{p.icon}</FeaturedIcon>\n            <h3 className=\"text-lg font-medium\">{p.title}</h3>\n            <p className=\"text-sm text-muted-foreground\">{p.body}</p>\n            <Button variant=\"outline\" size=\"sm\" className=\"mt-2\">{p.cta}</Button>\n          </div>\n        ))}\n      </div>\n    </section>\n  );\n}\n"
+    }
+  ]
+}

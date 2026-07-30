@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "careers-section-06",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "lucide-react",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "card",
+    "featured-icon"
+  ],
+  "files": [
+    {
+      "path": "components/blocks/careers-section-06.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/careers-section-06.tsx",
+      "content": "import { ArrowRight, Megaphone, Palette, TerminalSquare } from \"lucide-react\";\nimport { Card } from \"@/components/ui/card\";\nimport { FeaturedIcon } from \"@/components/ui/featured-icon\";\n\n/** Department cards, each with its own opening count. */\nexport function CareersSection06() {\n  const departments = [\n    { icon: <TerminalSquare />, name: \"Engineering\", count: 2 },\n    { icon: <Palette />, name: \"Design\", count: 1 },\n    { icon: <Megaphone />, name: \"Community\", count: 1 },\n  ];\n  return (\n    <section className=\"mx-auto max-w-5xl px-4 py-16 sm:px-6\">\n      <div className=\"grid gap-5 md:grid-cols-3\">\n        {departments.map((d) => (\n          <a key={d.name} href=\"#\" className=\"group rounded-xl outline-none focus-visible:ring-2 focus-visible:ring-ring\">\n            <Card padding=\"default\" interactive className=\"h-full gap-3\">\n              <FeaturedIcon variant=\"light\">{d.icon}</FeaturedIcon>\n              <h3 className=\"font-medium\">{d.name}</h3>\n              <p className=\"mt-auto inline-flex items-center gap-1 text-sm text-muted-foreground\">\n                <span className=\"tnum\">{d.count}</span> open role{d.count > 1 ? \"s\" : \"\"}\n                <ArrowRight className=\"size-3.5 rtl-flip transition-transform group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5\" />\n              </p>\n            </Card>\n          </a>\n        ))}\n      </div>\n    </section>\n  );\n}\n"
+    }
+  ]
+}

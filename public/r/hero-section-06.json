@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hero-section-06",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "avatar",
+    "button",
+    "input"
+  ],
+  "files": [
+    {
+      "path": "components/blocks/hero-section-06.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/hero-section-06.tsx",
+      "content": "import { Button } from \"@/components/ui/button\";\nimport { Input } from \"@/components/ui/input\";\nimport { Avatar, AvatarFallback, AvatarGroup } from \"@/components/ui/avatar\";\n\n/** Conversion hero: headline + email capture + social proof row. */\nexport function HeroSection06() {\n  return (\n    <section className=\"mx-auto max-w-2xl px-4 py-24 text-center sm:px-6\">\n      <h1 className=\"text-4xl font-semibold tracking-tight text-balance sm:text-5xl\">\n        Join the waitlist for Oratiq Cloud\n      </h1>\n      <p className=\"mt-4 text-lg text-muted-foreground\">\n        Hosted registries, team theming, and preview deploys for your design\n        system.\n      </p>\n      <form className=\"mx-auto mt-8 flex w-full max-w-md gap-2\" action=\"#\">\n        <Input type=\"email\" required size=\"lg\" placeholder=\"you@example.com\" aria-label=\"Email address\" />\n        <Button type=\"submit\" size=\"lg\" className=\"shrink-0\">Join</Button>\n      </form>\n      <div className=\"mt-6 flex items-center justify-center gap-3\">\n        <AvatarGroup max={4} total={2140}>\n          {[\"LH\", \"TR\", \"AC\", \"NP\", \"JW\"].map((i) => (\n            <Avatar key={i} size=\"sm\"><AvatarFallback>{i}</AvatarFallback></Avatar>\n          ))}\n        </AvatarGroup>\n        <p className=\"text-sm text-muted-foreground\">2,140 already in line</p>\n      </div>\n    </section>\n  );\n}\n"
+    }
+  ]
+}

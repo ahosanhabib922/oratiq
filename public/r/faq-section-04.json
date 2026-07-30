@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "faq-section-04",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "accordion",
+    "button"
+  ],
+  "files": [
+    {
+      "path": "components/blocks/faq-section-04.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/faq-section-04.tsx",
+      "content": "import {\n  Accordion, AccordionContent, AccordionItem, AccordionTrigger,\n} from \"@/components/ui/accordion\";\nimport { Button } from \"@/components/ui/button\";\n\n/** Centred single column ending in a support CTA. */\nexport function FaqSection04() {\n  const items = [\n    [\"What exactly do I get?\", \"The complete registry — 81 components and every block style — installed into your repo as code you own.\"],\n    [\"Can I self-host the registry?\", \"Yes: point --registry at your fork. The CLI treats any compatible URL the same.\"],\n    [\"Do you support older Next.js?\", \"Next 15+ with the App Router. Pages Router isn't supported.\"],\n  ];\n  return (\n    <section className=\"mx-auto max-w-2xl px-4 py-16 sm:px-6\">\n      <h2 className=\"text-center text-3xl font-semibold tracking-tight\">Frequently asked</h2>\n      <Accordion type=\"single\" collapsible className=\"mt-8 w-full\">\n        {items.map(([q, a]) => (\n          <AccordionItem key={q} value={q}>\n            <AccordionTrigger>{q}</AccordionTrigger>\n            <AccordionContent>{a}</AccordionContent>\n          </AccordionItem>\n        ))}\n      </Accordion>\n      <div className=\"mt-10 flex flex-col items-center gap-3 rounded-2xl border border-border bg-card/50 p-6 text-center\">\n        <p className=\"text-sm font-medium\">Still stuck?</p>\n        <p className=\"text-sm text-muted-foreground\">We answer every question within a business day.</p>\n        <Button size=\"sm\" variant=\"outline\">Contact support</Button>\n      </div>\n    </section>\n  );\n}\n"
+    }
+  ]
+}

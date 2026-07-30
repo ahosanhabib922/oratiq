@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "social-proof-05",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "card"
+  ],
+  "files": [
+    {
+      "path": "components/blocks/social-proof-05.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/social-proof-05.tsx",
+      "content": "import { Card } from \"@/components/ui/card\";\n\n/** Logo cards with one-line outcomes — proof with substance. */\nexport function SocialProof05() {\n  const cases = [\n    [\"Northwind\", \"Arabic launch in one sprint\"],\n    [\"Globex\", \"Rebrand shipped in an afternoon\"],\n    [\"Vertex\", \"-92% RTL bug reports\"],\n  ];\n  return (\n    <section className=\"mx-auto max-w-5xl px-4 py-14 sm:px-6\">\n      <div className=\"grid gap-4 sm:grid-cols-3\">\n        {cases.map(([brand, outcome]) => (\n          <Card key={brand} padding=\"default\" className=\"items-center gap-2 text-center\">\n            <span className=\"text-lg font-semibold tracking-tight text-muted-foreground\">{brand}</span>\n            <p className=\"text-sm text-muted-foreground\">{outcome}</p>\n          </Card>\n        ))}\n      </div>\n    </section>\n  );\n}\n"
+    }
+  ]
+}

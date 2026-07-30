@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "metrics-section-06",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "progress"
+  ],
+  "files": [
+    {
+      "path": "components/blocks/metrics-section-06.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/metrics-section-06.tsx",
+      "content": "import { ProgressCircle } from \"@/components/ui/progress\";\n\n/** Ring gauges — health/score storytelling. */\nexport function MetricsSection06() {\n  const rings = [\n    [\"Lighthouse a11y\", 100], [\"RTL coverage\", 100], [\"Bundle discipline\", 96],\n  ] as const;\n  return (\n    <section className=\"mx-auto max-w-4xl px-4 py-16 sm:px-6\">\n      <div className=\"grid gap-10 sm:grid-cols-3\">\n        {rings.map(([label, value]) => (\n          <div key={label} className=\"flex flex-col items-center gap-3 text-center\">\n            <ProgressCircle value={value} size={120} label={label}>\n              <span className=\"text-2xl font-semibold tnum\">{value}</span>\n            </ProgressCircle>\n            <p className=\"text-sm text-muted-foreground\">{label}</p>\n          </div>\n        ))}\n      </div>\n    </section>\n  );\n}\n"
+    }
+  ]
+}

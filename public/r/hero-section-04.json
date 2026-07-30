@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hero-section-04",
+  "type": "registry:block",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "lucide-react",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "components/blocks/hero-section-04.tsx",
+      "type": "registry:block",
+      "target": "components/blocks/hero-section-04.tsx",
+      "content": "import { ArrowRight } from \"lucide-react\";\nimport { Button } from \"@/components/ui/button\";\n\n/** Full-bleed dark hero with announcement pill and grid texture. */\nexport function HeroSection04() {\n  return (\n    <section className=\"relative overflow-hidden bg-gray-950 text-white\">\n      <div\n        aria-hidden=\"true\"\n        className=\"pointer-events-none absolute inset-0 opacity-[0.15]\"\n        style={{\n          backgroundImage:\n            \"linear-gradient(to right, rgb(255 255 255 / 0.4) 1px, transparent 1px), linear-gradient(to bottom, rgb(255 255 255 / 0.4) 1px, transparent 1px)\",\n          backgroundSize: \"56px 56px\",\n          maskImage: \"radial-gradient(40rem 20rem at 50% 0%, black, transparent)\",\n        }}\n      />\n      <div className=\"relative mx-auto flex max-w-3xl flex-col items-center px-4 py-28 text-center sm:px-6\">\n        <a\n          href=\"#\"\n          className=\"inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-sm backdrop-blur transition-colors hover:bg-white/10\"\n        >\n          <span className=\"size-1.5 rounded-full bg-primary\" />\n          v0.2 is out\n          <ArrowRight className=\"size-3.5 rtl-flip\" />\n        </a>\n        <h1 className=\"mt-8 text-5xl font-semibold leading-[1.05] tracking-tight text-balance sm:text-7xl\">\n          Interfaces without borders\n        </h1>\n        <p className=\"mt-6 max-w-xl text-lg text-white/60\">\n          98 components and sections that render beautifully in every language\n          your users speak — including the ones that read right-to-left.\n        </p>\n        <div className=\"mt-9 flex flex-wrap justify-center gap-3\">\n          <Button size=\"lg\">Start free</Button>\n          <Button size=\"lg\" variant=\"outline\" className=\"border-white/20 text-white hover:bg-white/10 hover:text-white\">\n            Live demo\n          </Button>\n        </div>\n      </div>\n    </section>\n  );\n}\n"
+    }
+  ]
+}
